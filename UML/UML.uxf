@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>590</x>
+      <y>220</y>
+      <w>150</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>PlayerPawn
+-
+-</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>590</x>
+      <y>380</y>
+      <w>150</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>PlayerState
+-
+-</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>400</x>
+      <y>220</y>
+      <w>150</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>PlayerController
+-
+-</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>780</x>
+      <y>380</y>
+      <w>150</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>GameState
+-
+-</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>780</x>
+      <y>220</y>
+      <w>150</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>PlayerHUD
+-
+-</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
