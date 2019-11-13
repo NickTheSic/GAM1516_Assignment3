@@ -3,3 +3,7 @@
 
 #include "SwordHit.h"
 
+void USwordHit::ActivateAttack()
+{
+
+}

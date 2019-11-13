@@ -22,5 +22,6 @@ public:
 
 	void MoveUp(float val); //Will have to set this up for physics based movement
 	
+private:
 	class APlayerPawn* Player;
 };

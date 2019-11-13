@@ -14,4 +14,8 @@ class NLASSIGNMENT3_API USwordHit : public UBoxComponent
 {
 	GENERATED_BODY()
 	
+public:
+
+    void ActivateAttack(); //On Key Press
+
 };

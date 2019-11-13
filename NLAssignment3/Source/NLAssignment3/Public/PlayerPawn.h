@@ -15,6 +15,15 @@ public:
 	// Sets default values for this pawn's properties
 	APlayerPawn();
 
+    UPROPERTY(EditAnywhere, Category = "Sprite")
+        class UPaperSpriteComponent* Sprite;
+
+    UPROPERTY(EditAnywhere, Category = "BoxComponent")
+        class UBoxComponent* BoxComponent;
+
+    UPROPERTY(EditAnywhere, Category = "Attack Component")
+        class USwordHit* SwordHit;
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
