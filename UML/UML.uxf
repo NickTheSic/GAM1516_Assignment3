@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.3.0">
-  <zoom_level>10</zoom_level>
+  <zoom_level>9</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>590</x>
-      <y>220</y>
-      <w>150</w>
-      <h>130</h>
+      <x>657</x>
+      <y>0</y>
+      <w>135</w>
+      <h>117</h>
     </coordinates>
-    <panel_attributes>PlayerPawn
+    <panel_attributes>PlayerContyroller
 -
 -</panel_attributes>
     <additional_attributes/>
@@ -17,53 +17,298 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>590</x>
-      <y>380</y>
-      <w>150</w>
-      <h>130</h>
+      <x>225</x>
+      <y>171</y>
+      <w>135</w>
+      <h>117</h>
     </coordinates>
     <panel_attributes>PlayerState
 -
+health:int
+lives:int
+
 -</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>400</x>
-      <y>220</y>
-      <w>150</w>
-      <h>130</h>
+      <x>459</x>
+      <y>171</y>
+      <w>135</w>
+      <h>117</h>
     </coordinates>
-    <panel_attributes>PlayerController
+    <panel_attributes>PlayerPawn
 -
+
 -</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>780</x>
-      <y>380</y>
-      <w>150</w>
-      <h>130</h>
+      <x>783</x>
+      <y>171</y>
+      <w>207</w>
+      <h>207</h>
     </coordinates>
     <panel_attributes>GameState
 -
--</panel_attributes>
+LocatiopnToSpawnGem:fvector
+bCanSpawnGem: bool
+-
+GetSpawnGem():fvector
+SetSpawnLoc(loc:FVector):void
+SetBool(bool);
+GetBool():bool</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>780</x>
-      <y>220</y>
-      <w>150</w>
-      <h>130</h>
+      <x>360</x>
+      <y>9</y>
+      <w>135</w>
+      <h>117</h>
     </coordinates>
     <panel_attributes>PlayerHUD
 -
 -</panel_attributes>
     <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>459</x>
+      <y>342</y>
+      <w>144</w>
+      <h>117</h>
+    </coordinates>
+    <panel_attributes>UAttackComponent
+-
+-
+Attack():void
+EndAttack():void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>513</x>
+      <y>279</y>
+      <w>99</w>
+      <h>81</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+1 has 1 to 4?</panel_attributes>
+    <additional_attributes>10.0;70.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>351</x>
+      <y>216</y>
+      <w>126</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+1 has 1</panel_attributes>
+    <additional_attributes>10.0;20.0;120.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>567</x>
+      <y>108</y>
+      <w>108</w>
+      <h>81</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+1 has 1</panel_attributes>
+    <additional_attributes>10.0;70.0;100.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>576</x>
+      <y>513</y>
+      <w>207</w>
+      <h>189</h>
+    </coordinates>
+    <panel_attributes>DestroyableObject
+-
+Health: int
+GameState:AGameState*
+-
+TakeDamage(dam:float): void
+SpawnGem():void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>684</x>
+      <y>693</y>
+      <w>117</w>
+      <h>81</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;110.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>702</x>
+      <y>756</y>
+      <w>207</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>Pot
+-
+
+-
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>756</x>
+      <y>369</y>
+      <w>162</w>
+      <h>162</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;..
+Changes a variable</panel_attributes>
+    <additional_attributes>80.0;10.0;10.0;160.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>585</x>
+      <y>450</y>
+      <w>72</w>
+      <h>81</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;..
+CanHit</panel_attributes>
+    <additional_attributes>30.0;70.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1197</x>
+      <y>261</y>
+      <w>243</w>
+      <h>117</h>
+    </coordinates>
+    <panel_attributes>GemSpawner
+-
+GemTemplate: **TEMPLATE**
+-
+SpawnGem(position:FVector):void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>972</x>
+      <y>297</y>
+      <w>243</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;..
+Gets location
+Sets to false after spawn</panel_attributes>
+    <additional_attributes>10.0;20.0;250.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1296</x>
+      <y>189</y>
+      <w>126</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>Maybe make an item
+spawner?
+bg=blue</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>324</x>
+      <y>117</y>
+      <w>162</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;..
+Knows this information</panel_attributes>
+    <additional_attributes>10.0;60.0;40.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>612</x>
+      <y>189</y>
+      <w>144</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>Where should I put 
+last checkpoint location
+bg=blue</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1197</x>
+      <y>423</y>
+      <w>243</w>
+      <h>117</h>
+    </coordinates>
+    <panel_attributes>Gem
+-
+Value:int
+-
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1314</x>
+      <y>369</y>
+      <w>171</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;..
+This spawns a gem / item</panel_attributes>
+    <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>396</x>
+      <y>738</y>
+      <w>162</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>Enemy
+-
+-</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>540</x>
+      <y>693</y>
+      <w>54</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>40.0;10.0;10.0;50.0</additional_attributes>
   </element>
 </diagram>
