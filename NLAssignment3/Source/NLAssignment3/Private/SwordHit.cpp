@@ -2,6 +2,7 @@
 
 
 #include "SwordHit.h"
+#include "DamagableObject.h"
 
 USwordHit::USwordHit()
 {
@@ -28,11 +29,11 @@ void USwordHit::OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPr
 	if (OtherActor != nullptr)
 	{
 		//Cast actor as DamagableObject
+		ADamagableObject* d = Cast<ADamagableObject>(OtherActor);
 
-		//If it is not null
-
-		//if it has the tag Enemy
-		//Add force, take damage
-		//return
+		if (d != nullptr)
+		{
+			d->TakeDamage();
+		}
 	}
 }

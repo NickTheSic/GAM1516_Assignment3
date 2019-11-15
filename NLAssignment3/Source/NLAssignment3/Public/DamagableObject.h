@@ -21,9 +21,13 @@ public:
 		class UCapsuleComponent* Capsule;
 
 	void TakeDamage();
-
+	void OnNoHealth();
 	//OnDestory
 
 private:
 	int ObjectHealth;
+	class ADungeonGameState* AGameState;
+
+protected:
+	void BeginPlay() override;
 };
