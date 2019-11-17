@@ -18,7 +18,7 @@ public:
 	ADamagableObject();
 
 	UPROPERTY(EditAnywhere, Category = "Collision")
-		class UCapsuleComponent* Capsule;
+		class USphereComponent* Capsule;
 
 	void TakeDamage();
 	void OnNoHealth();

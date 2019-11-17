@@ -2,6 +2,7 @@
 
 
 #include "PlayerPawn.h"
+#include "SwordHit.h"
 
 // Sets default values
 APlayerPawn::APlayerPawn()
@@ -32,3 +33,68 @@ void APlayerPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponen
 
 }
 
+void APlayerPawn::Attack()
+{
+	SwordHit->ActivateAttack();
+}
+
+void APlayerPawn::StopAttack()
+{
+	SwordHit->StopAttack();
+}
+
+void MoveUp(float val)
+{
+	if (val != 0.0f)
+	{
+
+	}
+}
+
+void MoveRight(float val)
+{
+	if (val != 0.f)
+	{
+
+	}
+}
+
+void Pickup()
+{
+
+}
+
+void Throw()
+{
+
+}
+
+void APlayerPawn::IncrementGems(int gems)
+{
+	nCurrentGems += gems;
+}
+
+void APlayerPawn::DecrementGems(int gems)
+{
+	nCurrentGems -= gems;
+}
+
+int APlayerPawn::GetGems()
+{
+	return nCurrentGems;
+}
+
+void APlayerPawn::IncrementHealth(int health)
+{
+	nCurrentHealth += health;
+}
+
+void APlayerPawn::DecrementHealth(int health)
+{
+	nCurrentHealth -= health;
+}
+
+int APlayerPawn::GetHealth()
+{
+	return nCurrentHealth;
+}
