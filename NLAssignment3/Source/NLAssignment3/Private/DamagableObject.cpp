@@ -13,10 +13,10 @@ ADamagableObject::ADamagableObject()
 	SetRootComponent(Capsule);
 
 	//I Can setup some base stuff for the sprite here
-	UPaperSpriteComponent* p = GetRenderComponent();
-	p->SetCollisionProfileName("NoCollision");
-	p->SetNotifyRigidBodyCollision(false);
-	p->SetupAttachment(RootComponent);
+	PaperSprite = CreateDefaultSubobject<UPaperSpriteComponent>("PaperSprite");
+	PaperSprite->SetCollisionProfileName("NoCollision");
+	PaperSprite->SetNotifyRigidBodyCollision(false);
+	PaperSprite->SetupAttachment(RootComponent);
 	ObjectHealth = 1; //Default Value
 }
 

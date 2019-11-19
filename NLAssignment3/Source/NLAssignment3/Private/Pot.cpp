@@ -14,8 +14,7 @@ APot::APot()
 	Capsule->SetNotifyRigidBodyCollision(true);
 	//Capsule->SetSimulatePhysics(true);
 
-	UPaperSpriteComponent* p = GetRenderComponent();
 	ConstructorHelpers::FObjectFinder<UPaperSprite> PotRef(TEXT("PaperSprite'/Game/Sprites/Pot'"));
-	p->SetSprite(PotRef.Object);
-	Capsule->SetSphereRadius(p->GetSprite()->GetSourceSize().X / 2); //GOING with x, Arbitrary decision
+	PaperSprite->SetSprite(PotRef.Object);
+	Capsule->SetSphereRadius(PaperSprite->GetSprite()->GetSourceSize().X / 2); //GOING with x, Arbitrary decision
 }

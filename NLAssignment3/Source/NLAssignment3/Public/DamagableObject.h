@@ -10,12 +10,15 @@
  * 
  */
 UCLASS()
-class NLASSIGNMENT3_API ADamagableObject : public APaperSpriteActor
+class NLASSIGNMENT3_API ADamagableObject : public AActor
 {
 	GENERATED_BODY()
 	
 public:
 	ADamagableObject();
+
+	UPROPERTY(EditAnywhere, Category = "Sprite Component")
+		class UPaperSpriteComponent* PaperSprite;
 
 	UPROPERTY(EditAnywhere, Category = "Collision")
 		class USphereComponent* Capsule;

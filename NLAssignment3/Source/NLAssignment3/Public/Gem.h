@@ -10,12 +10,15 @@
  * 
  */
 UCLASS()
-class NLASSIGNMENT3_API AGem : public APaperSpriteActor
+class NLASSIGNMENT3_API AGem : public AActor
 {
 	GENERATED_BODY()
 	
 public:
 	AGem();
+
+	UPROPERTY(EditAnywhere, Category = "Sprite Component")
+		class UPaperSpriteComponent* PaperSprite;
 
 	UPROPERTY(EditAnywhere, Category = "Capsule Collider")
 		class UCapsuleComponent* CapsuleComponent;
