@@ -8,7 +8,7 @@
 
 //Don't entirely understand but it is in the reference I am using form class
 /******************************TODO**************/
-enum class EPlayerAnimState
+enum class EPlayerAnimState : uint8
 {
 	Idle,
 	Right,
@@ -20,7 +20,7 @@ enum class EPlayerAnimState
 	//Throw,
 };
 
-enum class EPlayerActionState
+enum class EPlayerActionState : uint8
 {
 	Idle,
 	Walking,
@@ -30,6 +30,13 @@ enum class EPlayerActionState
 	InTransition, //From moving from room to room?
 };
 
+enum class EPlayerDirection : uint8
+{
+	Up,
+	Right,
+	Down,
+	Left,
+};
 
 
 UCLASS()
@@ -43,12 +50,19 @@ public:
 	APlayerPawn();
 
     UPROPERTY(EditAnywhere, Category = "PlayerCollider")
-        class UBoxComponent* BoxComponent;
+        class UCapsuleComponent* CapsuleComponent;
+
+	UPROPERTY(EditAnywhere, Category = "Player Trigger")
+		class UCapsuleComponent* PickupComponent;
 
     UPROPERTY(EditAnywhere, Category = "Attack Component")
-        class USwordHit* SwordHit;
+        class USwordHit* SwordHitComponent;
 
-	//FLIP BOOKS*
+	//FLIP BOOK
+
+	UPROPERTY(Category = Character, VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
+		class UPaperFlipbookComponent* AnimatedComponent;
+
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Config", meta = (AllowPrivateAccess = "true"))
 		class UPaperFlipbook* RightWalk;
 
@@ -58,12 +72,20 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Config", meta = (AllowPrivateAccess = "true"))
 		class UPaperFlipbook* DownWalk;
 
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Config", meta = (AllowPrivateAccess = "true"))
+		class UPaperFlipbook* IdleUp;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Config", meta = (AllowPrivateAccess = "true"))
+		class UPaperFlipbook* IdleDown;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Config", meta = (AllowPrivateAccess = "true"))
+		class UPaperFlipbook* IdleRight;
+
 	void Attack();
 	void StopAttack();
 
 	void MoveUp(float val);
 	void MoveRight(float val);
-
 
 	void Pickup();
 	void Throw();
@@ -71,6 +93,13 @@ public:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+
+	EPlayerAnimState PlayerAnimState;
+	EPlayerActionState PlayerActionState;
+	void SetAnimState(EPlayerAnimState astate) { PlayerAnimState = astate; }
+	void SetActionState(EPlayerActionState astate) { PlayerActionState = astate; }
+
+	EPlayerDirection PlayerDirection;
 
 private:
 	bool bIsHolding; //For picking up objects
@@ -80,6 +109,14 @@ private:
 	int nMaxHealth;
 
 	int nCurrentGems;
+
+	float TravelDirectionX; //Might not be needed if I am using states to determine Direciton;
+	float TravelDirectionZ; //Might not be needed if I am using states to determine Direciton;
+
+	float MovementForce = 10000.f; //IDK in the example it is so high, yet
+	float MaxVelX = 1000.f;
+	float MaxVelZ = 1000.f;
+
 
 public:
 	void IncrementGems(int gems);

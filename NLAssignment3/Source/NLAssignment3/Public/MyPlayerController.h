@@ -21,6 +21,10 @@ public:
 	void SetupInputComponent();
 
 	void MoveUp(float val); //Will have to set this up for physics based movement
+	void MoveRight(float val);
+
+	void OnAttack();
+	void StopAttack();
 	
 private:
 	class APlayerPawn* Player;
