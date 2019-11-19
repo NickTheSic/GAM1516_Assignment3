@@ -21,7 +21,7 @@ public:
 		class UPaperSpriteComponent* PaperSprite;
 
 	UPROPERTY(EditAnywhere, Category = "Collision")
-		class USphereComponent* Capsule;
+		class UCapsuleComponent* Capsule;
 
 	void TakeDamage();
 	void OnNoHealth();

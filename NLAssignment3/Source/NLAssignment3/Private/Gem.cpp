@@ -17,7 +17,7 @@ AGem::AGem()
 	CapsuleComponent->SetNotifyRigidBodyCollision(true);
 	SetRootComponent(CapsuleComponent);
 
-	ConstructorHelpers::FObjectFinder<UPaperSprite> GemRef (TEXT("PaperSprite'/Game/Sprites/Gem'"));
+	ConstructorHelpers::FObjectFinder<UPaperSprite> GemRef (TEXT("PaperSprite'/Game/Sprites/RedGem'"));
 	PaperSprite = CreateDefaultSubobject<UPaperSpriteComponent>("PaperSprite");
 	PaperSprite->SetCollisionProfileName("NoCollision");
 	PaperSprite->SetNotifyRigidBodyCollision(false);

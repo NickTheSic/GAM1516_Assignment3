@@ -8,27 +8,27 @@
 
 //Don't entirely understand but it is in the reference I am using form class
 /******************************TODO**************/
-//enum class EPlayerAnimState
-//{
-//	Idle,
-//	Right,
-//	Left,
-//	Up,
-//	Down,
-//	Attack,
-//	//Pickup,
-//	//Throw,
-//};
-//
-//enum class EPlayerActionState
-//{
-//	Idle,
-//	Walking,
-//	Attacking,
-//	OutOfHealth,
-//	OutOfLives,
-//	InTransition, //From moving from room to room?
-//};
+enum class EPlayerAnimState
+{
+	Idle,
+	Right,
+	Left,
+	Up,
+	Down,
+	Attack,
+	//Pickup,
+	//Throw,
+};
+
+enum class EPlayerActionState
+{
+	Idle,
+	Walking,
+	Attacking,
+	OutOfHealth,
+	OutOfLives,
+	InTransition, //From moving from room to room?
+};
 
 
 

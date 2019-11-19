@@ -2,7 +2,7 @@
 
 
 #include "Pot.h"
-#include "Components/SphereComponent.h"
+#include "Components/CapsuleComponent.h"
 #include "ConstructorHelpers.h"
 #include "PaperSprite.h"
 #include "PaperSpriteComponent.h"
@@ -14,7 +14,12 @@ APot::APot()
 	Capsule->SetNotifyRigidBodyCollision(true);
 	//Capsule->SetSimulatePhysics(true);
 
-	ConstructorHelpers::FObjectFinder<UPaperSprite> PotRef(TEXT("PaperSprite'/Game/Sprites/Pot'"));
-	PaperSprite->SetSprite(PotRef.Object);
-	Capsule->SetSphereRadius(PaperSprite->GetSprite()->GetSourceSize().X / 2); //GOING with x, Arbitrary decision
+	ConstructorHelpers::FObjectFinder<UPaperSprite> PotRef(TEXT("PaperSprite'/Game/Sprites/Barrel'"));
+	if (PotRef.Succeeded())
+	{
+		PaperSprite->SetSprite(PotRef.Object);
+		FVector2D size = PaperSprite->GetSprite()->GetSourceSize();
+		Capsule->SetCapsuleRadius(size.X / 2);
+		Capsule->SetCapsuleHalfHeight(size.Y / 2);
+	}
 }
