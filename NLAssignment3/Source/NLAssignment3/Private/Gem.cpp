@@ -6,6 +6,7 @@
 #include "ConstructorHelpers.h"
 #include "PaperSprite.h"
 #include "PaperSpriteComponent.h"
+#include "MyBPFunctionLib.h"
 
 AGem::AGem()
 {
@@ -19,8 +20,7 @@ AGem::AGem()
 
 	ConstructorHelpers::FObjectFinder<UPaperSprite> GemRef (TEXT("PaperSprite'/Game/Sprites/RedGem'"));
 	PaperSprite = CreateDefaultSubobject<UPaperSpriteComponent>("PaperSprite");
-	PaperSprite->SetCollisionProfileName("NoCollision");
-	PaperSprite->SetNotifyRigidBodyCollision(false);
+    UMyBPFunctionLib::SpriteCollisionSetup(PaperSprite);
 	PaperSprite->SetupAttachment(RootComponent);
 
 	if (GemRef.Succeeded())

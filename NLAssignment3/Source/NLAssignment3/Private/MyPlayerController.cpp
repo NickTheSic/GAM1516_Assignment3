@@ -3,6 +3,7 @@
 
 #include "MyPlayerController.h"
 #include "PlayerPawn.h"
+#include "Engine/Engine.h"
 
 
 void AMyPlayerController::OnPossess(APawn* apawn)
@@ -43,6 +44,8 @@ void AMyPlayerController::MoveUp(float val)
 	if (val < -1)
 		val = -1;
 
+    GEngine->AddOnScreenDebugMessage(0, .5f, FColor::Blue, FString::FromInt(val));
+
 	Player->MoveUp(val);
 }
 
@@ -53,7 +56,9 @@ void AMyPlayerController::MoveRight(float val)
 	if (val < -1)
 		val = -1;
 
-	Player->MoveRight(val);
+    //GEngine->AddOnScreenDebugMessage(1, .5f, FColor::Green, FString::FromInt(val));
+
+    Player->MoveRight(val);
 }
 
 void AMyPlayerController::OnAttack()

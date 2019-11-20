@@ -25,9 +25,9 @@ enum class EPlayerActionState : uint8
 	Idle,
 	Walking,
 	Attacking,
+    Holding,
 	OutOfHealth,
 	OutOfLives,
-	InTransition, //From moving from room to room?
 };
 
 enum class EPlayerDirection : uint8
@@ -49,7 +49,7 @@ public:
 	// Sets default values for this pawn's properties
 	APlayerPawn();
 
-    UPROPERTY(EditAnywhere, Category = "PlayerCollider")
+    UPROPERTY(VisibleAnywhere, Category = "PlayerCollider")
         class UCapsuleComponent* CapsuleComponent;
 
 	UPROPERTY(EditAnywhere, Category = "Player Trigger")
@@ -57,6 +57,9 @@ public:
 
     UPROPERTY(EditAnywhere, Category = "Attack Component")
         class USwordHit* SwordHitComponent;
+
+    UPROPERTY(EditAnywhere, Category = "Folow Cam")
+        class UCameraComponent* Camera;
 
 	//FLIP BOOK
 
@@ -100,6 +103,11 @@ protected:
 	void SetActionState(EPlayerActionState astate) { PlayerActionState = astate; }
 
 	EPlayerDirection PlayerDirection;
+    void SetDirectionState(EPlayerDirection adir) { PlayerDirection = adir; }
+
+    void SetIdleDirectionSprite();
+
+    void UpdateAnimatedSprite();
 
 private:
 	bool bIsHolding; //For picking up objects
@@ -110,12 +118,11 @@ private:
 
 	int nCurrentGems;
 
-	float TravelDirectionX; //Might not be needed if I am using states to determine Direciton;
-	float TravelDirectionZ; //Might not be needed if I am using states to determine Direciton;
+    float TravelDirectionX;
+    float TravelDirectionY;
 
-	float MovementForce = 10000.f; //IDK in the example it is so high, yet
-	float MaxVelX = 1000.f;
-	float MaxVelZ = 1000.f;
+	float MovementForce = 1000.f; 
+	float MaxVel = 100.f;
 
 
 public:
