@@ -18,6 +18,8 @@ ADamagableObject::ADamagableObject()
 	PaperSprite->SetNotifyRigidBodyCollision(false);
 	PaperSprite->SetupAttachment(RootComponent);
 	ObjectHealth = 1; //Default Value
+
+	Tags.Add("DamagableObject");
 }
 
 void ADamagableObject::BeginPlay()
@@ -42,4 +44,5 @@ void ADamagableObject::OnNoHealth()
 		AGameState->SetLocationToSpawnGem(GetActorLocation());
 		AGameState->SetCanSpawnGem(true);
 	}
+	Destroy();
 }

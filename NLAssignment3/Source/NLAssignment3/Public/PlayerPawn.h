@@ -93,6 +93,12 @@ public:
 	void Pickup();
 	void Throw();
 
+	UPROPERTY(EditAnywhere, Category = "Sword Sprite")
+		class UPaperSpriteComponent* SwordSprite; 
+	
+	UFUNCTION()
+		void OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -109,8 +115,11 @@ protected:
 
     void UpdateAnimatedSprite();
 
+	void SetSwordLocationAndRotation();
+
 private:
 	bool bIsHolding; //For picking up objects
+	bool bCanPickUp;
 	bool bIsAttacking; //So the player can't attack until the attack is done.  Assuming I have animatioon for the attack
 
 	int nCurrentHealth;
@@ -121,9 +130,13 @@ private:
     float TravelDirectionX;
     float TravelDirectionY;
 
-	float MovementForce = 1000.f; 
-	float MaxVel = 100.f;
+	float MovementForce = 5000.f; 
+	float MaxVel = 200.f;
 
+	bool bLeftRightMovement;
+	bool bUpDownMovement;
+
+	class UPrimitiveComponent* HeldObject;
 
 public:
 	void IncrementGems(int gems);

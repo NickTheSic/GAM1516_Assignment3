@@ -3,6 +3,8 @@
 
 #include "SwordHit.h"
 #include "DamagableObject.h"
+#include "PaperSpriteComponent.h"
+#include "MyBPFunctionLib.h"
 
 USwordHit::USwordHit()
 {

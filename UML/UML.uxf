@@ -4,8 +4,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>657</x>
-      <y>0</y>
+      <x>468</x>
+      <y>27</y>
       <w>135</w>
       <h>117</h>
     </coordinates>
@@ -17,8 +17,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>225</x>
-      <y>171</y>
+      <x>36</x>
+      <y>198</y>
       <w>135</w>
       <h>117</h>
     </coordinates>
@@ -33,8 +33,8 @@ lives:int
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>459</x>
-      <y>171</y>
+      <x>270</x>
+      <y>198</y>
       <w>135</w>
       <h>117</h>
     </coordinates>
@@ -47,8 +47,8 @@ lives:int
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>783</x>
-      <y>171</y>
+      <x>594</x>
+      <y>198</y>
       <w>207</w>
       <h>207</h>
     </coordinates>
@@ -66,8 +66,8 @@ GetBool():bool</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>360</x>
-      <y>9</y>
+      <x>144</x>
+      <y>0</y>
       <w>135</w>
       <h>117</h>
     </coordinates>
@@ -79,8 +79,8 @@ GetBool():bool</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>459</x>
-      <y>342</y>
+      <x>270</x>
+      <y>369</y>
       <w>144</w>
       <h>117</h>
     </coordinates>
@@ -94,8 +94,8 @@ EndAttack():void</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>513</x>
-      <y>279</y>
+      <x>324</x>
+      <y>306</y>
       <w>99</w>
       <h>81</h>
     </coordinates>
@@ -106,8 +106,8 @@ EndAttack():void</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>351</x>
-      <y>216</y>
+      <x>162</x>
+      <y>243</y>
       <w>126</w>
       <h>36</h>
     </coordinates>
@@ -118,8 +118,8 @@ EndAttack():void</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>567</x>
-      <y>108</y>
+      <x>378</x>
+      <y>135</y>
       <w>108</w>
       <h>81</h>
     </coordinates>
@@ -130,8 +130,8 @@ EndAttack():void</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>576</x>
-      <y>513</y>
+      <x>387</x>
+      <y>540</y>
       <w>207</w>
       <h>189</h>
     </coordinates>
@@ -147,8 +147,8 @@ SpawnGem():void</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>684</x>
-      <y>693</y>
+      <x>495</x>
+      <y>720</y>
       <w>117</w>
       <h>81</h>
     </coordinates>
@@ -158,8 +158,8 @@ SpawnGem():void</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>702</x>
-      <y>756</y>
+      <x>513</x>
+      <y>783</y>
       <w>207</w>
       <h>99</h>
     </coordinates>
@@ -173,8 +173,8 @@ SpawnGem():void</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>756</x>
-      <y>369</y>
+      <x>567</x>
+      <y>396</y>
       <w>162</w>
       <h>162</h>
     </coordinates>
@@ -185,8 +185,8 @@ Changes a variable</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>585</x>
-      <y>450</y>
+      <x>396</x>
+      <y>477</y>
       <w>72</w>
       <h>81</h>
     </coordinates>
@@ -197,8 +197,8 @@ CanHit</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1197</x>
-      <y>261</y>
+      <x>1008</x>
+      <y>288</y>
       <w>243</w>
       <h>117</h>
     </coordinates>
@@ -212,8 +212,8 @@ SpawnGem(position:FVector):void</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>972</x>
-      <y>297</y>
+      <x>783</x>
+      <y>324</y>
       <w>243</w>
       <h>45</h>
     </coordinates>
@@ -225,8 +225,8 @@ Sets to false after spawn</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>1296</x>
-      <y>189</y>
+      <x>1107</x>
+      <y>216</y>
       <w>126</w>
       <h>63</h>
     </coordinates>
@@ -238,20 +238,20 @@ bg=blue</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>324</x>
-      <y>117</y>
+      <x>261</x>
+      <y>108</y>
       <w>162</w>
-      <h>72</h>
+      <h>108</h>
     </coordinates>
     <panel_attributes>lt=&lt;..
 Knows this information</panel_attributes>
-    <additional_attributes>10.0;60.0;40.0;10.0</additional_attributes>
+    <additional_attributes>30.0;100.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>612</x>
-      <y>189</y>
+      <x>423</x>
+      <y>216</y>
       <w>144</w>
       <h>63</h>
     </coordinates>
@@ -263,8 +263,8 @@ bg=blue</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1197</x>
-      <y>423</y>
+      <x>1008</x>
+      <y>450</y>
       <w>243</w>
       <h>117</h>
     </coordinates>
@@ -278,8 +278,8 @@ Value:int
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1314</x>
-      <y>369</y>
+      <x>1125</x>
+      <y>396</y>
       <w>171</w>
       <h>72</h>
     </coordinates>
@@ -290,8 +290,8 @@ This spawns a gem / item</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>396</x>
-      <y>738</y>
+      <x>207</x>
+      <y>765</y>
       <w>162</w>
       <h>63</h>
     </coordinates>
@@ -303,8 +303,8 @@ This spawns a gem / item</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>540</x>
-      <y>693</y>
+      <x>351</x>
+      <y>720</y>
       <w>54</w>
       <h>63</h>
     </coordinates>

@@ -14,7 +14,7 @@ AGem::AGem()
 
 	CapsuleComponent = CreateDefaultSubobject<UCapsuleComponent>("Capsule Component");
 	CapsuleComponent->SetCollisionProfileName("BlockAll");
-	CapsuleComponent->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
+	CapsuleComponent->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
 	CapsuleComponent->SetNotifyRigidBodyCollision(true);
 	SetRootComponent(CapsuleComponent);
 
@@ -30,6 +30,8 @@ AGem::AGem()
 		CapsuleComponent->SetCapsuleRadius(size.X / 2);
 		CapsuleComponent->SetCapsuleHalfHeight(size.Y / 2);
 	}
+
+	Tags.Add("Gem");
 }
 
 int AGem::GetValue()

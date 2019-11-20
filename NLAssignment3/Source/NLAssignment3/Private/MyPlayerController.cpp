@@ -44,7 +44,7 @@ void AMyPlayerController::MoveUp(float val)
 	if (val < -1)
 		val = -1;
 
-    GEngine->AddOnScreenDebugMessage(0, .5f, FColor::Blue, FString::FromInt(val));
+    //GEngine->AddOnScreenDebugMessage(0, .5f, FColor::Blue, FString::FromInt(val));
 
 	Player->MoveUp(val);
 }
