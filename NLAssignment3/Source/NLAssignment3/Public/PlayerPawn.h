@@ -142,13 +142,13 @@ public:
 	void IncrementGems(int gems);
 	void DecrementGems(int gems);
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable, Category = "UI")
 		int GetGems();
 
 	void IncrementHealth(int health);
 	void DecrementHealth(int health);
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable, Category = "UI")
 		int GetHealth();
 
 public:	
