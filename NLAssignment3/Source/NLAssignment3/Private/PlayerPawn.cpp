@@ -23,7 +23,7 @@ APlayerPawn::APlayerPawn()
     //Capsule Component
 	CapsuleComponent = CreateDefaultSubobject<UCapsuleComponent>("Capsule");
 	CapsuleComponent->SetCollisionProfileName("BlockAll");
-	CapsuleComponent->SetCollisionEnabled(ECollisionEnabled::PhysicsOnly); //This Component hits things
+	CapsuleComponent->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics); 
 	CapsuleComponent->SetNotifyRigidBodyCollision(true);
     CapsuleComponent->GetBodyInstance()->bLockXRotation = true;
     CapsuleComponent->GetBodyInstance()->bLockYRotation = true;
@@ -32,6 +32,8 @@ APlayerPawn::APlayerPawn()
     CapsuleComponent->SetSimulatePhysics(true);
     CapsuleComponent->SetEnableGravity(false);
 	SetRootComponent(CapsuleComponent);
+	CapsuleComponent->OnComponentBeginOverlap.AddDynamic(this, &APlayerPawn::OnTriggerEnter);
+	CapsuleComponent->OnComponentHit.AddDynamic(this, &APlayerPawn::OnHit);
 
     //Animated Component
 	AnimatedComponent = CreateOptionalDefaultSubobject<UPaperFlipbookComponent>("Animated Component");
@@ -40,7 +42,10 @@ APlayerPawn::APlayerPawn()
 
     //Pickup Component
 	PickupComponent = CreateDefaultSubobject<UCapsuleComponent>("Pickup");
-
+	PickupComponent->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
+	PickupComponent->SetCollisionProfileName("Overlap");
+	PickupComponent->OnComponentBeginOverlap.AddDynamic(this, &APlayerPawn::OnPickupEnter);
+	PickupComponent->OnComponentEndOverlap.AddDynamic(this, &APlayerPawn::OnPickupExit);
 	PickupComponent->SetupAttachment(RootComponent);
 
     //SwordHit Component
@@ -54,15 +59,17 @@ APlayerPawn::APlayerPawn()
 	SwordSprite->SetupAttachment(SwordHitComponent);
 	SwordSprite->SetRelativeRotation(FRotator(0.f, -180.f, 0.f));
 	SwordSprite->SetSprite(SwordRef.Object);
+	SwordSprite->SetVisibility(false);
 	FVector2D swordSize = SwordSprite->GetSprite()->GetSourceSize();
 	SwordHitComponent->SetBoxExtent(FVector(swordSize.X / 2.f, 0.f, swordSize.Y / 2.f));
 
     //Setup the Camera
     Camera = CreateDefaultSubobject<UCameraComponent>("The player Camera for now");
 	//Camera->
-    Camera->SetOrthoWidth(2800.f);
+    Camera->SetOrthoWidth(1800.f);
     Camera->SetRelativeRotation(FRotator(0.f, -90.f, 0.f));
     Camera->SetRelativeLocation(FVector(0.f, 500.f, 0.f));
+	Camera->SetProjectionMode(ECameraProjectionMode::Orthographic);
     Camera->SetupAttachment(RootComponent);
 
 	ConstructorHelpers::FObjectFinder<UPaperSprite> PlayerRef(TEXT("PaperSprite'/Game/Sprites/Link/Walking/Down/Link_Sprite_10.Link_Sprite_10'"));
@@ -78,6 +85,7 @@ APlayerPawn::APlayerPawn()
 
 	HeldObject = nullptr;
 
+	Tags.Add("Player");
 	PlayerActionState = EPlayerActionState::Idle;
     SetAnimState(EPlayerAnimState::Idle);
     SetDirectionState(EPlayerDirection::Down);
@@ -99,6 +107,14 @@ void APlayerPawn::Tick(float DeltaTime)
 
     UpdateAnimatedSprite();
 	SetSwordLocationAndRotation();
+
+	if (HeldObject != nullptr)
+	{
+		FVector pos = GetActorLocation();
+		pos.Z += 100;
+		HeldObject->SetActorLocation(pos);
+	}
+
 }
 
 // Called to bind functionality to input
@@ -110,19 +126,24 @@ void APlayerPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponen
 
 void APlayerPawn::Attack()
 {
-	SwordSprite->SetVisibility(true);
-	SwordHitComponent->ActivateAttack();
+	if (!bIsHolding)
+	{
+		SetActionState(EPlayerActionState::Attacking);
+		SwordSprite->SetVisibility(true);
+		SwordHitComponent->ActivateAttack();
+	}
 }
 
 void APlayerPawn::StopAttack()
 {
+	SetActionState(EPlayerActionState::Idle);
 	SwordSprite->SetVisibility(false);
 	SwordHitComponent->StopAttack();
 }
 
 void APlayerPawn::MoveUp(float val)
 {
-	if (val != 0.0f)
+	if (val != 0.0f && PlayerActionState != EPlayerActionState::Attacking)
 	{
         FVector PlayerVelocity = GetVelocity();
         TravelDirectionY = -val;
@@ -181,12 +202,12 @@ void APlayerPawn::MoveUp(float val)
 
 void APlayerPawn::MoveRight(float val)
 {
-	if (val != 0.f)
+	if (val != 0.f && PlayerActionState != EPlayerActionState::Attacking)
 	{
 		bLeftRightMovement = true;
 		FVector PlayerVelocity = GetVelocity();
         TravelDirectionX = -val;
-        GEngine->AddOnScreenDebugMessage(-1, 3.f, FColor::Green, FString::FromInt(val));
+        //GEngine->AddOnScreenDebugMessage(-1, 3.f, FColor::Green, FString::FromInt(val));
 
 		if (!bUpDownMovement)
 		{
@@ -209,7 +230,7 @@ void APlayerPawn::MoveRight(float val)
 			}
 		}
         FVector currentVel = CapsuleComponent->BodyInstance.GetUnrealWorldVelocity();
-		GEngine->AddOnScreenDebugMessage(1, .5f, FColor::Green, FString::FromInt(currentVel.X));
+		//GEngine->AddOnScreenDebugMessage(1, .5f, FColor::Green, FString::FromInt(currentVel.X));
 
 		SetActionState(EPlayerActionState::Walking);
 		//If it is less speed up?
@@ -244,6 +265,9 @@ void APlayerPawn::Pickup()
 	if (bCanPickUp && !bIsHolding)
 	{
 		//Pickup
+		HeldObject = ObjectThatCanBeHeld;
+		bIsHolding = true;
+		SetActionState(EPlayerActionState::Holding);
 	}
 }
 
@@ -253,7 +277,14 @@ void APlayerPawn::Throw()
 	{
 		if (HeldObject)
 		{
+			bIsHolding = false;
 
+			FVector dir;
+			if (PlayerDirection == EPlayerDirection::Up) dir = FVector(0, 0, 1);
+			else if (PlayerDirection == EPlayerDirection::Down) dir = FVector(0, 0, -1);
+			else if (PlayerDirection == EPlayerDirection::Left) dir = FVector(-1, 0, 0);
+			else if (PlayerDirection == EPlayerDirection::Right) dir = FVector(1, 0, 0);
+			SetActionState(EPlayerActionState::Idle);
 		}
 	}
 }
@@ -263,7 +294,7 @@ void APlayerPawn::UpdateAnimatedSprite()
 
 	float velocity = GetVelocity().Size();
 
-	if (velocity != 0.f)
+	if (velocity != 0.f && PlayerActionState != EPlayerActionState::Attacking)
 	{
 		if (PlayerAnimState == EPlayerAnimState::Right || PlayerAnimState == EPlayerAnimState::Left)
 		{
@@ -272,7 +303,7 @@ void APlayerPawn::UpdateAnimatedSprite()
 		}
 	}
 
-		if (PlayerActionState == EPlayerActionState::Idle)
+		if (PlayerActionState == EPlayerActionState::Idle || PlayerActionState == EPlayerActionState::Attacking)
 		{
 			SetIdleDirectionSprite();
 			return;
@@ -322,11 +353,44 @@ void APlayerPawn::OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, U
 {
 	if (OtherActor != nullptr)
 	{
+
+	}
+}
+
+void APlayerPawn::OnTriggerEnter(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
+{
+	if (OtherActor != nullptr)
+	{
 		if (OtherActor->ActorHasTag("Gem"))
 		{
 			AGem* g = Cast<AGem>(OtherActor);
-			IncrementGems(g->GetValue());
+			int Gvalue = g->GetValue();
+			IncrementGems(Gvalue);
 			g->Destroy();
+		}
+	}
+}
+
+void APlayerPawn::OnPickupEnter(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
+{
+	if (OtherActor != nullptr)
+	{
+		if (OtherActor->ActorHasTag("Pot"))
+		{
+			bCanPickUp = true;
+			ObjectThatCanBeHeld = OtherActor;
+		}
+	}
+}
+
+void APlayerPawn::OnPickupExit(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
+{
+	if (OtherActor != nullptr)
+	{
+		if (OtherActor->ActorHasTag("Pot"))
+		{
+			bCanPickUp = false;
+			ObjectThatCanBeHeld = false;
 		}
 	}
 }

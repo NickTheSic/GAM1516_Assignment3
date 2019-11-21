@@ -7,15 +7,19 @@
 #include "PaperSprite.h"
 #include "PaperSpriteComponent.h"
 #include "MyBPFunctionLib.h"
+#include "PlayerPawn.h"
 
 AGem::AGem()
 {
 	GemValue = 1; //Maybe later I will randomize it but for now I wont
 
 	CapsuleComponent = CreateDefaultSubobject<UCapsuleComponent>("Capsule Component");
-	CapsuleComponent->SetCollisionProfileName("BlockAll");
+	CapsuleComponent->SetCollisionProfileName("Overlap");
 	CapsuleComponent->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
 	CapsuleComponent->SetNotifyRigidBodyCollision(true);
+	//CapsuleComponent->SetSimulatePhysics(true);
+	//CapsuleComponent->SetEnableGravity(false);
+	CapsuleComponent->OnComponentBeginOverlap.AddDynamic(this, &AGem::OnTriggerEnter);
 	SetRootComponent(CapsuleComponent);
 
 	ConstructorHelpers::FObjectFinder<UPaperSprite> GemRef (TEXT("PaperSprite'/Game/Sprites/RedGem'"));
@@ -37,4 +41,18 @@ AGem::AGem()
 int AGem::GetValue()
 {
 	return GemValue;
+}
+
+void AGem::OnTriggerEnter(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
+{
+	if (OtherActor != nullptr)
+	{
+		//if (OtherActor->ActorHasTag("Player"))
+		//{
+		//	APlayerPawn* g = Cast<APlayerPawn>(OtherActor);
+		//	int Gvalue = GetValue();
+		//	g->IncrementGems(Gvalue);
+		//	Destroy();
+		//}
+	}
 }

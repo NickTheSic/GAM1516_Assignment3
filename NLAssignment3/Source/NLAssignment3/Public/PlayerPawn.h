@@ -63,7 +63,7 @@ public:
 
 	//FLIP BOOK
 
-	UPROPERTY(Category = Character, VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
+	UPROPERTY(Category = "Character", VisibleAnywhere, meta = (AllowPrivateAccess = "true"))
 		class UPaperFlipbookComponent* AnimatedComponent;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Config", meta = (AllowPrivateAccess = "true"))
@@ -98,6 +98,14 @@ public:
 	
 	UFUNCTION()
 		void OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
+
+	UFUNCTION()
+		void OnTriggerEnter(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+
+	UFUNCTION()
+		void OnPickupEnter(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult); 
+	UFUNCTION()
+		void OnPickupExit(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
 
 protected:
 	// Called when the game starts or when spawned
@@ -136,11 +144,15 @@ private:
 	bool bLeftRightMovement;
 	bool bUpDownMovement;
 
-	class UPrimitiveComponent* HeldObject;
+	class AActor* HeldObject;
+	AActor* ObjectThatCanBeHeld;
 
 public:
 	void IncrementGems(int gems);
 	void DecrementGems(int gems);
+
+	bool GetIsHolding() { return bIsHolding; }
+	bool GetCanPickup() { return bCanPickUp; }
 
 	UFUNCTION(BlueprintCallable, Category = "UI")
 		int GetGems();

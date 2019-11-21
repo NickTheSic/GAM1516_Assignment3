@@ -10,8 +10,15 @@
 APot::APot()
 {
 	Capsule->SetCollisionProfileName("BlockAll");
-	Capsule->SetCollisionEnabled(ECollisionEnabled::PhysicsOnly);
+	Capsule->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 	Capsule->SetNotifyRigidBodyCollision(true);
+	Capsule->SetSimulatePhysics(true);
+	Capsule->SetEnableGravity(false);
+	Capsule->GetBodyInstance()->bLockXRotation = true;
+	Capsule->GetBodyInstance()->bLockYRotation = true;
+	Capsule->GetBodyInstance()->bLockZRotation = true;
+	Capsule->GetBodyInstance()->bLockYTranslation = true;
+	Capsule->SetLinearDamping(20.0f);
 	//Capsule->SetSimulatePhysics(true);
 
 	ConstructorHelpers::FObjectFinder<UPaperSprite> PotRef(TEXT("PaperSprite'/Game/Sprites/Barrel'"));
@@ -22,4 +29,6 @@ APot::APot()
 		Capsule->SetCapsuleRadius(size.X / 2);
 		Capsule->SetCapsuleHalfHeight(size.Y / 2);
 	}
+
+	Tags.Add("Pot");
 }

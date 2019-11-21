@@ -34,6 +34,8 @@ void AMyPlayerController::SetupInputComponent()
 		InputComponent->BindAxis("MoveRight", this, &AMyPlayerController::MoveRight);
 		InputComponent->BindAction("Attack", EInputEvent::IE_Pressed, this, &AMyPlayerController::OnAttack);
 		InputComponent->BindAction("Attack", EInputEvent::IE_Released, this, &AMyPlayerController::StopAttack);
+		InputComponent->BindAction("Pickup", EInputEvent::IE_Pressed, this, &AMyPlayerController::Throw);
+		InputComponent->BindAction("Pickup", EInputEvent::IE_Pressed, this, &AMyPlayerController::Pickup);
 	}
 }
 
@@ -59,6 +61,18 @@ void AMyPlayerController::MoveRight(float val)
     //GEngine->AddOnScreenDebugMessage(1, .5f, FColor::Green, FString::FromInt(val));
 
     Player->MoveRight(val);
+}
+
+void AMyPlayerController::Pickup()
+{
+	if (Player->GetCanPickup())
+		Player->Pickup();
+}
+
+void AMyPlayerController::Throw()
+{
+	if (Player->GetIsHolding())
+		Player->Throw();
 }
 
 void AMyPlayerController::OnAttack()
