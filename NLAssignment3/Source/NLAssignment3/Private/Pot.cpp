@@ -21,6 +21,7 @@ APot::APot()
 	Capsule->SetLinearDamping(20.0f);
 	//Capsule->SetSimulatePhysics(true);
 
+#if WITH_EDITOR
 	ConstructorHelpers::FObjectFinder<UPaperSprite> PotRef(TEXT("PaperSprite'/Game/Sprites/Barrel'"));
 	if (PotRef.Succeeded())
 	{
@@ -29,6 +30,7 @@ APot::APot()
 		Capsule->SetCapsuleRadius(size.X / 2);
 		Capsule->SetCapsuleHalfHeight(size.Y / 2);
 	}
+#endif
 
 	Tags.Add("Pot");
 }

@@ -20,7 +20,7 @@ public:
 	UPROPERTY(EditAnywhere, Category = "Sprite Component")
 		class UPaperSpriteComponent* PaperSprite;
 
-	UPROPERTY(EditAnywhere, Category = "Collision")
+	UPROPERTY(VisibleAnywhere, Category = "Collision")
 		class UCapsuleComponent* Capsule;
 
 	void TakeDamage();

@@ -23,8 +23,11 @@ public:
 	void MoveUp(float val); //Will have to set this up for physics based movement
 	void MoveRight(float val);
 
-	void Pickup();
-	void Throw();
+	UFUNCTION()
+		void Pickup();
+
+	UFUNCTION()
+		void Throw();
 
 	void OnAttack();
 	void StopAttack();

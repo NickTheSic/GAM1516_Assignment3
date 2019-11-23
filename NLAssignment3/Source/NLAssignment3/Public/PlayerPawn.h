@@ -91,7 +91,8 @@ public:
 	void MoveRight(float val);
 
 	void Pickup();
-	void Throw();
+	UFUNCTION()
+		void Throw();
 
 	UPROPERTY(EditAnywhere, Category = "Sword Sprite")
 		class UPaperSpriteComponent* SwordSprite; 

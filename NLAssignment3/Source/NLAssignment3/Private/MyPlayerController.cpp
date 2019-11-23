@@ -34,7 +34,7 @@ void AMyPlayerController::SetupInputComponent()
 		InputComponent->BindAxis("MoveRight", this, &AMyPlayerController::MoveRight);
 		InputComponent->BindAction("Attack", EInputEvent::IE_Pressed, this, &AMyPlayerController::OnAttack);
 		InputComponent->BindAction("Attack", EInputEvent::IE_Released, this, &AMyPlayerController::StopAttack);
-		InputComponent->BindAction("Pickup", EInputEvent::IE_Pressed, this, &AMyPlayerController::Throw);
+		InputComponent->BindAction("Attack", EInputEvent::IE_Pressed, this, &AMyPlayerController::Throw); //When it is on the same button as pickup it doesn't work
 		InputComponent->BindAction("Pickup", EInputEvent::IE_Pressed, this, &AMyPlayerController::Pickup);
 	}
 }
@@ -45,8 +45,6 @@ void AMyPlayerController::MoveUp(float val)
 		val = 1;
 	if (val < -1)
 		val = -1;
-
-    //GEngine->AddOnScreenDebugMessage(0, .5f, FColor::Blue, FString::FromInt(val));
 
 	Player->MoveUp(val);
 }

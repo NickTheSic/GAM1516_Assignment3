@@ -72,6 +72,7 @@ APlayerPawn::APlayerPawn()
 	Camera->SetProjectionMode(ECameraProjectionMode::Orthographic);
     Camera->SetupAttachment(RootComponent);
 
+#if WITH_EDITOR
 	ConstructorHelpers::FObjectFinder<UPaperSprite> PlayerRef(TEXT("PaperSprite'/Game/Sprites/Link/Walking/Down/Link_Sprite_10.Link_Sprite_10'"));
 	if (PlayerRef.Succeeded())
 	{
@@ -82,6 +83,7 @@ APlayerPawn::APlayerPawn()
 		PickupComponent->SetCapsuleHalfHeight(size.Y / 1.4f);
 		PickupComponent->SetCapsuleRadius(size.X / 1.4f);
 	}
+#endif
 
 	HeldObject = nullptr;
 
@@ -266,25 +268,44 @@ void APlayerPawn::Pickup()
 	{
 		//Pickup
 		HeldObject = ObjectThatCanBeHeld;
+		UCapsuleComponent* heldCapsule = Cast<UCapsuleComponent>(HeldObject->GetDefaultSubobjectByName("Capsule Component"));
+		
+		heldCapsule->SetSimulatePhysics(false);
+		heldCapsule->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+
+		bCanPickUp = false;
 		bIsHolding = true;
+
 		SetActionState(EPlayerActionState::Holding);
 	}
 }
 
 void APlayerPawn::Throw()
 {
-	if (bIsHolding)
+	if (bIsHolding || PlayerActionState == EPlayerActionState::Holding)
 	{
-		if (HeldObject)
+		if (HeldObject != nullptr)
 		{
 			bIsHolding = false;
 
-			FVector dir;
-			if (PlayerDirection == EPlayerDirection::Up) dir = FVector(0, 0, 1);
-			else if (PlayerDirection == EPlayerDirection::Down) dir = FVector(0, 0, -1);
-			else if (PlayerDirection == EPlayerDirection::Left) dir = FVector(-1, 0, 0);
-			else if (PlayerDirection == EPlayerDirection::Right) dir = FVector(1, 0, 0);
+			FVector playerLoc = GetActorLocation();
+
+			FVector dir(0,0,0);
+			if (PlayerDirection == EPlayerDirection::Up){ dir = FVector(0, 0, 1); /*HeldObject->SetActorLocation(FVector(playerLoc.X, playerLoc.Y, playerLoc.Z));*/}
+			if (PlayerDirection == EPlayerDirection::Down) { dir = FVector(0, 0, -1); HeldObject->SetActorLocation(FVector(playerLoc.X, playerLoc.Y, playerLoc.Z - 90)); }
+			if (PlayerDirection == EPlayerDirection::Left) { dir = FVector(-1, 0, 0);  HeldObject->SetActorLocation(FVector(playerLoc.X - 30, playerLoc.Y, playerLoc.Z));}
+			if (PlayerDirection == EPlayerDirection::Right) { dir = FVector(1, 0, 0);  HeldObject->SetActorLocation(FVector(playerLoc.X + 30, playerLoc.Y, playerLoc.Z));
+			}
+
 			SetActionState(EPlayerActionState::Idle);
+
+			UCapsuleComponent* heldCapsule = Cast<UCapsuleComponent>(HeldObject->GetDefaultSubobjectByName("Capsule Component"));
+
+			heldCapsule->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
+			heldCapsule->SetSimulatePhysics(true);
+			heldCapsule->AddImpulse(dir * 500000); //I think I need a big number since it hasn't been working
+
+			HeldObject = nullptr;
 		}
 	}
 }
