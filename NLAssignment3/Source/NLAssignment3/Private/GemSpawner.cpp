@@ -5,6 +5,7 @@
 #include "Gem.h"
 #include "Engine/World.h"
 #include "DungeonGameState.h"
+#include "HeartPickup.h"
 
 // Sets default values
 AGemSpawner::AGemSpawner()
@@ -26,10 +27,13 @@ void AGemSpawner::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 	
-	if (ADGameState->GetCanSpawnGem())
+	if (ADGameState->GetCanSpawnItem())
 	{
-		ADGameState->SetCanSpawnGem(false);
-		SpawnGem();
+		ADGameState->SetCanSpawnItem(false);
+
+        //This will work for now
+        if (FMath::RandBool()) SpawnGem();
+        else SpawnHeart();
 	}
 }
 
@@ -44,9 +48,25 @@ void AGemSpawner::SpawnGem()
 
 			GemSpawnParams.Owner = this;
 
-			FTransform GemSpawnTransform = FTransform(ADGameState->GetLocationToSpawnGem());
+			FTransform GemSpawnTransform = FTransform(ADGameState->GetLocationToSpawnItem());
 			World->SpawnActor<AGem>(GemTemplate, GemSpawnTransform, GemSpawnParams);
-
 		}
 	}
+}
+
+void AGemSpawner::SpawnHeart()
+{
+    UWorld* World = GetWorld();
+    if (World)
+    {
+        if (HeartTemplate != nullptr)
+        {
+            FActorSpawnParameters HeartSpawnParams;
+
+            HeartSpawnParams.Owner = this;
+
+            FTransform HeartSpawnTransform = FTransform(ADGameState->GetLocationToSpawnItem());
+            World->SpawnActor<AGem>(HeartTemplate, HeartSpawnTransform, HeartSpawnParams);
+        }
+    }
 }

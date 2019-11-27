@@ -27,9 +27,9 @@ void ADamagableObject::BeginPlay()
 	AGameState = Cast<ADungeonGameState>(GetWorld()->GetGameState());
 }
 
-void ADamagableObject::TakeDamage()
+void ADamagableObject::TakeHitDamage(float damage)
 {
-	ObjectHealth--;
+    ObjectHealth -= damage;
 
 	if (ObjectHealth <= 0)
 	{
@@ -41,8 +41,8 @@ void ADamagableObject::OnNoHealth()
 {
 	if (AGameState)
 	{
-		AGameState->SetLocationToSpawnGem(GetActorLocation());
-		AGameState->SetCanSpawnGem(true);
+		AGameState->SetLocationToSpawnItem(GetActorLocation());
+		AGameState->SetCanSpawnItem(true);
 	}
 	Destroy();
 }

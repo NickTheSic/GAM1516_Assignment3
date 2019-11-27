@@ -6,7 +6,7 @@
 #include "GameFramework/Pawn.h"
 #include "PlayerPawn.generated.h"
 
-//Don't entirely understand but it is in the reference I am using form class
+
 /******************************TODO**************/
 enum class EPlayerAnimState : uint8
 {

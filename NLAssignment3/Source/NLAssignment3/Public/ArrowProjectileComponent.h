@@ -13,5 +13,12 @@ UCLASS()
 class NLASSIGNMENT3_API UArrowProjectileComponent : public UProjectileMovementComponent
 {
 	GENERATED_BODY()
+
+public:
+    UArrowProjectileComponent();
+
+protected:
+
+private:
 	
 };

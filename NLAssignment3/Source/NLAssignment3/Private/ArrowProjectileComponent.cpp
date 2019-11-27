@@ -3,3 +3,8 @@
 
 #include "ArrowProjectileComponent.h"
 
+UArrowProjectileComponent::UArrowProjectileComponent()
+{
+    bShouldBounce = false;
+    InitialSpeed = 1000.f;
+}

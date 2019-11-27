@@ -2,6 +2,12 @@
 
 
 #include "ArrowProjectile.h"
+#include "DamagePlayerComponent.h"
+#include "ArrowProjectileComponent.h"
+#include "Components/BoxComponent.h"
+#include "ConstructorHelpers.h"
+#include "PaperSprite.h"
+#include "PaperSpriteComponent.h"
 
 // Sets default values
 AArrowProjectile::AArrowProjectile()
@@ -25,3 +31,7 @@ void AArrowProjectile::Tick(float DeltaTime)
 
 }
 
+void AArrowProjectile::OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
+{
+
+}

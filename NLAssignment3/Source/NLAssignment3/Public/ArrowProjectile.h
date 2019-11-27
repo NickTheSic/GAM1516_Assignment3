@@ -15,6 +15,20 @@ public:
 	// Sets default values for this actor's properties
 	AArrowProjectile();
 
+    UPROPERTY(EditAnywhere, Category = "Sprite")
+        class UPaperSpriteComponent* SpriteComponent;
+
+    class UDamagePlayerComponent* HitBox;
+
+    class UArrowProjectileComponent* ArrowMovement;
+
+
+    UPROPERTY(EditAnywhere, Category = "BoxComponent")
+        class UBoxComponent* StickToWallComponent;
+
+    UFUNCTION()
+        void OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;

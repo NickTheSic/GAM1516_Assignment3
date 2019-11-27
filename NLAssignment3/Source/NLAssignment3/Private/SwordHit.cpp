@@ -35,7 +35,7 @@ void USwordHit::OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPr
 
 		if (d != nullptr)
 		{
-			d->TakeDamage();
+			d->TakeHitDamage();
 		}
 	}
 }

@@ -23,7 +23,7 @@ public:
 	UPROPERTY(VisibleAnywhere, Category = "Collision")
 		class UCapsuleComponent* Capsule;
 
-	void TakeDamage();
+	void TakeHitDamage(float damage = 1);
 	void OnNoHealth();
 	//OnDestory
 

@@ -4,22 +4,22 @@
 #include "DungeonGameState.h"
 
 
-void ADungeonGameState::SetLocationToSpawnGem(FVector loc)
+void ADungeonGameState::SetLocationToSpawnItem(FVector loc)
 {
-	LocationToSpawnGem = loc;
+	LocationToSpawnItem = loc;
 }
 
-FVector ADungeonGameState::GetLocationToSpawnGem()
+FVector ADungeonGameState::GetLocationToSpawnItem()
 {
-	return LocationToSpawnGem;
+	return LocationToSpawnItem;
 }
 
-void ADungeonGameState::SetCanSpawnGem(bool can)
+void ADungeonGameState::SetCanSpawnItem(bool can)
 {
-	bCanSpawnGem = can;
+	bCanSpawnItem = can;
 }
 
-bool ADungeonGameState::GetCanSpawnGem()
+bool ADungeonGameState::GetCanSpawnItem()
 {
-	return bCanSpawnGem;
+	return bCanSpawnItem;
 }

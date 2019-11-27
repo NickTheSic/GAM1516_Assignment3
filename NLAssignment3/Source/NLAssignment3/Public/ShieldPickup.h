@@ -11,9 +11,20 @@ class NLASSIGNMENT3_API AShieldPickup : public AActor
 {
 	GENERATED_BODY()
 	
+        /********This is an upgrade that the player can recieve*********/
+
 public:	
 	// Sets default values for this actor's properties
 	AShieldPickup();
+
+    UPROPERTY(EditAnywhere, Category = "Sprite")
+        class UPaperSpriteComponent* Sprite;
+
+    UPROPERTY(EditAnywhere, Category = "Pickup Area")
+        class UBoxComponent* Box;
+
+    UFUNCTION()
+        void OnPickupEnter(class UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
 
 protected:
 	// Called when the game starts or when spawned

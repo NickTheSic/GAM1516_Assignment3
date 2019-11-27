@@ -11,6 +11,8 @@ class NLASSIGNMENT3_API AGemSpawner : public AActor
 {
 	GENERATED_BODY()
 	
+        /*********This is now my Item spawner**********/
+
 public:	
 	// Sets default values for this actor's properties
 	AGemSpawner();
@@ -19,11 +21,16 @@ public:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Config")
 		TSubclassOf<class AGem> GemTemplate;
 
+
+    UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Config")
+        TSubclassOf<class AHeartPickup> HeartTemplate;
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
 	void SpawnGem();
+    void SpawnHeart();
 	class ADungeonGameState* ADGameState;
 
 public:	

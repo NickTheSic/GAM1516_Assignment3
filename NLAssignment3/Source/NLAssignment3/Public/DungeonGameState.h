@@ -16,14 +16,14 @@ class NLASSIGNMENT3_API ADungeonGameState : public AGameStateBase
 	
 public:
 
-	void SetLocationToSpawnGem(FVector loc);
-	FVector GetLocationToSpawnGem();
+	void SetLocationToSpawnItem(FVector loc);
+	FVector GetLocationToSpawnItem();
 
-	void SetCanSpawnGem(bool can);
-	bool GetCanSpawnGem();
+	void SetCanSpawnItem(bool can);
+	bool GetCanSpawnItem();
 
 private:
-	bool bCanSpawnGem;
-	FVector LocationToSpawnGem;
+	bool bCanSpawnItem;
+	FVector LocationToSpawnItem;
 
 };

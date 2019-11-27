@@ -92,6 +92,8 @@ APlayerPawn::APlayerPawn()
     SetAnimState(EPlayerAnimState::Idle);
     SetDirectionState(EPlayerDirection::Down);
     SetIdleDirectionSprite();
+
+    nMaxHealth = 5;
 }
 
 
@@ -100,6 +102,7 @@ void APlayerPawn::BeginPlay()
 {
 	Super::BeginPlay();
     AnimatedComponent->Stop();
+    nCurrentHealth = nMaxHealth;
 }
 
 // Called every frame
@@ -434,6 +437,8 @@ int APlayerPawn::GetGems()
 void APlayerPawn::IncrementHealth(int health)
 {
 	nCurrentHealth += health;
+
+    if (nCurrentHealth > nMaxHealth) nCurrentHealth = nMaxHealth;
 }
 
 void APlayerPawn::DecrementHealth(int health)
