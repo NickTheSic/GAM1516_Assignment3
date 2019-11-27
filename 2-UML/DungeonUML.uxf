@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>5</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>440</x>
+      <y>220</y>
+      <w>200</w>
+      <h>165</h>
+    </coordinates>
+    <panel_attributes>DungeonGameState
+
+-
+
+-ItemSpawnLocation:FVector
+-bCanSpawnItem:bool
+-PlayerCheckpointLocation:FVector
+
+-
+
++SetCanSpawnItem(canSpawn:bool):void
++GetCanSpawnItem():bool
+
++SetItemSpawnLocation(location:FVector):void
++GetItemSpawnLocation():FVector
+
++SetCheckpointLocation(location:FVector):void
++GetCheckpointLocation():FVector</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>635</x>
+      <y>300</y>
+      <w>55</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;..</panel_attributes>
+    <additional_attributes>10.0;10.0;90.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>680</x>
+      <y>225</y>
+      <w>165</w>
+      <h>145</h>
+    </coordinates>
+    <panel_attributes>ItemSpawner
+
+-
+
+-GemTemplate:TSubclassOf&lt;AGemPickup&gt;
+-HeartTemplate:TSubclassOf&lt;AHeartPickup&gt;
+
+#DungeonState*:DungeonGameState
+
+-
+
+#&lt;&lt;virtual&gt;&gt;BeginPlay(): void
++&lt;&lt;virtual&gt;&gt;Tick(DeltaSeconds:float):void
+
++SpawnHeart():void
++SpawnGem():void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>925</x>
+      <y>80</y>
+      <w>170</w>
+      <h>115</h>
+    </coordinates>
+    <panel_attributes>ItemPickup
+
+-
+
+UPROPERTY(..args..)
+#SpriteComponent*:UPaperSpriteComponent
+
+UPROPERTY(..args..)
+#CapsuleComponent*:UCapsuleComponent
+
+-
+
++ItemPickup()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1010</x>
+      <y>190</y>
+      <w>15</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>935</x>
+      <y>215</y>
+      <w>90</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>
+</panel_attributes>
+    <additional_attributes>160.0;20.0;10.0;20.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1010</x>
+      <y>215</y>
+      <w>55</w>
+      <h>115</h>
+    </coordinates>
+    <panel_attributes>
+</panel_attributes>
+    <additional_attributes>10.0;20.0;90.0;20.0;90.0;210.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>885</x>
+      <y>235</y>
+      <w>115</w>
+      <h>85</h>
+    </coordinates>
+    <panel_attributes>GemPickup
+
+-
+
+-GemValue:int
+
+-
+
++GemPickup()
++GetValue():int</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1000</x>
+      <y>320</y>
+      <w>115</w>
+      <h>85</h>
+    </coordinates>
+    <panel_attributes>HealthPickup
+
+-
+
+-HealthValue:int
+
+-
+
++HealthPickup()
++GetValue():int</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>840</x>
+      <y>265</y>
+      <w>55</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;..</panel_attributes>
+    <additional_attributes>90.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>840</x>
+      <y>335</y>
+      <w>170</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;..</panel_attributes>
+    <additional_attributes>320.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>135</x>
+      <y>210</y>
+      <w>155</w>
+      <h>185</h>
+    </coordinates>
+    <panel_attributes>PlayerController
+
+-
+
+-PlayerPawn*:APlayerPawn
+
+-
+
++OnPossess(apawn* APawn):void
++OnUnPossess():void
++SetupInputComponent():void
+
++MoveRight(float val):void
++MoveUp(float val):void
+
++ActivateAttack():void
++DeactivateAttack():void
+
++ThrowObject():void
++PickupObject():void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>440</x>
+      <y>430</y>
+      <w>200</w>
+      <h>175</h>
+    </coordinates>
+    <panel_attributes>DamagableObject
+-
+
+UPROPERTY(..args..)
+#SpriteComponent*:UPaperSpriteComponent
+
+UPROPERTY(..args..)
+#CapsuleComponent*:UCapsuleComponent
+
+#ObjectHealth:int
+#DungeonState:ADungeonGameState
+
+-
+
++ADamagableObject()
++ObjectTakeDamage(damage:float):void
++&lt;&lt;virtual&gt;&gt;OnNoHealth():void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>590</x>
+      <y>650</y>
+      <w>95</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>Barrel
+-
+
+-
+
+ABarrel()</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
