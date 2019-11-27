@@ -3,7 +3,7 @@
 
 #include "ArrowProjectile.h"
 #include "DamagePlayerComponent.h"
-#include "ArrowProjectileComponent.h"
+#include "ArrowStuff/ArrowProjectileComponent.h"
 #include "Components/BoxComponent.h"
 #include "ConstructorHelpers.h"
 #include "PaperSprite.h"

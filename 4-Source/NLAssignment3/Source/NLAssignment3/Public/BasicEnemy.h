@@ -15,6 +15,12 @@ public:
 	// Sets default values for this actor's properties
 	ABasicEnemy();
 
+	UPROPERTY(EditAnywhere, Category = "Flipbook")
+	class UMyFlipbookControlComponent* mfcc;
+
+	UPROPERTY(VisibleAnywhere, Category = "PlayerCollider")
+		class UCapsuleComponent* CapsuleComponent;
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
