@@ -1,0 +1,44 @@
+#SwordHitComponent
+
+	OnHit(args)
+	{
+	IF the other actor isn't null
+	IF the other actor has tag DamagableObject
+	Cast other actor to DamagableObject
+	If it isn't null
+	Call Take Damage on the DamagableObject
+	}
+
+	ActivateAttack()
+	{
+	Set the Collision to BlockAll
+	Set Collision enabled to Physics, maybe Query too
+	Set Notify rigid body to true
+	}
+
+	StopAttack()
+	{
+	Set the collision profile to NoCollision
+	Set Collision enabled to no collision
+	Set notify rigid body to false
+	}
+
+#End Sword hit
+//**//
+#Sword Object
+
+
+
+#End Sword object
+//**//
+#Block Component
+
+
+
+#End BlockComponent
+//**//
+#ShieldObject
+
+
+
+#End Shield Object
