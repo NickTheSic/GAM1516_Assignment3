@@ -1,0 +1,32 @@
+##In DungeonGameState
+
+#StartDungeonState
+
+In  SetCanSpawnItem
+start
+	Set bCanSpawn to canSpawn
+end
+
+In GetCanSpawnItem
+start
+	returns bCanSpawn
+end
+
+in SetItemSpawnLocation
+start
+		Set ItemSpawnLocation to location
+end
+
+in GetItemSpawnLocation
+	return ItemSpawnLocation
+
+in SetCheckpointLocation
+start
+		Set PlayerCheckpointLocation to location
+end
+
+in GetCheckpointLocation
+	return PlayerCheckpointLocation 
+
+
+#EndDungeonState
