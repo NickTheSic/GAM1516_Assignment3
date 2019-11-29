@@ -1,0 +1,29 @@
+IN DungeonGameState
+#start DungeonGameState
+
+void ADungeonGameState::SetCanSpawnItem(bool canSpawn)
+	//Set bCanSpawnItem to canSpawn
+End ADungeonGameState::SetCanSpawnItem(bool canSpawn)
+
+bool ADungeonGameState::GetCanSpawnItem()
+	//Return bCanSpawnItem
+End ADungeonGameState::SetCanSpawnItem()
+
+void ADungeonGameState::SetItemSpawnLocation(FVector location)
+	//Set ItemSpawnLocation to location
+End ADungeonGameState::SetItemSpawnLocation(FVector location)
+
+bool ADungeonGameState::GetItemSpawnLocation()
+	//Return bCanSpawnItem
+End ADungeonGameState::GetItemSpawnLocation()
+
+void ADungeonGameState::SetCheckpointLocation(FVector location)
+	//Set PlayerCheckpointLocation to location
+End ADungeonGameState::SetCheckpointLocation(FVector location)
+
+bool ADungeonGameState::SetItemSpawnLocation()
+	//Return bCanSpawnItem
+End ADungeonGameState::SetItemSpawnLocation()
+
+
+#end DungeonGameState

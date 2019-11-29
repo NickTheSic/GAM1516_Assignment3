@@ -1,0 +1,26 @@
+START FindSpriteAndSetupCapsule(sprite:UPaperSpriteComponent*, capsule:UCapsuleComponent, spriteName:FString):void
+		//ConstructorHelper to Find the sprite
+		//IF the sprite was found
+			//Set The sprite that was found
+
+			#if WITH_EDITOR
+			//Get the size of the sprite
+			//Divide the size by 2
+			//Set the capsule to the size of the sprite
+			#endif	
+		//End IF
+END FindSpriteAndSetupCapsule(sprite:UPaperSpriteComponent*, capsule:UCapsuleComponent, spriteName:FString):void
+
+
+START FindSpriteAndSetupBox(sprite:UPaperSpriteComponent*, capsule:UCapsuleComponent, spriteName:FString):void
+		//ConstructorHelper to Find the sprite
+		//IF the sprite was found
+			//Set The sprite that was found
+
+			#if WITH_EDITOR
+			//Get the size of the sprite
+			//Divide the size by 2
+			//Set the box extent to the size of the sprite
+			#endif	
+		//End IF
+END FindSpriteAndSetupBox(sprite:UPaperSpriteComponent*, capsule:UCapsuleComponent, spriteName:FString):void

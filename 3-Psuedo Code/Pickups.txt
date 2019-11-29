@@ -1,0 +1,52 @@
+IN ItemPickup
+#StartItemPickup
+	ItemPickup::ItemPickup()
+		//Create the CapsuleComponent
+		//Setup the Collision enabled
+		//Setup the collision Profile
+		//Make Capsuel The root component
+		
+		//Create the Sprite
+		//Set the Collision Profile
+		//Set Collision Enabled
+		//SetUp attachment to the Root Component
+	End ItemPickup::ItemPickup()
+
+	virtual void ItemPickup::PickupItem(PlayerPawnObject* pickedUpBy)
+		//Destroy this object after it has been picked up
+		//Make sure to call this function after the child class
+	End ItemPickup::PickupItem(PlayerPawnObject* pickedUpBy)
+#End ItemPickup
+
+
+IN GemPickup
+#Start GemPickup
+
+	GemPickup::GemPickup()
+		//Call MyBPFunctionLib::FindSpriteAndSetupCapsule and pass in the sprite, capsule and name
+	End GemPickup::GemPickup()
+
+	virtual void GemPickup::PickupItem(PlayerPawnObject* pickedUpBy)
+		//CALL Increment Gems and Pass in the Gems value into the pickedUpBy object
+		//Call ItemPickup::PickupItem //Destroys the object
+	End GemPickup::PickupItem(PlayerPawnObject* pickedUpBy)
+
+#End GemPickup
+
+
+IN Health Pickup
+#Start HealthPickup
+
+#End HealthPickup
+
+
+IN ShieldPickup
+#Start ShieldPickup
+
+#End ShieldPickup
+
+
+IN HeartContainer
+#Start HeartContainer
+
+#End HeartContainer
