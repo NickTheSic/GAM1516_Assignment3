@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.3.0">
-  <zoom_level>8</zoom_level>
+  <zoom_level>7</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1128</x>
-      <y>432</y>
-      <w>320</w>
-      <h>264</h>
+      <x>987</x>
+      <y>378</y>
+      <w>280</w>
+      <h>231</h>
     </coordinates>
     <panel_attributes>DungeonGameState
 
@@ -32,10 +32,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1440</x>
-      <y>560</y>
-      <w>72</w>
-      <h>24</h>
+      <x>1260</x>
+      <y>490</y>
+      <w>63</w>
+      <h>21</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;..</panel_attributes>
     <additional_attributes>10.0;10.0;70.0;10.0</additional_attributes>
@@ -43,10 +43,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1496</x>
-      <y>440</y>
-      <w>264</w>
-      <h>232</h>
+      <x>1309</x>
+      <y>385</y>
+      <w>231</w>
+      <h>203</h>
     </coordinates>
     <panel_attributes>ItemSpawner
 
@@ -70,10 +70,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1904</x>
-      <y>208</y>
-      <w>272</w>
-      <h>184</h>
+      <x>1638</x>
+      <y>161</y>
+      <w>266</w>
+      <h>182</h>
     </coordinates>
     <panel_attributes>ItemPickup
 
@@ -87,16 +87,17 @@ UPROPERTY(..args..)
 
 -
 
-+ItemPickup()</panel_attributes>
++ItemPickup()
+#&lt;&lt;virtual&gt;&gt;PickupItem(pickedUpBy:PlayerPawnObject*):void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2040</x>
-      <y>384</y>
-      <w>24</w>
-      <h>72</h>
+      <x>1785</x>
+      <y>336</y>
+      <w>21</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
@@ -104,10 +105,10 @@ UPROPERTY(..args..)
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1920</x>
-      <y>424</y>
-      <w>144</w>
-      <h>48</h>
+      <x>1680</x>
+      <y>371</y>
+      <w>126</w>
+      <h>42</h>
     </coordinates>
     <panel_attributes>
 </panel_attributes>
@@ -116,10 +117,10 @@ UPROPERTY(..args..)
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1840</x>
-      <y>456</y>
-      <w>184</w>
-      <h>136</h>
+      <x>1610</x>
+      <y>399</y>
+      <w>161</w>
+      <h>119</h>
     </coordinates>
     <panel_attributes>GemPickup
 
@@ -136,10 +137,10 @@ UPROPERTY(..args..)
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2024</x>
-      <y>592</y>
-      <w>184</w>
-      <h>136</h>
+      <x>1771</x>
+      <y>525</y>
+      <w>161</w>
+      <h>119</h>
     </coordinates>
     <panel_attributes>HealthPickup
 
@@ -156,32 +157,34 @@ UPROPERTY(..args..)
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1752</x>
-      <y>504</y>
-      <w>104</w>
-      <h>24</h>
+      <x>1533</x>
+      <y>434</y>
+      <w>91</w>
+      <h>28</h>
     </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;..</panel_attributes>
-    <additional_attributes>110.0;10.0;10.0;10.0</additional_attributes>
+    <panel_attributes>lt=&lt;&lt;&lt;..
+Spawns</panel_attributes>
+    <additional_attributes>110.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1752</x>
-      <y>616</y>
-      <w>288</w>
-      <h>24</h>
+      <x>1533</x>
+      <y>539</y>
+      <w>252</w>
+      <h>28</h>
     </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;..</panel_attributes>
-    <additional_attributes>340.0;10.0;10.0;10.0</additional_attributes>
+    <panel_attributes>lt=&lt;&lt;&lt;..
+Spawns</panel_attributes>
+    <additional_attributes>340.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>488</x>
-      <y>96</y>
-      <w>248</w>
-      <h>296</h>
+      <x>427</x>
+      <y>84</y>
+      <w>217</w>
+      <h>259</h>
     </coordinates>
     <panel_attributes>PlayerController
 
@@ -208,10 +211,10 @@ UPROPERTY(..args..)
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1128</x>
-      <y>768</y>
-      <w>320</w>
-      <h>280</h>
+      <x>987</x>
+      <y>665</y>
+      <w>280</w>
+      <h>245</h>
     </coordinates>
     <panel_attributes>DamagableObject
 -
@@ -236,10 +239,10 @@ UPROPERTY(..args..)
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1368</x>
-      <y>1120</y>
-      <w>152</w>
-      <h>80</h>
+      <x>1197</x>
+      <y>980</y>
+      <w>133</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>Barrel
 -
@@ -252,21 +255,21 @@ ABarrel()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1408</x>
-      <y>1040</y>
-      <w>24</w>
-      <h>96</h>
+      <x>1232</x>
+      <y>903</y>
+      <w>21</w>
+      <h>91</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;100.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>336</x>
-      <y>440</y>
-      <w>328</w>
-      <h>736</h>
+      <x>294</x>
+      <y>385</y>
+      <w>287</w>
+      <h>644</h>
     </coordinates>
     <panel_attributes>PlayerPawnObject
 
@@ -326,10 +329,10 @@ UFUNCTION(BlueprintCallable)
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>464</x>
-      <y>1224</y>
-      <w>312</w>
-      <h>304</h>
+      <x>406</x>
+      <y>1071</y>
+      <w>273</w>
+      <h>266</h>
     </coordinates>
     <panel_attributes>PlayerAnimationController : UPaperFlipbookComponent
 
@@ -359,10 +362,10 @@ SetPlayerAnimation(state:EPlayerAnimationState):void
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>688</x>
-      <y>848</y>
-      <w>136</w>
-      <h>128</h>
+      <x>644</x>
+      <y>784</y>
+      <w>119</w>
+      <h>112</h>
     </coordinates>
     <panel_attributes>Enum
 PlayerAnimationState
@@ -377,9 +380,9 @@ Right</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>0</x>
-      <y>816</y>
-      <w>256</w>
-      <h>168</h>
+      <y>714</y>
+      <w>224</w>
+      <h>147</h>
     </coordinates>
     <panel_attributes>SwordObject
 
@@ -398,10 +401,10 @@ Right</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>8</x>
-      <y>1024</y>
-      <w>176</w>
-      <h>128</h>
+      <x>7</x>
+      <y>896</y>
+      <w>154</w>
+      <h>112</h>
     </coordinates>
     <panel_attributes>SwordHitComponent
 
@@ -418,10 +421,10 @@ Right</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>96</x>
-      <y>976</y>
-      <w>56</w>
-      <h>64</h>
+      <x>84</x>
+      <y>854</y>
+      <w>49</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>lt=-&gt;&gt;&gt;&gt;
 1 has 1</panel_attributes>
@@ -430,10 +433,10 @@ Right</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>248</x>
-      <y>832</y>
-      <w>104</w>
-      <h>32</h>
+      <x>217</x>
+      <y>728</y>
+      <w>91</w>
+      <h>28</h>
     </coordinates>
     <panel_attributes>lt=-&gt;&gt;&gt;&gt;
 1 has 1</panel_attributes>
@@ -443,9 +446,9 @@ Right</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>0</x>
-      <y>448</y>
-      <w>240</w>
-      <h>152</h>
+      <y>392</y>
+      <w>210</w>
+      <h>133</h>
     </coordinates>
     <panel_attributes>ShieldObject
 
@@ -464,10 +467,10 @@ Right</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>48</x>
-      <y>640</y>
-      <w>128</w>
-      <h>120</h>
+      <x>42</x>
+      <y>560</y>
+      <w>112</w>
+      <h>105</h>
     </coordinates>
     <panel_attributes>BlockComponent
 
@@ -484,10 +487,10 @@ Right</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>120</x>
-      <y>592</y>
-      <w>56</w>
-      <h>64</h>
+      <x>105</x>
+      <y>518</y>
+      <w>49</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>lt=-&gt;&gt;&gt;&gt;
 1 has 1</panel_attributes>
@@ -496,10 +499,10 @@ Right</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>232</x>
-      <y>504</y>
-      <w>120</w>
-      <h>32</h>
+      <x>203</x>
+      <y>441</y>
+      <w>105</w>
+      <h>28</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-
 1 has 1</panel_attributes>
@@ -508,10 +511,10 @@ Right</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>584</x>
-      <y>1168</y>
-      <w>56</w>
-      <h>72</h>
+      <x>511</x>
+      <y>1022</y>
+      <w>49</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-
 1 has 1</panel_attributes>
@@ -520,10 +523,10 @@ Right</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>536</x>
-      <y>384</y>
-      <w>56</w>
-      <h>72</h>
+      <x>469</x>
+      <y>336</y>
+      <w>49</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>lt=-&gt;&gt;&gt;&gt;
 1 has 1</panel_attributes>
@@ -532,10 +535,10 @@ Right</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>736</x>
-      <y>704</y>
-      <w>144</w>
-      <h>128</h>
+      <x>644</x>
+      <y>637</y>
+      <w>126</w>
+      <h>112</h>
     </coordinates>
     <panel_attributes>Enum
 PlayerActionState
@@ -550,21 +553,21 @@ HoldingObject</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1280</x>
-      <y>688</y>
-      <w>24</w>
-      <h>96</h>
+      <x>1120</x>
+      <y>602</y>
+      <w>21</w>
+      <h>77</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;..</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;100.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
   </element>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>744</x>
+      <x>651</x>
       <y>0</y>
-      <w>264</w>
-      <h>112</h>
+      <w>231</w>
+      <h>98</h>
     </coordinates>
     <panel_attributes>Not sure how to do death and respawn.
 Maybe I store some info in the game state 
@@ -576,32 +579,34 @@ bg=blue</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>656</x>
-      <y>768</y>
-      <w>96</w>
-      <h>24</h>
+      <x>574</x>
+      <y>693</y>
+      <w>84</w>
+      <h>28</h>
     </coordinates>
-    <panel_attributes>lt=&lt;..</panel_attributes>
-    <additional_attributes>100.0;10.0;10.0;10.0</additional_attributes>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+1 has 1</panel_attributes>
+    <additional_attributes>10.0;20.0;100.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>656</x>
-      <y>904</y>
-      <w>48</w>
-      <h>24</h>
+      <x>574</x>
+      <y>826</y>
+      <w>84</w>
+      <h>28</h>
     </coordinates>
-    <panel_attributes>lt=&lt;..</panel_attributes>
-    <additional_attributes>40.0;10.0;10.0;10.0</additional_attributes>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+1 has 1</panel_attributes>
+    <additional_attributes>10.0;20.0;100.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>816</x>
-      <y>224</y>
-      <w>216</w>
-      <h>136</h>
+      <x>714</x>
+      <y>196</y>
+      <w>189</w>
+      <h>119</h>
     </coordinates>
     <panel_attributes>HUD
 -
@@ -618,10 +623,10 @@ AHud()
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>656</x>
-      <y>296</y>
-      <w>176</w>
-      <h>184</h>
+      <x>574</x>
+      <y>259</y>
+      <w>154</w>
+      <h>161</h>
     </coordinates>
     <panel_attributes>lt=&lt;..</panel_attributes>
     <additional_attributes>10.0;210.0;140.0;210.0;140.0;10.0;200.0;10.0</additional_attributes>
@@ -629,10 +634,10 @@ AHud()
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>816</x>
-      <y>560</y>
-      <w>224</w>
-      <h>120</h>
+      <x>700</x>
+      <y>490</y>
+      <w>196</w>
+      <h>105</h>
     </coordinates>
     <panel_attributes>CheckpointArea
 -
@@ -649,55 +654,58 @@ OnOverlap(..args..):void
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1032</x>
-      <y>592</y>
+      <x>889</x>
+      <y>511</y>
       <w>112</w>
-      <h>24</h>
+      <h>28</h>
     </coordinates>
-    <panel_attributes>lt=&lt;..</panel_attributes>
-    <additional_attributes>120.0;10.0;10.0;10.0</additional_attributes>
+    <panel_attributes>lt=&lt;..
+Calls members</panel_attributes>
+    <additional_attributes>140.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>656</x>
-      <y>608</y>
-      <w>176</w>
-      <h>24</h>
+      <x>574</x>
+      <y>525</y>
+      <w>140</w>
+      <h>28</h>
     </coordinates>
-    <panel_attributes>lt=&lt;..</panel_attributes>
-    <additional_attributes>10.0;10.0;200.0;10.0</additional_attributes>
+    <panel_attributes>lt=..&gt;
+Interacts with</panel_attributes>
+    <additional_attributes>10.0;20.0;180.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2040</x>
-      <y>424</y>
-      <w>88</w>
-      <h>184</h>
+      <x>1785</x>
+      <y>371</y>
+      <w>77</w>
+      <h>168</h>
     </coordinates>
     <panel_attributes>
 </panel_attributes>
-    <additional_attributes>10.0;20.0;90.0;20.0;90.0;210.0</additional_attributes>
+    <additional_attributes>10.0;20.0;90.0;20.0;90.0;220.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>656</x>
-      <y>336</y>
-      <w>1264</w>
-      <h>176</h>
+      <x>574</x>
+      <y>294</y>
+      <w>1078</w>
+      <h>154</h>
     </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;..</panel_attributes>
-    <additional_attributes>1560.0;10.0;530.0;10.0;530.0;200.0;10.0;200.0</additional_attributes>
+    <panel_attributes>lt=&lt;&lt;&lt;..
+</panel_attributes>
+    <additional_attributes>1520.0;10.0;530.0;10.0;530.0;200.0;10.0;200.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>928</x>
-      <y>1096</y>
-      <w>280</w>
-      <h>328</h>
+      <x>812</x>
+      <y>966</y>
+      <w>245</w>
+      <h>280</h>
     </coordinates>
     <panel_attributes>EnemyClass  (will be base for all enemies?)
 &lt;&lt;interface&gt;&gt;
@@ -708,57 +716,64 @@ OnOverlap(..args..):void
 #ActionState:ActionStateEnum
 #CapsuleComponent:UCapsuleComponent*
 
--PawnSensingComponent:UPawnSensingComponent*
+#PawnSensingComponent:UPawnSensingComponent*
++HeardLocation:FVector
++SeenLocation:FVector
+
 
 -
 +EnemyClass()
 
 #&lt;&lt;virtual&gt;&gt;BeginPlay():void
-+&lt;&lt;virtual&gt;&gt;Tick(deltaTime:float):void</panel_attributes>
++&lt;&lt;virtual&gt;&gt;Tick(deltaTime:float):void
+
+#OnPawnSeen(seenPawn:APawn*):void
+#OnPawnHeard(..args..):void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>872</x>
-      <y>776</y>
-      <w>136</w>
-      <h>336</h>
+      <x>763</x>
+      <y>693</y>
+      <w>119</w>
+      <h>287</h>
     </coordinates>
-    <panel_attributes>lt=&lt;..</panel_attributes>
-    <additional_attributes>10.0;10.0;150.0;10.0;150.0;400.0</additional_attributes>
+    <panel_attributes>lt=-&gt;&gt;&gt;&gt;
+1 has 1 state</panel_attributes>
+    <additional_attributes>10.0;20.0;150.0;20.0;150.0;390.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>816</x>
-      <y>904</y>
-      <w>144</w>
-      <h>208</h>
+      <x>756</x>
+      <y>826</y>
+      <w>84</w>
+      <h>154</h>
     </coordinates>
-    <panel_attributes>lt=&lt;..
-//lt=&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;160.0;10.0;160.0;240.0</additional_attributes>
+    <panel_attributes>lt=-&gt;&gt;&gt;&gt;
+Has a State</panel_attributes>
+    <additional_attributes>10.0;20.0;100.0;20.0;100.0;200.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>768</x>
-      <y>1224</y>
-      <w>176</w>
-      <h>32</h>
+      <x>672</x>
+      <y>1071</y>
+      <w>154</w>
+      <h>28</h>
     </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+    <panel_attributes>lt=-&gt;&gt;&gt;&gt;
 1 has 1</panel_attributes>
     <additional_attributes>10.0;20.0;200.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>952</x>
-      <y>1416</y>
-      <w>24</w>
-      <h>80</h>
+      <x>833</x>
+      <y>1239</y>
+      <w>21</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
@@ -766,10 +781,10 @@ OnOverlap(..args..):void
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>1008</x>
-      <y>904</y>
-      <w>112</w>
-      <h>136</h>
+      <x>882</x>
+      <y>791</y>
+      <w>98</w>
+      <h>119</h>
     </coordinates>
     <panel_attributes>IDk about AI.
 I might have to set up one of these things as a pawn.
@@ -782,10 +797,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1632</x>
-      <y>904</y>
-      <w>208</w>
-      <h>184</h>
+      <x>1414</x>
+      <y>791</y>
+      <w>182</w>
+      <h>161</h>
     </coordinates>
     <panel_attributes>Button
 -
@@ -801,10 +816,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1824</x>
-      <y>1168</y>
-      <w>208</w>
-      <h>184</h>
+      <x>1596</x>
+      <y>1022</y>
+      <w>182</w>
+      <h>161</h>
     </coordinates>
     <panel_attributes>Door
 -
@@ -813,28 +828,30 @@ style=wordwrap</panel_attributes>
 
 -
 
-&lt;&lt;virtual&gt;&gt;#ActivateTrigger():void
-&lt;&lt;virtual&gt;&gt;#DeactivateTrigger():void</panel_attributes>
++Door()
+#&lt;&lt;virtual&gt;&gt;ActivateTrigger():void
+#&lt;&lt;virtual&gt;&gt;DeactivateTrigger():void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1832</x>
-      <y>992</y>
-      <w>120</w>
-      <h>24</h>
+      <x>1589</x>
+      <y>861</y>
+      <w>119</w>
+      <h>28</h>
     </coordinates>
-    <panel_attributes>lt=&lt;..&gt;</panel_attributes>
-    <additional_attributes>10.0;10.0;130.0;10.0</additional_attributes>
+    <panel_attributes>lt=&lt;..&gt;
+Need eachother</panel_attributes>
+    <additional_attributes>10.0;20.0;150.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>840</x>
-      <y>1480</y>
-      <w>192</w>
-      <h>144</h>
+      <x>735</x>
+      <y>1295</y>
+      <w>168</w>
+      <h>126</h>
     </coordinates>
     <panel_attributes>SimplePatrolEnemy
 -
@@ -851,10 +868,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2064</x>
-      <y>1168</y>
-      <w>208</w>
-      <h>184</h>
+      <x>1806</x>
+      <y>1022</y>
+      <w>182</w>
+      <h>161</h>
     </coordinates>
     <panel_attributes>TheBlockingWall
 -
@@ -863,19 +880,20 @@ style=wordwrap</panel_attributes>
 
 -
 
-&lt;&lt;&lt;virtual&gt;&gt;Tick(deltaTime:float):void
++TheBlockingWall()
++&lt;&lt;&lt;virtual&gt;&gt;Tick(deltaTime:float):void
 
-&lt;&lt;virtual&gt;&gt;#ActivateTrigger():void
-&lt;&lt;virtual&gt;&gt;#DeactivateTrigger():void</panel_attributes>
+#&lt;&lt;virtual&gt;&gt;ActivateTrigger():void
+#&lt;&lt;virtual&gt;&gt;DeactivateTrigger():void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1936</x>
-      <y>904</y>
-      <w>208</w>
-      <h>184</h>
+      <x>1694</x>
+      <y>791</y>
+      <w>182</w>
+      <h>161</h>
     </coordinates>
     <panel_attributes>ATriggerObject
 -
@@ -884,28 +902,17 @@ style=wordwrap</panel_attributes>
 
 -
 
-&lt;&lt;virtual&gt;&gt;#ActivateTrigger():void
-&lt;&lt;virtual&gt;&gt;#DeactivateTrigger():void</panel_attributes>
+#&lt;&lt;virtual&gt;&gt;ActivateTrigger():void
+#&lt;&lt;virtual&gt;&gt;DeactivateTrigger():void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>800</x>
-      <y>504</y>
-      <w>152</w>
-      <h>24</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;170.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>2048</x>
-      <y>1080</y>
-      <w>24</w>
-      <h>72</h>
+      <x>1792</x>
+      <y>945</y>
+      <w>21</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
@@ -913,12 +920,102 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1920</x>
-      <y>1128</y>
-      <w>272</w>
-      <h>56</h>
+      <x>1680</x>
+      <y>987</y>
+      <w>238</w>
+      <h>49</h>
     </coordinates>
     <panel_attributes>lt=-</panel_attributes>
     <additional_attributes>10.0;50.0;10.0;10.0;320.0;10.0;320.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1015</x>
+      <y>903</y>
+      <w>21</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1421</x>
+      <y>1246</y>
+      <w>217</w>
+      <h>161</h>
+    </coordinates>
+    <panel_attributes>Arrow
+-
+
+-Movement:UProjectileMovementComponent*
+-CapsuleComponent:UCapsuleComponent*
+
+-
+
+
+#&lt;&lt;virtual&gt;&gt;BeginPlay():void
++&lt;&lt;virtual&gt;&gt;Tick(delta:float):void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1106</x>
+      <y>1239</y>
+      <w>217</w>
+      <h>161</h>
+    </coordinates>
+    <panel_attributes>ArrowSpawner
+-
+
+-Movement:UProjectileMovementComponent*
+-CapsuleComponent:UCapsuleComponent*
+-ArrowTemplate:SubclassOf&lt;Arrow&gt;
+-SpawnTimer:FTimer
+
+-
+
+#&lt;&lt;virtual&gt;&gt;BeginPlay():void
++&lt;&lt;virtual&gt;&gt;Tick(delta:float):void
++SpawnArrow():void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>1148</x>
+      <y>287</y>
+      <w>84</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>Interacts With
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>574</x>
+      <y>609</y>
+      <w>427</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>590.0;100.0;330.0;100.0;330.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1316</x>
+      <y>1309</y>
+      <w>119</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;..
+Spawns</panel_attributes>
+    <additional_attributes>150.0;20.0;10.0;20.0</additional_attributes>
   </element>
 </diagram>
