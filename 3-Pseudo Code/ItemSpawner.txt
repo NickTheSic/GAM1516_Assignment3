@@ -1,0 +1,66 @@
+ItemSpawner
+{
+	ItemSpawner()
+	{
+		Primary Tick = true
+	}//end
+
+	void BeginPlay()
+	{
+		Get the game state and cast it as the Dungeon Game State
+		Get the World and set it to the member pointer
+	}//end
+
+
+	void Tick(float delta)
+	{
+		Super Tick
+		
+		IF Gamestate isnit null
+		{
+			IF Game State Item Can Spawn
+			{
+				Set ItemCanSpawn to false
+				Randomly generate which item to spawn
+				Call the function to Spawn the corsponding item
+			}
+		}
+	}//end
+
+	SpawnHeart()
+	{
+		IF The World member is null
+		{
+			Get the world to be sure
+		}
+		IF The world member isn't null
+		{
+			IF the heart template isn't null
+			{
+				Create spawn parameters
+				Set the owner to this
+				Create the SpawnTransform and set it to the GameState Spawn location
+				Call Spawn actor on the world and pass in the proper arguments in order
+			}
+		}
+	}
+
+	SpawnGem()
+	{
+		IF The World member is null
+		{
+			Get the world to be sure
+		}
+		IF The world member isn't null
+		{
+			IF the Gemtemplate isn't null
+			{
+				Create spawn parameters
+				Set the owner to this
+				Create the SpawnTransform and set it to the GameState Spawn location
+				Call Spawn actor on the world and pass in the proper arguments in order
+			}
+		}
+	}
+
+}

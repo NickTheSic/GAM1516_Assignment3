@@ -1,7 +1,11 @@
+
 START FindSpriteAndSetupCapsule(sprite:UPaperSpriteComponent*, capsule:UCapsuleComponent, spriteName:FString):void
-		//ConstructorHelper to Find the sprite
+		//ConstructorHelper to Find the sprite and pass in *spriteName
 		//IF the sprite was found
+
+			//IF the sprite isn't null
 			//Set The sprite that was found
+			//END IF
 
 			#if WITH_EDITOR
 			//Get the size of the sprite
@@ -13,9 +17,12 @@ END FindSpriteAndSetupCapsule(sprite:UPaperSpriteComponent*, capsule:UCapsuleCom
 
 
 START FindSpriteAndSetupBox(sprite:UPaperSpriteComponent*, capsule:UCapsuleComponent, spriteName:FString):void
-		//ConstructorHelper to Find the sprite
+		//ConstructorHelper to Find the sprite and pass in *spriteName
 		//IF the sprite was found
+
+			//IF the sprite isn't null
 			//Set The sprite that was found
+			//END IF
 
 			#if WITH_EDITOR
 			//Get the size of the sprite

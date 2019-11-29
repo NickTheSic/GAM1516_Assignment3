@@ -13,77 +13,84 @@
 #include "MyBPFunctionLib.h"
 #include "Engine/Engine.h"
 #include "Gem.h"
+#include "MyBPFunctionLib.h"
 
 // Sets default values
 APlayerPawn::APlayerPawn()
 {
- 	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
-	PrimaryActorTick.bCanEverTick = true;
+    // Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+    PrimaryActorTick.bCanEverTick = true;
 
     //Capsule Component
-	CapsuleComponent = CreateDefaultSubobject<UCapsuleComponent>("Capsule");
-	CapsuleComponent->SetCollisionProfileName("BlockAll");
-	CapsuleComponent->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics); 
-	CapsuleComponent->SetNotifyRigidBodyCollision(true);
+    CapsuleComponent = CreateDefaultSubobject<UCapsuleComponent>("Capsule");
+    CapsuleComponent->SetCollisionProfileName("BlockAll");
+    CapsuleComponent->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
+    CapsuleComponent->SetNotifyRigidBodyCollision(true);
     CapsuleComponent->GetBodyInstance()->bLockXRotation = true;
     CapsuleComponent->GetBodyInstance()->bLockYRotation = true;
     CapsuleComponent->GetBodyInstance()->bLockZRotation = true;
     CapsuleComponent->GetBodyInstance()->bLockYTranslation = true;
     CapsuleComponent->SetSimulatePhysics(true);
     CapsuleComponent->SetEnableGravity(false);
-	SetRootComponent(CapsuleComponent);
-	CapsuleComponent->OnComponentBeginOverlap.AddDynamic(this, &APlayerPawn::OnTriggerEnter);
-	CapsuleComponent->OnComponentHit.AddDynamic(this, &APlayerPawn::OnHit);
+    SetRootComponent(CapsuleComponent);
+    CapsuleComponent->OnComponentBeginOverlap.AddDynamic(this, &APlayerPawn::OnTriggerEnter);
+    CapsuleComponent->OnComponentHit.AddDynamic(this, &APlayerPawn::OnHit);
 
     //Animated Component
-	AnimatedComponent = CreateOptionalDefaultSubobject<UPaperFlipbookComponent>("Animated Component");
-	AnimatedComponent->SetupAttachment(RootComponent);
+    AnimatedComponent = CreateOptionalDefaultSubobject<UPaperFlipbookComponent>("Animated Component");
+    AnimatedComponent->SetupAttachment(RootComponent);
     UMyBPFunctionLib::SpriteCollisionSetup(AnimatedComponent);
 
     //Pickup Component
-	PickupComponent = CreateDefaultSubobject<UCapsuleComponent>("Pickup");
-	PickupComponent->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
-	PickupComponent->SetCollisionProfileName("Overlap");
-	PickupComponent->OnComponentBeginOverlap.AddDynamic(this, &APlayerPawn::OnPickupEnter);
-	PickupComponent->OnComponentEndOverlap.AddDynamic(this, &APlayerPawn::OnPickupExit);
-	PickupComponent->SetupAttachment(RootComponent);
+    PickupComponent = CreateDefaultSubobject<UCapsuleComponent>("Pickup");
+    PickupComponent->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
+    PickupComponent->SetCollisionProfileName("Overlap");
+    PickupComponent->OnComponentBeginOverlap.AddDynamic(this, &APlayerPawn::OnPickupEnter);
+    PickupComponent->OnComponentEndOverlap.AddDynamic(this, &APlayerPawn::OnPickupExit);
+    PickupComponent->SetupAttachment(RootComponent);
 
     //SwordHit Component
-	SwordHitComponent = CreateDefaultSubobject<USwordHit>("Attack Box");
+    SwordHitComponent = CreateDefaultSubobject<USwordHit>("Attack Box");
 
-	SwordHitComponent->SetupAttachment(RootComponent);
+    SwordHitComponent->SetupAttachment(RootComponent);
 
-	ConstructorHelpers::FObjectFinder<UPaperSprite> SwordRef(TEXT("PaperSprite'/Game/Sprites/Sword'"));
-	SwordSprite = CreateDefaultSubobject<UPaperSpriteComponent>("Sprite");
-	UMyBPFunctionLib::SpriteCollisionSetup(SwordSprite);
-	SwordSprite->SetupAttachment(SwordHitComponent);
-	SwordSprite->SetRelativeRotation(FRotator(0.f, -180.f, 0.f));
-	SwordSprite->SetSprite(SwordRef.Object);
-	SwordSprite->SetVisibility(false);
-	FVector2D swordSize = SwordSprite->GetSprite()->GetSourceSize();
-	SwordHitComponent->SetBoxExtent(FVector(swordSize.X / 2.f, 0.f, swordSize.Y / 2.f));
+    ConstructorHelpers::FObjectFinder<UPaperSprite> SwordRef(TEXT("PaperSprite'/Game/Sprites/Sword'"));
+    SwordSprite = CreateDefaultSubobject<UPaperSpriteComponent>("Sprite");
+    UMyBPFunctionLib::SpriteCollisionSetup(SwordSprite);
+    SwordSprite->SetupAttachment(SwordHitComponent);
+    SwordSprite->SetRelativeRotation(FRotator(0.f, -180.f, 0.f));
+    SwordSprite->SetSprite(SwordRef.Object);
+    SwordSprite->SetVisibility(false);
+    FVector2D swordSize = SwordSprite->GetSprite()->GetSourceSize();
+    SwordHitComponent->SetBoxExtent(FVector(swordSize.X / 2.f, 0.f, swordSize.Y / 2.f));
 
     //Setup the Camera
     Camera = CreateDefaultSubobject<UCameraComponent>("The player Camera for now");
-	//Camera->
+    //Camera->
     Camera->SetOrthoWidth(1800.f);
     Camera->SetRelativeRotation(FRotator(0.f, -90.f, 0.f));
     Camera->SetRelativeLocation(FVector(0.f, 500.f, 0.f));
-	Camera->SetProjectionMode(ECameraProjectionMode::Orthographic);
+    Camera->SetProjectionMode(ECameraProjectionMode::Orthographic);
     Camera->SetupAttachment(RootComponent);
 
+    if (false) {
 #if WITH_EDITOR
-	ConstructorHelpers::FObjectFinder<UPaperSprite> PlayerRef(TEXT("PaperSprite'/Game/Sprites/Link/Walking/Down/Link_Sprite_10.Link_Sprite_10'"));
-	if (PlayerRef.Succeeded())
-	{
-		FVector2D size = PlayerRef.Object->GetSourceSize();
-		CapsuleComponent->SetCapsuleHalfHeight(size.Y / 2);
-		CapsuleComponent->SetCapsuleRadius(size.X / 2);
-		//Make it a little larger of an area to pickup
-		PickupComponent->SetCapsuleHalfHeight(size.Y / 1.4f);
-		PickupComponent->SetCapsuleRadius(size.X / 1.4f);
-	}
+        ConstructorHelpers::FObjectFinder<UPaperSprite> PlayerRef(TEXT("PaperSprite'/Game/Sprites/Link/Walking/Down/Link_Sprite_10.Link_Sprite_10'"));
+        if (PlayerRef.Succeeded())
+        {
+            FVector2D size = PlayerRef.Object->GetSourceSize();
+            CapsuleComponent->SetCapsuleHalfHeight(size.Y / 2);
+            CapsuleComponent->SetCapsuleRadius(size.X / 2);
+            //Make it a little larger of an area to pickup
+            PickupComponent->SetCapsuleHalfHeight(size.Y / 1.4f);
+            PickupComponent->SetCapsuleRadius(size.X / 1.4f);
+        }
 #endif
+    }
+
+    else {
+        UMyBPFunctionLib::Test(nullptr, CapsuleComponent, "PaperSprite'/Game/Sprites/Link/Walking/Down/Link_Sprite_10.Link_Sprite_10'");
+    }
 
 	HeldObject = nullptr;
 

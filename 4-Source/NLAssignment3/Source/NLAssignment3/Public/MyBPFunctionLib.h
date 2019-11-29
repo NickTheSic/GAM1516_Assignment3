@@ -18,4 +18,6 @@ public:
 
     static void SpriteCollisionSetup(class UPrimitiveComponent* paper2d);
 
+    static void Test(class UPaperSpriteCmponent* sprite, class UCapsuleComponent* cap, FString str);
+
 };

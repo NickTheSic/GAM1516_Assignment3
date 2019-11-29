@@ -4,11 +4,13 @@ IN ItemPickup
 		//Create the CapsuleComponent
 		//Setup the Collision enabled
 		//Setup the collision Profile
+		//SetNotify Rigid Body Collision to true
 		//Make Capsuel The root component
 		
-		//Create the Sprite
+		//Create the SPRITE
 		//Set the Collision Profile
-		//Set Collision Enabled
+		//Set Collision Enabled to no collision
+		//Set notify rigid body collision to false
 		//SetUp attachment to the Root Component
 	End ItemPickup::ItemPickup()
 
@@ -36,17 +38,40 @@ IN GemPickup
 
 IN Health Pickup
 #Start HealthPickup
+	
+	HealthPickup::HealthPickup()
+		////Call MyBPFunctionLib::FindSpriteAndSetupCapsule and pass in the sprite, capsule and name
+	HealthPickup::HealthPickup()
+
+virtual void HealthPickup::PickupItem(PlayerPawnObject* pickedUpBy)
+		//CALL Increment Health and Pass in the Health value into the pickedUpBy object
+		//Call ItemPickup::PickupItem //Destroys the object
+	End HealthPickup::PickupItem(PlayerPawnObject* pickedUpBy)
 
 #End HealthPickup
 
 
 IN ShieldPickup
 #Start ShieldPickup
+	ShieldPickup::ShieldPickup()
+		////Call MyBPFunctionLib::FindSpriteAndSetupCapsule and pass in the sprite, capsule and name
+	ShieldPickup::ShieldPickup()
 
+virtual void ShieldPickup::PickupItem(PlayerPawnObject* pickedUpBy)
+		//Call Set Has Shield on the Player Object
+		//Call ItemPickup::PickupItem //Destroys the object
+	End ShieldPickup::PickupItem(PlayerPawnObject* pickedUpBy)
 #End ShieldPickup
 
 
 IN HeartContainer
 #Start HeartContainer
+	HeartContainer::HeartContainer()
+		////Call MyBPFunctionLib::FindSpriteAndSetupCapsule and pass in the sprite, capsule and name
+	HeartContainer::HeartContainer()
 
+virtual void HeartContainer::PickupItem(PlayerPawnObject* pickedUpBy)
+		//Call Increment Max health on the Player Pawn Object
+		//Call ItemPickup::PickupItem //Destroys the object
+	End HeartContainer::PickupItem(PlayerPawnObject* pickedUpBy)
 #End HeartContainer
