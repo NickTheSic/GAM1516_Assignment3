@@ -5,6 +5,7 @@ IN ItemPickup
 		//Setup the Collision enabled
 		//Setup the collision Profile
 		//SetNotify Rigid Body Collision to true
+		//Add Dynamic on the capsule and pass in this and PickupItem  ** Might have to call this on each of them
 		//Make Capsuel The root component
 		
 		//Create the SPRITE
