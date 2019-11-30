@@ -1,0 +1,9 @@
+#EnemyClass
+
+#End EnemyClass
+
+
+
+#SimplePatrolEnemy
+
+#End SimplePatrolEnemy

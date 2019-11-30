@@ -1,5 +1,11 @@
 #SwordHitComponent
 
+	SwordHitComponent()
+	{
+		Call stop attack to set up the box
+		Add the OnHit to the dynamic Component on hit
+	}
+
 	OnHit(args)
 	{
 	IF the other actor isn't null
@@ -27,18 +33,83 @@
 //**//
 #Sword Object
 
+	SwordObject()
+	{
+		Create the SwordhitComponent //I think that t		
 
+		Create the sprite component
+		Setup the collision profile, collision enabled and the notify rigid body to have no collision
+
+		Call the My blueprint setup function to set the sprite and change the box extent
+	Call StopAttack
+	}
+
+	ActivateAttack()
+	{
+		Show the sprite
+		Call the SwordComponents Activate Attack
+	}
+
+	StopAttack()
+	{
+	Hide the sprite
+	Call Sword Components StopAttack
+	}
 
 #End Sword object
 //**//
 #Block Component
 
+	BlockComponent()
+	{
+		Call stop block to set up the box
+		Add the OnHit to the dynamic Component on hit
+	}
 
+	OnHit(args)
+	{
+		//Not needed?
+	}
+
+	ActivateBlock()
+	{
+	Set the Collision to BlockAll
+	Set Collision enabled to Physics, maybe Query too
+	Set Notify rigid body to true
+	}
+
+	StopBlock()
+	{
+	Set the collision profile to NoCollision
+	Set Collision enabled to no collision
+	Set notify rigid body to false
+	}
 
 #End BlockComponent
 //**//
 #ShieldObject
 
+SwordObject()
+	{
+		Create the Shield Block //I think that t		
 
+		Create the sprite component
+		Setup the collision profile, collision enabled and the notify rigid body to have no collision
+
+		Call the My blueprint setup function to set the sprite and change the box extent
+	Call StopBlock
+	}
+
+	ActivateBlock()
+	{
+		Show the sprite
+		Call the SwordComponents Activate Attack
+	}
+
+	StopBlock()
+	{
+	Hide the sprite
+	Call Sword Components StopAttack
+	}
 
 #End Shield Object
