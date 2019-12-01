@@ -1,0 +1,109 @@
+#Player controller
+
+I feel like this is fairly straight forward
+Just has to bind the actions and stuff to the proper functions
+Then those functions call the player pawns functions
+
+#PlayerController
+
+
+#PlayerObject
+
+PlayerPawn()
+{
+Create the MainCapsule component and setup it's physics
+Create the PickupArea component and set up it's physics
+Add Dynamic both the OnTrigger enter and Exit on the Pickup Area
+Create the AnimationController
+Create the follow cam
+
+Set the Maincapsule to the root
+Attach the other objects to the root component
+
+Create the audiocomponent
+
+set the HeldObject to Null
+
+Set Max health to 5
+Set Current Health to Max health
+Set Gemcount to 0
+
+Create the Noise emitter
+Create the audio component
+
+I'll probaly setup the Sword and Shield in the editor
+Unless finding them is easy
+
+Set has shield to false //I guess I could save and load but that seems like more work
+
+}
+
+Tick()
+{
+I think the most stuff will happen here
+}
+
+BeginPlay()
+{
+//This is just in case I guess
+Set Max health to 5
+Set Current Health to Max health
+Set Gemcount to 0
+}
+
+
+OnMainCapsuleHit(args)
+{
+If other object isn't null
+
+if the otherobject has the tag "PickupObject"
+Cast it to PickupObject and check if it isn't null
+Then call Pickup on  the object and pass in the Player
+
+//This keeps it local to the player for quicker prototyping I guess
+if the otherobject has the tag "HurtsPlayer"
+DecrementHealth by 1
+
+}
+
+OnTriggerEnter()
+{
+If the other object isn't null
+
+if the other object has the tag Holdable
+Set the reference object to the triggered object
+bCanPickup = true;
+}
+
+OntriggerExit()
+{
+If the other Object isn't null
+If the other object has the tag Holdable
+the set bCanpickup to false and set the refrence object to nullptr
+}
+
+Pickup()
+{
+IF bCanPickup is true && the reference object isn't null
+then set the HeldObject to the Reference object
+Set the held object to a position above the players head
+Set bIsHolding to true
+}
+
+Throw()
+{
+IF bIsHolding & the HeldObject isn't null
+
+Add a force on the Held object and set it move in the direction the player is facing
+The last tthing to do is set the Held Object to null
+}
+
+
+//The Increment and Decrement and Get functions seem pretty straight forward
+Incrememnt the value by the value, decrement the value by the value and then get the value
+
+//Activate and Deactivate the attacks
+The activate and stop for block and shield both do a null check and then call the associated objects function
+
+
+#End PlayerObject

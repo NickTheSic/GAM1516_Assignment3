@@ -31,3 +31,10 @@ START FindSpriteAndSetupBox(sprite:UPaperSpriteComponent*, capsule:UCapsuleCompo
 			#endif	
 		//End IF
 END FindSpriteAndSetupBox(sprite:UPaperSpriteComponent*, capsule:UCapsuleComponent, spriteName:FString):void
+
+SetupSpritePhysics(UPaperSprite* sprite)
+{
+	Set up the no collision
+	CollisionEnabhled to no collision
+	Set notify rigid body to false
+}

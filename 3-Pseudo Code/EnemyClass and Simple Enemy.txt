@@ -1,9 +1,82 @@
 #EnemyClass
 
+EnemyClass()
+{
+Create the AnimationController
+Set the states to idle
+Create the Capsule Component and setup it's physics
+}
+
+BeginPlay()
+{
+
+}
+
+Tick()
+{
+
+}
+
+OnPawnSeen(pawn)
+{
+
+}
+
+OnPawnHeard()
+{
+
+}
+
 #End EnemyClass
 
 
 
 #SimplePatrolEnemy
 
+SimplePatrolEnemy()
+{
+Set Sprite and Capsule Size
+Set Active point to point1 if it isn't null
+set Patrolbool to false;
+}
+
+BeginPlay()
+{
+
+}
+
+Tick()
+{
+if pause action is false
+	Move closer to the current patrol point if it isn't null
+		if near patrol point then call switch points
+
+if pauseAction is true
+	pause timer decrease
+
+}
+
+OnPawnHeard()
+{
+Change the direction to where the sound was hear
+set pause action to true
+
+}
+
+OnPawnSeen(APawn)
+{
+if APawn isn't null
+Set the Active location to where the pawn was seen
+}
+
+SwitchPatrolPoints()
+{
+if (the bool is true
+	set the active point to point 2
+	set the bool to false
+
+if the bool is false 
+	set the active point to point 1
+	set the bool to true
+}
 #End SimplePatrolEnemy

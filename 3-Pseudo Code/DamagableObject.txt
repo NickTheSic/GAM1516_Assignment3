@@ -1,0 +1,27 @@
+#DamagableObject
+
+ADamagableObject()
+{
+Create and setup the Sprites Physics
+Create the Capsule Component and setup the physics
+Add Tag "DamagableObject"
+}
+
+BeginPlay()
+{
+Get and Cast the game state to the Dungeon Game state
+}
+
+void ObjectTakeDamage(float damage)
+{
+ObjectHealth -= damage;
+}
+
+void OnNoHealth()
+{
+Tell the game state it can spawn an item
+Tell the game state the location of the item
+Destroy this object
+}
+
+#End DamagableObject
