@@ -1,0 +1,18 @@
+##Audio Component
+
+	void PlayDestroySound()
+	{
+		Set the sound to Destroy sound
+		Play the Destroy sound
+	}
+
+# End Audio Component
+
+#Animation Component
+
+	Basically all the functions are the same
+	Set the flipbook to which ever one you want 
+	Then play that flip book
+	Make sure it isn't null before you try to play it
+
+#End Animation Component

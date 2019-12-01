@@ -1,0 +1,80 @@
+#Button
+
+Button()
+{
+Create and setup the sprite component with no physics
+create and setup the Boxcomponent with the query physics
+}
+
+OnTriggerEnter()
+{
+check other object isn't null
+check that the trigger isnt null
+activate the trigger
+}
+
+OnTriggerExit()
+{
+check other object isn't null
+check that the trigger isnt null
+deactivate the trigger
+}
+
+#End button
+
+#Trigger Object
+
+TriggerObject()
+{
+Create the sprite and set up its physics
+create the box
+}
+
+ActivateTrigger()
+{
+
+}
+
+Deactivate Trigger()
+{
+
+}
+
+#end trigger object
+
+#Door
+
+Door()
+{
+Find and set the sprite
+Set the box extent to the sprite size
+DectivateTrigger()
+}
+
+ActivateTrigger()
+{
+Set up the box to ignore collision
+Hide the sprite
+}
+
+DeactivateTrigger()
+{
+Set up the box to block all collision
+Show the sprite
+}
+#end door
+
+#Moving wall
+MovingWall()
+{
+Get and set sprite
+Set up box size
+}
+ActivateTrigger()
+{
+Move from position A to B
+}
+DeactivateTrigger()
+{
+Move back to position A
+}
