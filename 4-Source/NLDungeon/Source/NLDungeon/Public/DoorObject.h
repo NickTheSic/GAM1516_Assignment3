@@ -14,4 +14,9 @@ class NLDUNGEON_API ADoorObject : public AMyTriggerObject
 {
 	GENERATED_BODY()
 	
+public:
+    ADoorObject();
+
+protected:
+    virtual void ActivateTrigger() override;
 };

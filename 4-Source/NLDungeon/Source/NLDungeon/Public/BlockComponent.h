@@ -13,5 +13,10 @@ UCLASS()
 class NLDUNGEON_API UBlockComponent : public UBoxComponent
 {
 	GENERATED_BODY()
+
+public:
+    UBlockComponent();
+    void ActivateBlock();
+    void StopBlock();
 	
 };

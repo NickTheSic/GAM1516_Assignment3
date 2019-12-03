@@ -32,7 +32,7 @@ AArrowProjectile::AArrowProjectile()
 	Movement->InitialSpeed = 700.f;
 	Movement->MaxSpeed = 700.f;
 	Movement->bShouldBounce = false;
-	Movement->ShouldApplyGravity = false;
+	//Movement->ShouldApplyGravity = false;
 
 	InitialLifeSpan = 5.f;
 
