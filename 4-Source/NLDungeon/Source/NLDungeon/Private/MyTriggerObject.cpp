@@ -19,7 +19,7 @@ AMyTriggerObject::AMyTriggerObject()
 
     SpriteComponent = CreateDefaultSubobject<UPaperSpriteComponent>("Sprite Comp");
     UBPFunctionLib::SetupSpritePhysics(SpriteComponent);
-    SpriteComponent->SetupAttachment(SpriteComponent);
+    SpriteComponent->SetupAttachment(RootComponent);
 
 }
 

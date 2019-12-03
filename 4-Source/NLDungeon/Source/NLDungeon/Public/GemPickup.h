@@ -13,5 +13,10 @@ UCLASS()
 class NLDUNGEON_API AGemPickup : public AItemPickup
 {
 	GENERATED_BODY()
-	
+public:
+    AGemPickup();
+    virtual void PickupItem(class APlayerPawn* player);
+
+private:
+    int GemValue;
 };

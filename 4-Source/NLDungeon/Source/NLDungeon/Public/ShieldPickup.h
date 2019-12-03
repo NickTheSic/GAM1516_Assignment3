@@ -13,5 +13,7 @@ UCLASS()
 class NLDUNGEON_API AShieldPickup : public AItemPickup
 {
 	GENERATED_BODY()
-	
+public:
+    AShieldPickup();
+    virtual void PickupItem(class APlayerPawn* player);
 };

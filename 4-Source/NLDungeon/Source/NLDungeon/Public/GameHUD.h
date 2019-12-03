@@ -13,5 +13,16 @@ UCLASS()
 class NLDUNGEON_API AGameHUD : public AHUD
 {
 	GENERATED_BODY()
+
+public:
+    AGameHUD();
+
+    virtual void BeginPlay() override;
+
+    UPROPERTY(EditAnywhere, Category = "Config")
+        TSubclassOf<class UUserWidget> PlayerGui;
+
+    UPROPERTY(EditAnywhere, Category = "Config")
+        UUserWidget* Gui;
 	
 };

@@ -9,7 +9,7 @@
 
 ADoorObject::ADoorObject()
 {
-    UBPFunctionLib::FindSpriteAndSetupBox(SpriteComponent, BoxComponent, "/Game/Sprite/Door");
+    UBPFunctionLib::FindSpriteAndSetupBox(SpriteComponent, BoxComponent, "/Game/Sprites/Door");
 }
 
 void ADoorObject::ActivateTrigger()

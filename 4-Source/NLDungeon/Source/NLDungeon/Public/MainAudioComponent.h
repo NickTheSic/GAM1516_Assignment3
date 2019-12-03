@@ -13,5 +13,10 @@ UCLASS()
 class NLDUNGEON_API UMainAudioComponent : public UAudioComponent
 {
 	GENERATED_BODY()
-	
+public:
+    UMainAudioComponent();
+    void PlayDestroySound();
+
+private:
+    class USoundBase* DestroySound;
 };

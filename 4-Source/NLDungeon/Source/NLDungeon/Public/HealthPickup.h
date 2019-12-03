@@ -13,5 +13,10 @@ UCLASS()
 class NLDUNGEON_API AHealthPickup : public AItemPickup
 {
 	GENERATED_BODY()
-	
+public:
+    AHealthPickup();
+    virtual void PickupItem(class APlayerPawn* player);
+
+private:
+    int HealthValue;
 };

@@ -2,4 +2,23 @@
 
 
 #include "HealthPickup.h"
+#include "BPFunctionLib.h"
+#include "Components/CapsuleComponent.h"
+#include "PaperSpriteComponent.h"
+#include "PlayerPawn.h"
 
+
+AHealthPickup::AHealthPickup()
+{
+
+    HealthValue = 1;
+}
+
+void AHealthPickup::PickupItem(APlayerPawn* player)
+{
+    if (player != nullptr)
+    {
+        player->IncrementHealth(HealthValue);
+    }
+    Destroy();
+}

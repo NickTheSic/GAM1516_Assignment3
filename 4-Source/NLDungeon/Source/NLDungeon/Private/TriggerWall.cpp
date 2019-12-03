@@ -30,12 +30,14 @@ void ATriggerWall::Tick(float DeltaTime)
 
     if (bTriggerIsActive)
     {
-        //Move to end
+        FVector targetLocation = FMath::VInterpConstantTo(GetActorLocation(), End, DeltaTime, 600.0f);
+        SetActorLocation(targetLocation);
     }
     
     else
     {
-        //Move to start
+        FVector targetLocation = FMath::VInterpConstantTo(GetActorLocation(), Start, DeltaTime, 600.0f);
+        SetActorLocation(targetLocation);
     }
 
 }
