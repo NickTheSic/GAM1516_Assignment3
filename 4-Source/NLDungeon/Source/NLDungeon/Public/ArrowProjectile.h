@@ -15,12 +15,22 @@ public:
 	// Sets default values for this actor's properties
 	AArrowProjectile();
 
+private:
+	UPROPERTY(EditAnywhere, Category = "Config", meta = (AllowPrivateAccess = "true"))
+		class UPaperSpriteComponent* Sprite;
+
+	UPROPERTY(EditAnywhere, Category = "Config", meta = (AllowPrivateAccess = "true"))
+		class UCapsuleComponent* CapsuleComponent;
+
+	UPROPERTY(EditAnywhere, Category = "Config", meta = (AllowPrivateAccess = "true"))
+		class UProjectileMovementComponent* Movement;
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
 public:	
 	// Called every frame
-	virtual void Tick(float DeltaTime) override;
+	void OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
 
 };

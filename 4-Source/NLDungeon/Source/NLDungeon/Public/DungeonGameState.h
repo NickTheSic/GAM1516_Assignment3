@@ -13,5 +13,22 @@ UCLASS()
 class NLDUNGEON_API ADungeonGameState : public AGameStateBase
 {
 	GENERATED_BODY()
+
+private:
+	FVector ItemSpawnLocation;
+	bool bCanSpawnItem;
 	
+	FVector PlayerCheckpointLocation;
+
+public:
+	void SetCanSpawnItem(bool canSpawn) { bCanSpawnItem = canSpawn; }
+	bool GetCanSpawnItem() { return bCanSpawnItem; }
+	
+	void SetItemSpawnLocation(FVector location) { ItemSpawnLocation = location; }
+	FVector GetItemSpawnLocation() { return ItemSpawnLocation; }
+
+	void SetCheckpointLocation(FVector location) { PlayerCheckpointLocation = location; }
+	FVector GetCheckpointLocation() { return PlayerCheckpointLocation; }
+
 };
+

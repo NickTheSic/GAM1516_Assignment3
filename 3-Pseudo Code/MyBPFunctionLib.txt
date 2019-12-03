@@ -38,3 +38,8 @@ SetupSpritePhysics(UPaperSprite* sprite)
 	CollisionEnabhled to no collision
 	Set notify rigid body to false
 }
+
+LockPhysics(sprite)
+{
+	Lock the proper axis
+}

@@ -15,9 +15,22 @@ public:
 	// Sets default values for this pawn's properties
 	ADamagableObject();
 
+	void ObjectTakeDamage(int damage);
+	virtual void OnNoHealth();
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+
+	UPROPERTY(EditAnywhere, Category = "Config", meta = (AllowPrivateAccess = "true"))
+		class UPaperSpriteComponent* SpriteComponent;
+
+	UPROPERTY(EditAnywhere, Category = "Config", meta = (AllowPrivateAccess = "true"))
+		class UCapsuleComponent* CapsuleComponent;
+
+	int ObjectHealth;
+
+	class ADungeonGameState* DungeonGameState;
 
 public:	
 	// Called every frame

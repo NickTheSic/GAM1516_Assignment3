@@ -2,4 +2,11 @@
 
 
 #include "Barrel.h"
+#include "BPFunctionLib.h"
+#include "Components/CapsuleComponent.h"
+
+ABarrel::ABarrel()
+{
+	UBPFunctionLib::FindSpriteAndSetupCapsule(SpriteComponent, CapsuleComponent, "/Game/Sprites/Barrel");
+}
 

@@ -14,4 +14,6 @@ class NLDUNGEON_API ABarrel : public ADamagableObject
 {
 	GENERATED_BODY()
 	
+public:
+	ABarrel();
 };

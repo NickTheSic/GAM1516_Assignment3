@@ -13,5 +13,8 @@ UCLASS()
 class NLDUNGEON_API APlayerPawn : public ADamagableObject
 {
 	GENERATED_BODY()
+
+public:
+	APlayerPawn();
 	
 };
