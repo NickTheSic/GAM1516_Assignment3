@@ -837,8 +837,7 @@ Interacts with</panel_attributes>
 -
 
 +Door()
-#&lt;&lt;virtual&gt;&gt;ActivateTrigger():void
-#&lt;&lt;virtual&gt;&gt;DeactivateTrigger():void</panel_attributes>
+#&lt;&lt;virtual&gt;&gt;ActivateTrigger():void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -885,12 +884,14 @@ SimpleTimer:float
       <x>2948</x>
       <y>1606</y>
       <w>286</w>
-      <h>220</h>
+      <h>253</h>
     </coordinates>
     <panel_attributes>TheBlockingWall
 -
 
-
+-Start:FVector
+-End:FVector
+-bActive:bool
 
 -
 
@@ -1285,7 +1286,7 @@ Spawns</panel_attributes>
       <h>110</h>
     </coordinates>
     <panel_attributes>lt=..</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;80.0;170.0;80.0;170.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0;170.0;80.0;170.0;40.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
