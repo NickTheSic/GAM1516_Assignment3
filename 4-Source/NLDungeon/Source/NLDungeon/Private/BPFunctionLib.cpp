@@ -14,20 +14,20 @@ void UBPFunctionLib::FindSpriteAndSetupCapsule(UPaperSpriteComponent* sprite, UC
 
 	if (spRef.Succeeded())
 	{
-		if (sprite != nullptr)
-		{
-			sprite->SetSprite(spRef.Object);
+        if (sprite != nullptr)
+        {
+            sprite->SetSprite(spRef.Object);
+        }
 #if WITH_EDITOR
-			if (capsule != nullptr)
-			{
-				FVector2D size = sprite->GetSprite()->GetSourceSize();
-				float x = size.X * 0.5;
-				float z = size.Y * 0.5;
-				capsule->SetCapsuleRadius(x);
-				capsule->SetCapsuleHalfHeight(z);
-			}
-#endif
+		if (capsule != nullptr)
+		{
+			FVector2D size =spRef.Object->GetSourceSize();
+			float x = size.X * 0.5;
+			float z = size.Y * 0.5;
+			capsule->SetCapsuleRadius(x);
+			capsule->SetCapsuleHalfHeight(z);
 		}
+#endif
 	}
 }
 
@@ -37,19 +37,19 @@ void UBPFunctionLib::FindSpriteAndSetupBox(UPaperSpriteComponent* sprite, UBoxCo
 
 	if (spRef.Succeeded())
 	{
-		if (sprite != nullptr)
-		{
-			sprite->SetSprite(spRef.Object);
+        if (sprite != nullptr)
+        {
+            sprite->SetSprite(spRef.Object);
+        }
 #if WITH_EDITOR
-			if (box != nullptr)
-			{
-				FVector2D size = sprite->GetSprite()->GetSourceSize();
-				float x = size.X * 0.5;
-				float z = size.Y * 0.5;
-				box->SetBoxExtent(FVector(x, z, 5));
-			}
-#endif
+		if (box != nullptr)
+		{
+			FVector2D size = spRef.Object->GetSourceSize();
+			float x = size.X * 0.5;
+			float z = size.Y * 0.5;
+			box->SetBoxExtent(FVector(x, z, 5));
 		}
+#endif
 	}
 }
 

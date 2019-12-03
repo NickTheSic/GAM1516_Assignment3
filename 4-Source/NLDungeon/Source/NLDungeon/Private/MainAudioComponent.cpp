@@ -3,6 +3,12 @@
 
 #include "MainAudioComponent.h"
 
+
+UMainAudioComponent::UMainAudioComponent()
+{
+
+}
+
 void UMainAudioComponent::PlayDestroySound()
 {
     SetSound(DestroySound);

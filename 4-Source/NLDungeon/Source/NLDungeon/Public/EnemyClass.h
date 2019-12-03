@@ -23,8 +23,10 @@ protected:
 
     virtual void BeginPlay() override;
 
-    virtual void OnPawnSeen(class APlayerPawn* player);
-    virtual void OnPawnHeard();
+    UFUNCTION()
+    virtual void OnPawnSeen(class APawn* player);
+    UFUNCTION()
+    virtual void OnPawnHeard(APawn* NoiseInstigator, const FVector& Location, float Volume);
 
     UPROPERTY(EditAnywhere, Category = "Config", meta = (AllowPrivateAccess = "true"))
     class UAnimationController* AnimationController;
