@@ -10,7 +10,7 @@
 
 AHealthPickup::AHealthPickup()
 {
-
+    UBPFunctionLib::FindSpriteAndSetupCapsule(SpriteComponent, CapsuleComponent, "/Game/Sprites/Heart");
     HealthValue = 1;
 }
 

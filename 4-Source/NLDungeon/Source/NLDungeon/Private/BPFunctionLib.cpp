@@ -14,14 +14,18 @@ void UBPFunctionLib::FindSpriteAndSetupCapsule(UPaperSpriteComponent* sprite, UC
 
 	if (spRef.Succeeded())
 	{
+        FVector2D size;
         if (sprite != nullptr)
         {
             sprite->SetSprite(spRef.Object);
+            size = sprite->GetSprite()->GetSourceSize();
         }
+        else 
+            size = spRef.Object->GetSourceSize();
 #if WITH_EDITOR
 		if (capsule != nullptr)
 		{
-			FVector2D size =spRef.Object->GetSourceSize();
+		     //size =spRef.Object->GetSourceSize();
 			float x = size.X * 0.5;
 			float z = size.Y * 0.5;
 			capsule->SetCapsuleRadius(x);
@@ -37,17 +41,21 @@ void UBPFunctionLib::FindSpriteAndSetupBox(UPaperSpriteComponent* sprite, UBoxCo
 
 	if (spRef.Succeeded())
 	{
+        FVector2D size;
         if (sprite != nullptr)
         {
             sprite->SetSprite(spRef.Object);
+            size = sprite->GetSprite()->GetSourceSize();
         }
+        else
+            size = spRef.Object->GetSourceSize();
 #if WITH_EDITOR
 		if (box != nullptr)
 		{
-			FVector2D size = spRef.Object->GetSourceSize();
+			//FVector2D size = spRef.Object->GetSourceSize();
 			float x = size.X * 0.5;
 			float z = size.Y * 0.5;
-			box->SetBoxExtent(FVector(x, z, 5));
+			box->SetBoxExtent(FVector(x, 5, z));
 		}
 #endif
 	}

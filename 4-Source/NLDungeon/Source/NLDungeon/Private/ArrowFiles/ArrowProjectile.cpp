@@ -29,12 +29,12 @@ AArrowProjectile::AArrowProjectile()
 
 	Movement = CreateDefaultSubobject<UProjectileMovementComponent>("Projectile Movement");
 	Movement->UpdatedComponent = CapsuleComponent;
-	Movement->InitialSpeed = 700.f;
-	Movement->MaxSpeed = 700.f;
+	Movement->InitialSpeed = 800.f;
+	Movement->MaxSpeed = 800.f;
 	Movement->bShouldBounce = false;
-	//Movement->ShouldApplyGravity = false;
+    Movement->ProjectileGravityScale = 0.f;
 
-	InitialLifeSpan = 5.f;
+	InitialLifeSpan = 2.f;
 
 }
 
@@ -42,6 +42,11 @@ AArrowProjectile::AArrowProjectile()
 void AArrowProjectile::BeginPlay()
 {
 	Super::BeginPlay();
+
+    //Turns it to face the direction it is facing
+    FRotator rot = GetActorRotation();
+    rot.Pitch -= 90;
+    SetActorRotation(rot);
 	
 }
 
@@ -58,7 +63,7 @@ void AArrowProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, U
 				//Destroy();
 			}
 		}
-		//Destroy(); //Destroy object so the player doesn't run into it?
+		Destroy(); //Destroy object so the player doesn't run into it?
 	}
 }
 

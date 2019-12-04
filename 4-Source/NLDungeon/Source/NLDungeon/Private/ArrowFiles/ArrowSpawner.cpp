@@ -21,13 +21,16 @@ AArrowSpawner::AArrowSpawner()
 	//BoxComponent->SetSimulatePhysics(true);
 	//BoxComponent->SetEnableGravity(false);
 	BoxComponent->SetCollisionEnabled(ECollisionEnabled::PhysicsOnly);
+    SetRootComponent(BoxComponent);
 
 	Sprite = CreateDefaultSubobject<UPaperSpriteComponent>("Sprite");
 	UBPFunctionLib::SetupSpritePhysics(Sprite);
 	UBPFunctionLib::FindSpriteAndSetupBox(Sprite, BoxComponent, "/Game/Sprites/ArrowSpawner");
+    Sprite->SetupAttachment(RootComponent);
 
 	SpawnPoint = CreateDefaultSubobject<UArrowComponent>("SpawnArrow");
 	SpawnPoint->SetupAttachment(RootComponent);
+    SpawnPoint->SetupAttachment(RootComponent);
 
 	//Tags.Add("Holdable");
 }

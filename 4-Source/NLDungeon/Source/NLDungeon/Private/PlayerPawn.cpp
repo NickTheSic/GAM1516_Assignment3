@@ -13,11 +13,18 @@
 #include "AnimationController.h"
 #include "Components/PawnNoiseEmitterComponent.h"
 
+
 APlayerPawn::APlayerPawn()
 {
 	//Gonna have to remove the sprite component and everything that I setup from inheriting from the DamagleObject
 	//Maybe Inheriting was wrong
 }
+
+void APlayerPawn::BeginPlay()
+{
+    //Create the Sword
+}
+
 
 void APlayerPawn::Tick(float deltaSeconds)
 {
@@ -26,67 +33,7 @@ void APlayerPawn::Tick(float deltaSeconds)
 
 void APlayerPawn::OnNoHealth()
 {
-
-}
-
-void APlayerPawn::IncrementHealth(int health)
-{
-    ObjectHealth += health;
-}
-
-int APlayerPawn::GetCurrentHealth()
-{
-    return ObjectHealth;
-}
-
-void APlayerPawn::IncrementLives(int lives)
-{
-    Lives += lives;
-}
-
-void APlayerPawn::DecrementLives(int lives)
-{
-    Lives -= lives;
-}
-
-int APlayerPawn::GetCurrentLives()
-{
-    return Lives;
-}
-
-void APlayerPawn::IncrementMaxHealth(int health)
-{
-    MaxHealth += health;
-}
-
-void APlayerPawn::DecrementMaxHealth(int health)
-{
-    MaxHealth -= health;
-}
-
-int APlayerPawn::GetCurrentMaxHealth()
-{
-    return MaxHealth;
-}
-
-void APlayerPawn::IncrementGemCount(int gem)
-{
-    GemCount += gem;
-}
-
-void APlayerPawn::DecrementGemCount(int gem)
-{
-    GemCount -= gem;
-}
-
-int APlayerPawn::GetCurrentGemCount()
-{
-    return GemCount;
-}
-
-void APlayerPawn::SetHasShield(bool hasShield)
-{
-    bPlayerHasShield = hasShield;
+    //Go to last checkpoint and lose a life
 }
 
 void APlayerPawn::ActivateAttack()
@@ -153,4 +100,67 @@ void APlayerPawn::Throw()
     {
 
     }
+}
+
+
+void APlayerPawn::IncrementHealth(int health)
+{
+    ObjectHealth += health;
+    if (ObjectHealth > MaxHealth)
+        ObjectHealth = MaxHealth;
+}
+
+int APlayerPawn::GetCurrentHealth()
+{
+    return ObjectHealth;
+}
+
+void APlayerPawn::IncrementLives(int lives)
+{
+    Lives += lives;
+}
+
+void APlayerPawn::DecrementLives(int lives)
+{
+    Lives -= lives;
+}
+
+int APlayerPawn::GetCurrentLives()
+{
+    return Lives;
+}
+
+void APlayerPawn::IncrementMaxHealth(int health)
+{
+    MaxHealth += health;
+}
+
+void APlayerPawn::DecrementMaxHealth(int health)
+{
+    MaxHealth -= health;
+}
+
+int APlayerPawn::GetCurrentMaxHealth()
+{
+    return MaxHealth;
+}
+
+void APlayerPawn::IncrementGemCount(int gem)
+{
+    GemCount += gem;
+}
+
+void APlayerPawn::DecrementGemCount(int gem)
+{
+    GemCount -= gem;
+}
+
+int APlayerPawn::GetCurrentGemCount()
+{
+    return GemCount;
+}
+
+void APlayerPawn::SetHasShield(bool hasShield)
+{
+    bPlayerHasShield = hasShield;
 }

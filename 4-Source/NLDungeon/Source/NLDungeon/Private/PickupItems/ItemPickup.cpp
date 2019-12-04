@@ -14,6 +14,7 @@ AItemPickup::AItemPickup()
 	PrimaryActorTick.bCanEverTick = true;
 
     CapsuleComponent = CreateDefaultSubobject<UCapsuleComponent>("Capsule");
+    UBPFunctionLib::LockPhysicsTo2DAxis(CapsuleComponent);
     SetRootComponent(CapsuleComponent);
 
     SpriteComponent = CreateDefaultSubobject<UPaperSpriteComponent>("Sprite");

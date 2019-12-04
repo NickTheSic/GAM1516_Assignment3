@@ -26,10 +26,10 @@ private:
         class UCameraComponent* FollowCamera;
 
     UPROPERTY(EditAnywhere, Category = "Config", meta = (AllowPrivateAccess = "true"))
-        class ASwordObject* Sword;
+        TSubclassOf<class ASwordObject> Sword;
 
     UPROPERTY(EditAnywhere, Category = "Config", meta = (AllowPrivateAccess = "true"))
-        class AShieldObject* Shield;
+        TSubclassOf<class AShieldObject> Shield;
 
     class UPrimitiveComponent* HeldObject;
     UPrimitiveComponent* ReferenceToHold;
@@ -44,6 +44,9 @@ private:
 
     class UPawnNoiseEmitter* NoiseEmitter;
     class MainAudioComponent* AudioComponent;
+
+protected:
+    virtual void BeginPlay() override;
 
 public:
 	APlayerPawn();
