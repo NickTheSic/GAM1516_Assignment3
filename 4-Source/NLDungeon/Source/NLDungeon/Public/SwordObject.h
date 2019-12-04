@@ -15,6 +15,13 @@ public:
 	// Sets default values for this actor's properties
 	ASwordObject();
 
+    void ActivateAttack();
+    void StopAttack();
+
+private:
+    class USwordHitComponent* SwordComponent;
+    class UPaperSpriteComponent* SpriteComponent;
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;

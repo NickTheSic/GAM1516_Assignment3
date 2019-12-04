@@ -15,9 +15,16 @@ public:
 	// Sets default values for this actor's properties
 	AShieldObject();
 
+    void ActivateBlock();
+    void StopBlock();
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+
+private:
+    class UBlockComponent* BlockComponent;
+    class UPaperSpriteComponent* SpriteComponent;
 
 public:	
 	// Called every frame

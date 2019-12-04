@@ -13,5 +13,10 @@ UCLASS()
 class NLDUNGEON_API USwordHitComponent : public UBoxComponent
 {
 	GENERATED_BODY()
-	
+public:
+    USwordHitComponent();
+    void ActivateAttack();
+    void StopAttack();
+    UFUNCTION()
+    void OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
 };
