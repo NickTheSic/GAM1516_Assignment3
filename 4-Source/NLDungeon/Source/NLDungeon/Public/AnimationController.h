@@ -18,6 +18,8 @@ class NLDUNGEON_API UAnimationController : public UPaperFlipbookComponent
 
 public:
 	
+	UAnimationController();
+
 	void SetIdleDown();
 	void SetIdleUp();
 	void SetIdleRight();

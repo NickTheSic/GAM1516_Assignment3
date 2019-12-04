@@ -15,6 +15,9 @@ public:
 	// Sets default values for this actor's properties
 	AMyTriggerObject();
 
+	virtual void ActivateTrigger();
+	virtual void DeactivateTrigger();
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -25,8 +28,6 @@ protected:
     UPROPERTY(EditAnywhere, Category = "Config", meta = (AllowPrivateAccess = "true"))
         class UBoxComponent* BoxComponent;
 
-    virtual void ActivateTrigger();
-    virtual void DeactivateTrigger();
 
 public:	
 

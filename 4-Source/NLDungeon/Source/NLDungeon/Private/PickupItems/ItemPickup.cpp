@@ -27,7 +27,7 @@ AItemPickup::AItemPickup()
 
 void AItemPickup::PickupItem(APlayerPawn* player)
 {
-
+	check(false); //I don't want to call this version of the function but the derived class function
 }
 
 // Called when the game starts or when spawned

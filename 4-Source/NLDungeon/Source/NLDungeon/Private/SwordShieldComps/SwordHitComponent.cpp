@@ -24,7 +24,7 @@ void USwordHitComponent::OnHit(UPrimitiveComponent* HitComponent, AActor* OtherA
 {
     if (OtherActor != nullptr)
     {
-        if (OtherActor->ActorHasTag("DamagableObject") && !OtherActor->ActorHasTag("Player"))
+        if (OtherActor->ActorHasTag("DamagableObject") && !OtherActor->ActorHasTag("Player") && GetOwner() != OtherActor)
         {
             ADamagableObject* d = Cast<ADamagableObject>(OtherActor);
             d->ObjectTakeDamage(1);

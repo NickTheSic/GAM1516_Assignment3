@@ -11,8 +11,14 @@
 
 AEnemyClass::AEnemyClass()
 {
+	UPaperSpriteComponent* pscomp = Cast<UPaperSpriteComponent>(GetComponentByClass(UPaperSpriteComponent::StaticClass()));
+	if (pscomp)
+	{
+		pscomp->DestroyComponent();
+		pscomp->SetActive(false);
+	}
+
     AnimationController = CreateDefaultSubobject<UAnimationController>("AnimationController");
-    AnimationController->SetCollisionEnabled(ECollisionEnabled::NoCollision);
     AnimationController->SetupAttachment(RootComponent);
 
     PawnSensingComponent = CreateDefaultSubobject<UPawnSensingComponent>("Pawn Sensor");

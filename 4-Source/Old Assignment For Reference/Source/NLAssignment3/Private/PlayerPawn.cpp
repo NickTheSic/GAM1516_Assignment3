@@ -66,7 +66,6 @@ APlayerPawn::APlayerPawn()
 
     //Setup the Camera
     Camera = CreateDefaultSubobject<UCameraComponent>("The player Camera for now");
-    //Camera->
     Camera->SetOrthoWidth(1800.f);
     Camera->SetRelativeRotation(FRotator(0.f, -90.f, 0.f));
     Camera->SetRelativeLocation(FVector(0.f, 500.f, 0.f));
@@ -138,12 +137,8 @@ void APlayerPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponen
 
 void APlayerPawn::Attack()
 {
-	if (!bIsHolding)
-	{
-		SetActionState(EPlayerActionState::Attacking);
-		SwordSprite->SetVisibility(true);
-		SwordHitComponent->ActivateAttack();
-	}
+	
+
 }
 
 void APlayerPawn::StopAttack()

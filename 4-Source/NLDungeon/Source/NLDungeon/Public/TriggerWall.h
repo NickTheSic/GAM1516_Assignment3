@@ -19,7 +19,6 @@ public:
 
     virtual void Tick(float DeltaTime) override;
 
-protected:
     virtual void ActivateTrigger() override;
     virtual void DeactivateTrigger() override;
 

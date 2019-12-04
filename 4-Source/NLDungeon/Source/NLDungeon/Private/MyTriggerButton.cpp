@@ -2,12 +2,28 @@
 
 
 #include "MyTriggerButton.h"
+#include "BPFunctionLib.h"
+#include "PaperSpriteComponent.h"
+#include "Components/BoxComponent.h"
+#include "MyTriggerObject.h"
 
 // Sets default values
 AMyTriggerButton::AMyTriggerButton()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
+
+	BoxComponent = CreateDefaultSubobject<UBoxComponent>("BoxComponent");
+	BoxComponent->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
+	BoxComponent->SetCollisionProfileName("OverlapAll");
+	BoxComponent->OnComponentBeginOverlap.AddDynamic(this, &AMyTriggerButton::OnTriggerEnter);
+	BoxComponent->OnComponentEndOverlap.AddDynamic(this, &AMyTriggerButton::OnTriggerExit);
+	SetRootComponent(BoxComponent);
+
+	SpriteComponent = CreateDefaultSubobject<UPaperSpriteComponent>("Sprite Comp");
+	UBPFunctionLib::SetupSpritePhysics(SpriteComponent);
+	UBPFunctionLib::FindSpriteAndSetupBox(SpriteComponent, BoxComponent, "/Game/Sprites/Button");
+	SpriteComponent->SetupAttachment(RootComponent);
 
 }
 
@@ -18,10 +34,26 @@ void AMyTriggerButton::BeginPlay()
 	
 }
 
-// Called every frame
-void AMyTriggerButton::Tick(float DeltaTime)
+void AMyTriggerButton::OnTriggerEnter(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
-	Super::Tick(DeltaTime);
-
+	if (OtherActor != nullptr)
+	{
+		if (TriggerObject != nullptr)
+		{
+			TriggerObject->ActivateTrigger();
+		}
+	}
 }
+
+void AMyTriggerButton::OnTriggerExit(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
+{
+	if (OtherActor != nullptr)
+	{
+		if (TriggerObject != nullptr)
+		{
+			TriggerObject->DeactivateTrigger();
+		}
+	}
+}
+
 

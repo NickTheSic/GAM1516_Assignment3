@@ -16,6 +16,7 @@ AShieldObject::AShieldObject()
     SetRootComponent(BlockComponent);
 
     SpriteComponent = CreateDefaultSubobject<UPaperSpriteComponent>("Sprite");
+	SpriteComponent->SetupAttachment(RootComponent);
     UBPFunctionLib::SetupSpritePhysics(SpriteComponent);
     UBPFunctionLib::FindSpriteAndSetupBox(SpriteComponent, BlockComponent, "/Game/Sprites/Shield");
 
@@ -37,7 +38,7 @@ void AShieldObject::StopBlock()
 void AShieldObject::BeginPlay()
 {
 	Super::BeginPlay();
-	
+	StopBlock();
 }
 
 // Called every frame

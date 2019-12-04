@@ -9,6 +9,15 @@
 /**
  * 
  */
+
+enum class EPlayerDirection : uint8
+{
+	Up,
+	Right,
+	Down,
+	Left,
+};
+
 UCLASS()
 class NLDUNGEON_API APlayerPawn : public ADamagableObject
 {
@@ -23,27 +32,38 @@ private:
         class UAnimationController* PlayerAnimController;
 
     UPROPERTY(EditAnywhere, Category = "Config", meta = (AllowPrivateAccess = "true"))
-        class UCameraComponent* FollowCamera;
+        class UCameraComponent* Camera;
 
     UPROPERTY(EditAnywhere, Category = "Config", meta = (AllowPrivateAccess = "true"))
-        TSubclassOf<class ASwordObject> Sword;
+        TSubclassOf<class ASwordObject> SwordClass;
+	ASwordObject* Sword;
 
     UPROPERTY(EditAnywhere, Category = "Config", meta = (AllowPrivateAccess = "true"))
-        TSubclassOf<class AShieldObject> Shield;
+        TSubclassOf<class AShieldObject> ShieldClass;
+	AShieldObject* Shield;
 
-    class UPrimitiveComponent* HeldObject;
-    UPrimitiveComponent* ReferenceToHold;
+    class AActor* HeldObject;
+    AActor* ReferenceToHold;
 
     bool bPlayerHasShield;
     bool bCanPickup;
     bool bIsHolding;
+	bool bIsAttacking;
+	bool bIsDefending;
+	bool bLeftRightMovement;
+	bool bUpDownMovement;
+
+	EPlayerDirection PlayerDirection;
 
     int MaxHealth;
     int GemCount;
     int Lives;
+	float MaxVel = 600.f;
 
     class UPawnNoiseEmitter* NoiseEmitter;
     class MainAudioComponent* AudioComponent;
+
+	void SetupIdleAnimation();
 
 protected:
     virtual void BeginPlay() override;
@@ -74,6 +94,8 @@ public:
     UFUNCTION(BlueprintCallable)
         int GetCurrentGemCount();
 
+	UFUNCTION()
+	void SetSwordAndShieldPosition();
     void SetHasShield(bool hasShield);
     void ActivateAttack();
     void StopAttack();
@@ -90,7 +112,7 @@ public:
     void OnPickupTriggerExit(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
     
     void MoveUp(float val);
-    void MoveDown(float val);
+    void MoveRight(float val);
 
     void Pickup();
     void Throw();

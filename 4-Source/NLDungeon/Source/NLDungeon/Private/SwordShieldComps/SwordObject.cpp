@@ -13,8 +13,9 @@ ASwordObject::ASwordObject()
 	PrimaryActorTick.bCanEverTick = true;
 
     SwordComponent = CreateDefaultSubobject<USwordHitComponent>("SwordHitComp");
-
+	SetRootComponent(SwordComponent);
     SpriteComponent = CreateDefaultSubobject<UPaperSpriteComponent>("Sprite");
+	SpriteComponent->SetupAttachment(RootComponent);
 
     UBPFunctionLib::SetupSpritePhysics(SpriteComponent);
     UBPFunctionLib::FindSpriteAndSetupBox(SpriteComponent, SwordComponent, "/Game/Sprites/Sword");
@@ -38,7 +39,7 @@ void ASwordObject::StopAttack()
 void ASwordObject::BeginPlay()
 {
 	Super::BeginPlay();
-	
+	StopAttack();
 }
 
 // Called every frame

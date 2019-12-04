@@ -5,6 +5,13 @@
 #include "PaperFlipbook.h"
 
 
+UAnimationController::UAnimationController()
+{
+	SetCollisionEnabled(ECollisionEnabled::NoCollision);
+	SetGenerateOverlapEvents(false);
+	SetNotifyRigidBodyCollision(false);
+}
+
 void UAnimationController::SetIdleDown()
 {
 	if (IdleDown != nullptr)
