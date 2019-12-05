@@ -19,7 +19,10 @@ public:
     void StopAttack();
 
 private:
+    UPROPERTY(EditAnywhere, Category = "Config", meta = (AllowPrivateAccess = "true"))
     class USwordHitComponent* SwordComponent;
+
+    UPROPERTY(EditAnywhere, Category = "Config", meta = (AllowPrivateAccess = "true"))
     class UPaperSpriteComponent* SpriteComponent;
 
 protected:

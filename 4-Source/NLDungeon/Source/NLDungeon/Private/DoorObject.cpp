@@ -10,6 +10,7 @@
 ADoorObject::ADoorObject()
 {
     UBPFunctionLib::FindSpriteAndSetupBox(SpriteComponent, BoxComponent, "/Game/Sprites/Door");
+    bDoesClose = false; //Default to a not reclosing door
 }
 
 void ADoorObject::ActivateTrigger()
@@ -18,6 +19,15 @@ void ADoorObject::ActivateTrigger()
     SpriteComponent->SetVisibility(false);
 
     //I would delete but then the reference would be null for the button
+}
+
+void ADoorObject::DeactivateTrigger()
+{
+    if (bDoesClose)
+    {
+        BoxComponent->SetCollisionEnabled(ECollisionEnabled::PhysicsOnly);
+        SpriteComponent->SetVisibility(true);
+    }
 }
 
 //void ADoorObject::DeactivateTrigger()

@@ -49,7 +49,8 @@ void AItemSpawner::SpawnHeart()
     {
         FActorSpawnParameters params;
         params.Owner = this;
-        World->SpawnActor<AHealthPickup>(HealthTemplate, DungeonState->GetItemSpawnLocation(), FRotator::ZeroRotator, params);
+        FTransform trans = FTransform(DungeonState->GetItemSpawnLocation());
+        World->SpawnActor<AHealthPickup>(HealthTemplate, trans, params);
     }
 }
 
@@ -64,7 +65,7 @@ void AItemSpawner::Tick(float DeltaTime)
             DungeonState->SetCanSpawnItem(false);
 
             //Easy way to spawn one or spawn the other for now. That way it spawns an item everytime and spawns a gem more often than health
-            if (FMath::RandRange(0, 100) > 30.f) SpawnGem();
+            if (FMath::RandRange(0, 100) > 40.f) SpawnGem();
             else SpawnHeart();
         }
     }

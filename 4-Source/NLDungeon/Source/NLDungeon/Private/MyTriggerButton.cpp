@@ -36,8 +36,14 @@ void AMyTriggerButton::BeginPlay()
 
 void AMyTriggerButton::OnTriggerEnter(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
-	if (OtherActor != nullptr)
+	if (OtherActor != nullptr && !OtherActor->ActorHasTag("Pickup"))
 	{
+        if (OtherActor->GetDefaultSubobjectByName("PickupArea"))
+        {
+            //Don't add to the list
+        }
+        else ActorsOnButton.Add(OtherActor);
+
 		if (TriggerObject != nullptr)
 		{
 			TriggerObject->ActivateTrigger();
@@ -47,9 +53,10 @@ void AMyTriggerButton::OnTriggerEnter(UPrimitiveComponent* OverlappedComponent, 
 
 void AMyTriggerButton::OnTriggerExit(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
 {
-	if (OtherActor != nullptr)
+	if (OtherActor != nullptr && !OtherActor->ActorHasTag("Pickup"))
 	{
-		if (TriggerObject != nullptr)
+        ActorsOnButton.Remove(OtherActor);
+		if (TriggerObject != nullptr && ActorsOnButton.Num() == 0)
 		{
 			TriggerObject->DeactivateTrigger();
 		}

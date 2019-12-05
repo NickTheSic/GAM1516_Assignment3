@@ -4,12 +4,17 @@
 #include "CheckpointArea.h"
 #include "DungeonGameState.h"
 #include "Components/SphereComponent.h"
+#include "Components/SphereComponent.h"
 
 // Sets default values
 ACheckpointArea::ACheckpointArea()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
-	PrimaryActorTick.bCanEverTick = true;
+	PrimaryActorTick.bCanEverTick = false;
+    
+    Sphere = CreateDefaultSubobject<USphereComponent>("Sphere");
+    Sphere->OnComponentBeginOverlap.AddDynamic(this, &ACheckpointArea::OnOverlap);
+    SetRootComponent(Sphere);
 
     Tags.Add("Checkpoint");
 

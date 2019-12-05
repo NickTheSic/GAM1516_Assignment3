@@ -25,7 +25,7 @@ AShieldObject::AShieldObject()
 void AShieldObject::ActivateBlock()
 {
     BlockComponent->ActivateBlock();
-    SpriteComponent->SetVisibility(false);
+    SpriteComponent->SetVisibility(true);
 }
 
 void AShieldObject::StopBlock()

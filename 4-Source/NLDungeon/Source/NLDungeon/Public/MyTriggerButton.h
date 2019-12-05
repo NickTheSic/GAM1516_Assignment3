@@ -25,6 +25,8 @@ private:
 	UPROPERTY(EditAnywhere, Category = "Config", meta = (AllowPrivateAccess = "true"))
 		class AMyTriggerObject* TriggerObject;
 
+    TArray<AActor*> ActorsOnButton;
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override; 

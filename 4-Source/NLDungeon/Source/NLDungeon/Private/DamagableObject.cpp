@@ -14,7 +14,7 @@ ADamagableObject::ADamagableObject()
  	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
-	CapsuleComponent = CreateDefaultSubobject<UCapsuleComponent>("CapsuleComponent");
+	CapsuleComponent = CreateDefaultSubobject<UCapsuleComponent>("Capsule Component");
 	CapsuleComponent->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 	CapsuleComponent->SetCollisionProfileName("BlockAll");
 	CapsuleComponent->SetSimulatePhysics(true);
@@ -23,7 +23,7 @@ ADamagableObject::ADamagableObject()
 	SetRootComponent(CapsuleComponent);
 
 	SpriteComponent = CreateDefaultSubobject<UPaperSpriteComponent>("Sprite Component");
-	UBPFunctionLib::LockPhysicsTo2DAxis(SpriteComponent);
+    UBPFunctionLib::SetupSpritePhysics(SpriteComponent);
 	SpriteComponent->SetupAttachment(RootComponent);
 
 	ObjectHealth = 1; //DEFAULT VALUE HEALTH

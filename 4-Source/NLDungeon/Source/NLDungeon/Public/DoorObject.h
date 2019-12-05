@@ -13,9 +13,14 @@ UCLASS()
 class NLDUNGEON_API ADoorObject : public AMyTriggerObject
 {
 	GENERATED_BODY()
-	
+private:
+
+    UPROPERTY(EditAnywhere, Category = "Config", meta = (AllowPrivateAccess = "true"))
+        bool bDoesClose;
+
 public:
     ADoorObject();
 
     virtual void ActivateTrigger() override;
+    virtual void DeactivateTrigger() override;
 };

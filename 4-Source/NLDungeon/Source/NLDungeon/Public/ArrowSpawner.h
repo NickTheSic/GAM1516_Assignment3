@@ -32,6 +32,12 @@ private:
 	UPROPERTY(EditAnywhere, Category = "Config", meta = (AllowPrivateAccess = "true"))
 	FTimerHandle SpawnTimer;
 
+    UPROPERTY(EditAnywhere, Category = "Config", meta = (AllowPrivateAccess = "true"))
+        float TimeDelay;
+
+    UPROPERTY(EditAnywhere, Category = "Config", meta = (AllowPrivateAccess = "true"))
+        float TimeBetween;
+
 	void SpawnArrow();
 
 protected:

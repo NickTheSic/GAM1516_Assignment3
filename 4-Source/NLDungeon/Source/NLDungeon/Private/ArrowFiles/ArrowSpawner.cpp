@@ -32,6 +32,9 @@ AArrowSpawner::AArrowSpawner()
 	SpawnPoint->SetupAttachment(RootComponent);
     SpawnPoint->SetupAttachment(RootComponent);
 
+    TimeDelay = 0.f;
+    TimeBetween = 3.0;
+
 	//Tags.Add("Holdable");
 }
 
@@ -48,11 +51,6 @@ void AArrowSpawner::SpawnArrow()
 			FTransform spawn = SpawnPoint->GetComponentTransform();
 
 			AArrowProjectile* arrow = World->SpawnActor<AArrowProjectile>(ArrowTemplate, spawn, params);
-
-			if (arrow)
-			{
-				//Maybe I don't need this code from the Spawn Actor from week 7
-			}
 		}
 	}
 }
@@ -63,8 +61,7 @@ void AArrowSpawner::BeginPlay()
 	Super::BeginPlay();
 
 	FTimerManager& TimerManager = GetWorldTimerManager();
-	TimerManager.SetTimer(SpawnTimer, this, &AArrowSpawner::SpawnArrow, 4.f, true);
-
+	TimerManager.SetTimer(SpawnTimer, this, &AArrowSpawner::SpawnArrow, TimeBetween, true, TimeDelay);
 }
 
 // Called every frame

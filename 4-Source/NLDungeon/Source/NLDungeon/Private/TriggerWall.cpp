@@ -9,6 +9,7 @@
 ATriggerWall::ATriggerWall()
 {
     bTriggerIsActive = false;
+    UBPFunctionLib::FindSpriteAndSetupBox(SpriteComponent, BoxComponent, "/Game/Sprites/Wall");
 }
 
 void ATriggerWall::ActivateTrigger()
@@ -27,16 +28,15 @@ void ATriggerWall::Tick(float DeltaTime)
     Super::Tick(DeltaTime);
 
     //Math LErP
-
     if (bTriggerIsActive)
     {
-        FVector targetLocation = FMath::VInterpConstantTo(GetActorLocation(), End, DeltaTime, 600.0f);
+        FVector targetLocation = FMath::VInterpConstantTo(GetActorLocation(), End, DeltaTime, 500.0f);
         SetActorLocation(targetLocation);
     }
     
     else
     {
-        FVector targetLocation = FMath::VInterpConstantTo(GetActorLocation(), Start, DeltaTime, 600.0f);
+        FVector targetLocation = FMath::VInterpConstantTo(GetActorLocation(), Start, DeltaTime, 500.0f);
         SetActorLocation(targetLocation);
     }
 

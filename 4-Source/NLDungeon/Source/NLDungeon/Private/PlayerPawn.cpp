@@ -62,6 +62,7 @@ APlayerPawn::APlayerPawn()
 	GemCount = 0;
 	Lives = 5;
 
+    Tags.Add("Player");
 }
 
 void APlayerPawn::BeginPlay()
@@ -117,7 +118,8 @@ void APlayerPawn::Tick(float deltaSeconds)
 		HeldObject->SetActorLocation(pos);
 	}
 
-	SetSwordAndShieldPosition();
+    if (bIsAttacking || bIsDefending)
+	    SetSwordAndShieldPosition();
 
 }
 
@@ -125,7 +127,7 @@ void APlayerPawn::OnNoHealth()
 {
     //Go to last checkpoint and lose a life
 	SetActorLocation(DungeonGameState->GetCheckpointLocation());
-	IncrementHealth(MaxHealth * 0.5);
+	IncrementHealth(MaxHealth);
 	DecrementGemCount(GemCount * 0.5);
 	DecrementLives(1);
 }
@@ -136,14 +138,14 @@ void APlayerPawn::SetSwordAndShieldPosition()
 	{
 		if (Sword != nullptr)
 		{
-			Sword->SetActorLocation(GetActorLocation() + FVector(0, 10, -90));
+			Sword->SetActorLocation(GetActorLocation() + FVector(0, 10, -120));
 			Sword->SetActorRotation(FRotator(180, 0, 0));
 		}
 
 		if (Shield != nullptr)
 		{
 			Shield->SetActorLocation(FVector(0, 10, -90) + GetActorLocation());
-			Shield->SetActorRotation(FRotator(180, 0, 0));
+            Shield->SetActorRotation(FRotator(0, 0, 0));
 		}
 	}
 
@@ -151,13 +153,13 @@ void APlayerPawn::SetSwordAndShieldPosition()
 	{
 		if (Sword != nullptr)
 		{
-			Sword->SetActorLocation(FVector(0, -10, 90) + GetActorLocation());
+			Sword->SetActorLocation(FVector(0, -10, 120) + GetActorLocation());
 			Sword->SetActorRotation(FRotator(0, 0, 0));
 		}	
 		if (Shield != nullptr)
 		{
-			Shield->SetActorLocation(FVector(0, -10, 90) + GetActorLocation());
-			Shield->SetActorRotation(FRotator(0, 0, 0));
+			Shield->SetActorLocation(FVector(0, -10, 120) + GetActorLocation());
+           Shield->SetActorRotation(FRotator(180, 0, 0));
 		}
 	}
 
@@ -168,10 +170,10 @@ void APlayerPawn::SetSwordAndShieldPosition()
 			Sword->SetActorLocation(FVector(90, -0, -10) + GetActorLocation());
 			Sword->SetActorRotation(FRotator(-90, 0, 0));
 		}
-		if (Shield != nullptr)
+		if (Shield != nullptr &&!bIsDefending)
 		{
 			Shield->SetActorLocation(FVector(90, -0, -10) + GetActorLocation());
-			Shield->SetActorRotation(FRotator(-90, 0, 0));
+            Shield->SetActorRotation(FRotator(90, 0, 0));
 		}
 	}
 
@@ -185,7 +187,7 @@ void APlayerPawn::SetSwordAndShieldPosition()
 		if (Shield != nullptr)
 		{
 			Shield->SetActorLocation(FVector(-90, 0, -10) + GetActorLocation());
-			Shield->SetActorRotation(FRotator(90, 0, 0));
+            Shield->SetActorRotation(FRotator(-90, 0, 0));
 		}
 	}
 }
@@ -219,6 +221,26 @@ void APlayerPawn::ActivateBlock()
 		{
 			bIsDefending = true;
 			Shield->ActivateBlock();
+
+            //if (PlayerDirection == EPlayerDirection::Down)
+            //{
+            //   Shield->SetActorRotation(FRotator(0, 0, 0));
+            //}
+
+            //if (PlayerDirection == EPlayerDirection::Up)
+            //{
+            //    Shield->SetActorRotation(FRotator(180, 0, 0));
+            //}
+
+            //if (PlayerDirection == EPlayerDirection::Right)
+            //{
+            //Shield->SetActorRotation(FRotator(90, 0, 0));
+            //}
+
+            //if (PlayerDirection == EPlayerDirection::Left)
+            //{
+            //    Shield->SetActorRotation(FRotator(-90, 0, 0));
+            //}
 		}
 	}
 }
@@ -278,7 +300,7 @@ void APlayerPawn::OnPickupTriggerExit(UPrimitiveComponent* OverlappedComp, AActo
 
 void APlayerPawn::MoveUp(float val)
 {
-	if (val != 0.0f )
+	if (val != 0.0f || bIsAttacking)
 	{
 		//FVector PlayerVelocity = GetVelocity();
 		//TravelDirectionY = -val;
@@ -303,7 +325,9 @@ void APlayerPawn::MoveUp(float val)
 		}
 		FVector currentVel = CapsuleComponent->BodyInstance.GetUnrealWorldVelocity();
 
-		FVector newVel = FVector(currentVel.X, 0.0f, MaxVel * val);
+        float Speed = MaxVel - ((MaxVel * 0.5f) * bIsDefending);
+
+		FVector newVel = FVector(currentVel.X, 0.0f, Speed * val);
 		CapsuleComponent->BodyInstance.SetLinearVelocity(newVel, false);
 
 
@@ -324,7 +348,7 @@ void APlayerPawn::MoveUp(float val)
 
 void APlayerPawn::MoveRight(float val)
 {
-	if (val != 0.0f)
+	if (val != 0.0f || bIsAttacking)
 	{
 		//FVector PlayerVelocity = GetVelocity();
 		//TravelDirectionY = -val;
@@ -350,8 +374,8 @@ void APlayerPawn::MoveRight(float val)
 			}
 		}
 		FVector currentVel = CapsuleComponent->BodyInstance.GetUnrealWorldVelocity();
-
-		FVector newVel = FVector(MaxVel * val, 0.0f, currentVel.Z);
+        float Speed = MaxVel - ((MaxVel * 0.5f) * bIsDefending);
+		FVector newVel = FVector(Speed * val, 0.0f, currentVel.Z);
 		CapsuleComponent->BodyInstance.SetLinearVelocity(newVel, false);
 
 
@@ -397,11 +421,14 @@ void APlayerPawn::Pickup()
 		HeldObject = ReferenceToHold;
 		UCapsuleComponent* heldCapsule = Cast<UCapsuleComponent>(HeldObject->GetDefaultSubobjectByName("Capsule Component"));
 
-		heldCapsule->SetSimulatePhysics(false);
-		heldCapsule->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+        if (heldCapsule)
+        {
+            heldCapsule->SetSimulatePhysics(false);
+            heldCapsule->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 
-		bCanPickup = false;
-		bIsHolding = true;
+            bCanPickup = false;
+            bIsHolding = true;
+        }
     }
 }
 
@@ -442,7 +469,7 @@ void APlayerPawn::Throw()
 
 			heldCapsule->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 			heldCapsule->SetSimulatePhysics(true);
-			heldCapsule->AddImpulse(dir * 5000); //I think I need a big number since it hasn't been working
+			heldCapsule->AddImpulse(dir * 550000); //I need the big number so it moves farther
 
 			HeldObject = nullptr;
 		}

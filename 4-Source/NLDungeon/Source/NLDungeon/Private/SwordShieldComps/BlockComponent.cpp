@@ -13,7 +13,7 @@ UBlockComponent::UBlockComponent()
 
 void UBlockComponent::ActivateBlock()
 {
-    SetCollisionEnabled(ECollisionEnabled::PhysicsOnly);
+    SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
     //SetSimulatePhysics(true);
 }
 

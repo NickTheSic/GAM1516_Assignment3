@@ -7,6 +7,9 @@
 
 ABarrel::ABarrel()
 {
+    CapsuleComponent->SetLinearDamping(20.f);
 	UBPFunctionLib::FindSpriteAndSetupCapsule(SpriteComponent, CapsuleComponent, "/Game/Sprites/Barrel");
+
+    Tags.Add("Holdable");
 }
 

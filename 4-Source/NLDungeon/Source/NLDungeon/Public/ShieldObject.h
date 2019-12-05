@@ -23,8 +23,11 @@ protected:
 	virtual void BeginPlay() override;
 
 private:
-    class UBlockComponent* BlockComponent;
-    class UPaperSpriteComponent* SpriteComponent;
+    UPROPERTY(EditAnywhere, Category = "Config", meta = (AllowPrivateAccess = "true"))
+        class UBlockComponent* BlockComponent;
+
+    UPROPERTY(EditAnywhere, Category = "Config", meta = (AllowPrivateAccess = "true"))
+        class UPaperSpriteComponent* SpriteComponent;
 
 public:	
 	// Called every frame
