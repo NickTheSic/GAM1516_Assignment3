@@ -1,0 +1,47 @@
+Nick Lemmon A3 Traceability
+
+1) 	I have Gems that you pickup and add to your score. 
+	I have hearts that pickup and add to your health
+	I Have a shield item that kinda gives you a shield to use
+	I have a Heart container which increases you max health
+
+2)	The player has health that decreases and when it does it spawns at a checkpoint
+	The checkpoint isn't exactly visible but it exists and it changes based on which one you hit last
+
+3)	I Have a HUD that displays your health, lives and gem count
+
+4)	You can break a barrel with your sword
+	You can pickup the barrel when in the radius and by pressing a key
+	You can pickup the pickup items on overlap automatically
+	The enemy hits you and then you take damage
+	You can hit and damage the enemy
+	The button has OnTrigger Enter and Exit to activate and deactivate the Trigger Objects
+
+5)	The AI patrols an area. When you break a barrel it hears you and looks towards the sound. If it sees you it runs at your position to attack you
+
+6)	The moving platform is trigger based.  You step on the button it moves to its new position. When you step off it moves to its start position
+
+7)	I use Set Liner Velocity on the Player to move it.  Otherwise it is too slidey for my liking.
+	I Use AddForce on the Barrel to throw it and then it slides to a stop.
+
+8)	Arrows spawn on a Timer and shoot forward
+	Gems and Hearts spawn at random when you destroy a DamagableObject object
+	Technically, I am spawning the Sword and Shield when the player spawns, since I wasn't sure how to make them Components until now
+
+9)	I have a SwordHitComponent which is a BoxComponent that has a Activate and Stop Attack function and an OnHit that casts the OtherActor to a Damagable Object
+	I have a BlockComponent which is a BoxComponent that has an Activate and Stop function
+	I have an AnimationComponent which Inherits from the FlipBook Component, it has the paper flipbooks in it and functions to play which one you want. Made to keep the player pawn cleaner
+	I have an AudioComponent which is an audio player that has a sound base in it and a function to play that sound
+
+10)	I Have some checkpoints that exist. You lose all your health and respawn at it.
+	My "End Game" Is just making it to the Heart Container.
+	Losing all your lives I guess would spawn you at the entrance.
+	getting the heart container would bring you to the overworld. But there is no level like that yet. Just the idea about the level
+
+
+11 + 12)  Technical Features
+
+	Animations for the player and enemy
+	My Trigger objects
+	Picking up and Throwing the Barrel
+	Plays sound
