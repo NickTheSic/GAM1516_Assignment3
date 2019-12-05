@@ -138,13 +138,13 @@ void APlayerPawn::SetSwordAndShieldPosition()
 	{
 		if (Sword != nullptr)
 		{
-			Sword->SetActorLocation(GetActorLocation() + FVector(0, 10, -120));
+			Sword->SetActorLocation(GetActorLocation() + FVector(0, 1, -120));
 			Sword->SetActorRotation(FRotator(180, 0, 0));
 		}
 
 		if (Shield != nullptr)
 		{
-			Shield->SetActorLocation(FVector(0, 10, -90) + GetActorLocation());
+			Shield->SetActorLocation(FVector(0, 1, -90) + GetActorLocation());
             Shield->SetActorRotation(FRotator(0, 0, 0));
 		}
 	}
@@ -153,12 +153,12 @@ void APlayerPawn::SetSwordAndShieldPosition()
 	{
 		if (Sword != nullptr)
 		{
-			Sword->SetActorLocation(FVector(0, -10, 120) + GetActorLocation());
+			Sword->SetActorLocation(FVector(0, -1, 120) + GetActorLocation());
 			Sword->SetActorRotation(FRotator(0, 0, 0));
 		}	
 		if (Shield != nullptr)
 		{
-			Shield->SetActorLocation(FVector(0, -10, 120) + GetActorLocation());
+			Shield->SetActorLocation(FVector(0, -1, 120) + GetActorLocation());
            Shield->SetActorRotation(FRotator(180, 0, 0));
 		}
 	}
