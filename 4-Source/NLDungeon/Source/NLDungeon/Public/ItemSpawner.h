@@ -15,6 +15,19 @@ public:
 	// Sets default values for this actor's properties
 	AItemSpawner();
 
+private:
+    class ADungeonGameState* DungeonState;
+    class UWorld* World;
+
+    void SpawnGem();
+    void SpawnHeart();
+
+    UPROPERTY(EditAnywhere, Category = "Config", meta = (AllowPrivateAccess = "true"))
+        TSubclassOf<class AHealthPickup> HealthTemplate;
+
+    UPROPERTY(EditAnywhere, Category = "Config", meta = (AllowPrivateAccess = "true"))
+        TSubclassOf<class AGemPickup> GemTemplate;
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
