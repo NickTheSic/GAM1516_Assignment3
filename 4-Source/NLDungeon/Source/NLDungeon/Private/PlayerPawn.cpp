@@ -118,7 +118,7 @@ void APlayerPawn::Tick(float deltaSeconds)
 		HeldObject->SetActorLocation(pos);
 	}
 
-    if (bIsAttacking || bIsDefending)
+    //if (bIsAttacking || bIsDefending)
 	    SetSwordAndShieldPosition();
 
 }
@@ -170,7 +170,7 @@ void APlayerPawn::SetSwordAndShieldPosition()
 			Sword->SetActorLocation(FVector(90, -0, -10) + GetActorLocation());
 			Sword->SetActorRotation(FRotator(-90, 0, 0));
 		}
-		if (Shield != nullptr &&!bIsDefending)
+		if (Shield != nullptr)
 		{
 			Shield->SetActorLocation(FVector(90, -0, -10) + GetActorLocation());
             Shield->SetActorRotation(FRotator(90, 0, 0));
@@ -221,26 +221,6 @@ void APlayerPawn::ActivateBlock()
 		{
 			bIsDefending = true;
 			Shield->ActivateBlock();
-
-            //if (PlayerDirection == EPlayerDirection::Down)
-            //{
-            //   Shield->SetActorRotation(FRotator(0, 0, 0));
-            //}
-
-            //if (PlayerDirection == EPlayerDirection::Up)
-            //{
-            //    Shield->SetActorRotation(FRotator(180, 0, 0));
-            //}
-
-            //if (PlayerDirection == EPlayerDirection::Right)
-            //{
-            //Shield->SetActorRotation(FRotator(90, 0, 0));
-            //}
-
-            //if (PlayerDirection == EPlayerDirection::Left)
-            //{
-            //    Shield->SetActorRotation(FRotator(-90, 0, 0));
-            //}
 		}
 	}
 }
@@ -300,7 +280,7 @@ void APlayerPawn::OnPickupTriggerExit(UPrimitiveComponent* OverlappedComp, AActo
 
 void APlayerPawn::MoveUp(float val)
 {
-	if (val != 0.0f || bIsAttacking)
+	if (val != 0.0f && !bIsAttacking)
 	{
 		//FVector PlayerVelocity = GetVelocity();
 		//TravelDirectionY = -val;
@@ -348,7 +328,7 @@ void APlayerPawn::MoveUp(float val)
 
 void APlayerPawn::MoveRight(float val)
 {
-	if (val != 0.0f || bIsAttacking)
+	if (val != 0.0f && !bIsAttacking)
 	{
 		//FVector PlayerVelocity = GetVelocity();
 		//TravelDirectionY = -val;

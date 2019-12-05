@@ -38,11 +38,8 @@ void AMyTriggerButton::OnTriggerEnter(UPrimitiveComponent* OverlappedComponent, 
 {
 	if (OtherActor != nullptr && !OtherActor->ActorHasTag("Pickup"))
 	{
-        if (OtherActor->GetDefaultSubobjectByName("PickupArea"))
-        {
-            //Don't add to the list
-        }
-        else ActorsOnButton.Add(OtherActor);
+        //if (!OtherActor->GetDefaultSubobjectByName("PickupArea"))
+        ActorsOnButton.Add(OtherActor);
 
 		if (TriggerObject != nullptr)
 		{

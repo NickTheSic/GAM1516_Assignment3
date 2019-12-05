@@ -34,7 +34,7 @@ ADamagableObject::ADamagableObject()
 
 void ADamagableObject::ObjectTakeDamage(int damage)
 {
-	ObjectHealth -= damage;
+ 	ObjectHealth -= damage;
 	if (ObjectHealth <= 0) OnNoHealth();
 }
 

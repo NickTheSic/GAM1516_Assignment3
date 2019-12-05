@@ -18,5 +18,6 @@ public:
     void PlayDestroySound();
 
 private:
-    class USoundBase* DestroySound;
+    UPROPERTY(EditAnywhere, Category = "Config", meta = (AllowPrivateAccess = "true"))
+        class USoundBase* DestroySound;
 };
