@@ -24,6 +24,14 @@ AShootingEnemy::AShootingEnemy()
 void AShootingEnemy::Tick(float deltaSeconds)
 {
     Super::Tick(deltaSeconds);
+
+   //FVector Direction = Location - GetActorLocation();
+   //Direction.Normalize();
+   //FRotator NewLookAt = FRotationMatrix::MakeFromX(Direction).Rotator();
+   //NewLookAt.Pitch = 0.0f;
+   //NewLookAt.Roll = 0.0f;
+   //SpawnPoint->SetRelativeRotation(NewLookAt);
+
 }
 
 void AShootingEnemy::BeginPlay()
@@ -38,6 +46,7 @@ void AShootingEnemy::OnPawnSeen(APawn* player)
 	{
 		FTimerManager& TimerManager = GetWorldTimerManager();
 		TimerManager.SetTimer(SpawnTimer, this, &AShootingEnemy::SpawnProjectileAttack, TimeBetween, true, TimeDelay);
+        Location = player->GetActorLocation();
 	}
 }
 

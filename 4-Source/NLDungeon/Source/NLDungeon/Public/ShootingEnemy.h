@@ -43,4 +43,6 @@ protected:
 
 	UPROPERTY(EditAnywhere, Category = "Config", meta = (AllowPrivateAccess = "true"))
 		TSubclassOf<class AArrowProjectile> FireballTemplate;
+
+    FVector Location;
 };

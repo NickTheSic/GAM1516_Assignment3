@@ -18,6 +18,7 @@ void AHeartContainer::PickupItem(APlayerPawn* player)
     if (player != nullptr)
     {
         player->IncrementMaxHealth(1);
+        player->IncrementHealth(player->GetCurrentMaxHealth());
     }
     Destroy();
 }
