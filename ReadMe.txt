@@ -1,3 +1,5 @@
+Submitted Version 1.0
+
 How to play:
 WASD to move
 F To pickup
@@ -6,7 +8,7 @@ Shift to block
 
 There are Barrels above you to hit and pickup
 Go left and walk over the switch to open the door
-Stay on the second switch to bring the door towards you
+Stay on the second switch to bring the wall towards you
 Follow the Wall back to hide from the arrows
 Grab the shield and hit the checkpoint
 Walk back through the arrows
