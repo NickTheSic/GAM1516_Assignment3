@@ -24,16 +24,6 @@ AEnemyClass::AEnemyClass()
     PawnSensingComponent = CreateDefaultSubobject<UPawnSensingComponent>("Pawn Sensor");
     PawnSensingComponent->OnSeePawn.AddDynamic(this, &AEnemyClass::OnPawnSeen);
     PawnSensingComponent->OnHearNoise.AddDynamic(this, &AEnemyClass::OnPawnHeard);
-    /*
-    
-        //TODO Week 10b:
-    //SUBSCRIBE to the PawnSensingComponent's OnSeePawn event passing in (this, &AAIGuard::OnPawnSeen)
-    PawnSensingComponent->OnSeePawn.AddDynamic(this, &AAIGuard::OnPawnSeen);
-    //TODO Week 10b:
-    //SUBSCRIBE to the PawnSensingComponent's OnHearNoise event passing in (this, &AAIGuard::OnNoiseHeard)
-    PawnSensingComponent->OnHearNoise.AddDynamic(this, &AAIGuard::OnNoiseHeard);
-    
-    */
 
 }
 

@@ -42,6 +42,9 @@ private:
         TSubclassOf<class AShieldObject> ShieldClass;
 	AShieldObject* Shield;
 
+	UPROPERTY(EditAnywhere, Category = "Config", meta = (AllowPrivateAccess = "true"))
+		class UMainAudioComponent* AudioComponent;
+
     class AActor* HeldObject;
     AActor* ReferenceToHold;
 
@@ -61,7 +64,6 @@ private:
 	float MaxVel = 600.f;
 
     class UPawnNoiseEmitter* NoiseEmitter;
-    class MainAudioComponent* AudioComponent;
 
 	void SetupIdleAnimation();
 

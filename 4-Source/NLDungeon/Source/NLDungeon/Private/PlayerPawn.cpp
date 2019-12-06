@@ -13,7 +13,7 @@
 #include "MainAudioComponent.h"
 #include "AnimationController.h"
 #include "Components/PawnNoiseEmitterComponent.h"
-
+#include "MainAudioComponent.h"
 
 APlayerPawn::APlayerPawn()
 {
@@ -49,6 +49,9 @@ APlayerPawn::APlayerPawn()
 	Camera->SetRelativeLocation(FVector(0.f, 500.f, 0.f));
 	Camera->SetProjectionMode(ECameraProjectionMode::Orthographic);
 	Camera->SetupAttachment(RootComponent);
+
+	AudioComponent = CreateDefaultSubobject<UMainAudioComponent>("Audio Comp");
+	AudioComponent->SetupAttachment(RootComponent);
 
 	bCanPickup = false;
 	bIsAttacking = false;
@@ -116,6 +119,15 @@ void APlayerPawn::Tick(float deltaSeconds)
 		FVector pos = GetActorLocation();
 		pos.Z += 100;
 		HeldObject->SetActorLocation(pos);
+	}
+
+	if (DungeonGameState != nullptr)
+	{
+		if (DungeonGameState->GetCanPlayAudio())
+		{
+			DungeonGameState->SetCanPlayAudio(false);
+			AudioComponent->PlayDestroySound(this, DungeonGameState->GetAudioLocation());
+		}
 	}
 
     //if (bIsAttacking || bIsDefending)

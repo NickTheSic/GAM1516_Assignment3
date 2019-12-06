@@ -25,6 +25,7 @@ protected:
 
     UFUNCTION()
     virtual void OnPawnSeen(class APawn* player);
+
     UFUNCTION()
     virtual void OnPawnHeard(APawn* NoiseInstigator, const FVector& Location, float Volume);
 
@@ -34,4 +35,5 @@ protected:
     UPROPERTY(EditAnywhere, Category = "Config", meta = (AllowPrivateAccess = "true"))
     class UPawnSensingComponent* PawnSensingComponent;
 
+	bool bSeenPlayer;
 };

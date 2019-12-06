@@ -20,12 +20,22 @@ private:
 	
 	FVector PlayerCheckpointLocation;
 
+	FVector AudioLocation;
+	bool bCanPlayAudio;
+
 public:
 	void SetCanSpawnItem(bool canSpawn) { bCanSpawnItem = canSpawn; }
 	bool GetCanSpawnItem() { return bCanSpawnItem; }
 	
 	void SetItemSpawnLocation(FVector location) { ItemSpawnLocation = location; }
 	FVector GetItemSpawnLocation() { return ItemSpawnLocation; }
+
+	void SetCanPlayAudio(bool canSpawn) { bCanPlayAudio = canSpawn; }
+	bool GetCanPlayAudio() { return bCanPlayAudio; }
+
+	void SetAudioLocation(FVector location) { AudioLocation = location; }
+	FVector GetAudioLocation() { return AudioLocation; }
+
 
 	void SetCheckpointLocation(FVector location) { PlayerCheckpointLocation = location; }
 	FVector GetCheckpointLocation() { return PlayerCheckpointLocation; }

@@ -5,7 +5,7 @@
 #include "Components/BoxComponent.h"
 #include "BPFunctionLib.h"
 #include "PaperSpriteComponent.h"
-
+#include "DungeonGameState.h"
 
 ADoorObject::ADoorObject()
 {
@@ -15,10 +15,22 @@ ADoorObject::ADoorObject()
 
 void ADoorObject::ActivateTrigger()
 {
-    BoxComponent->SetCollisionEnabled(ECollisionEnabled::NoCollision);
-    SpriteComponent->SetVisibility(false);
+	if (SpriteComponent->IsVisible())
+	{
+		BoxComponent->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+		SpriteComponent->SetVisibility(false);
 
-    //I would delete but then the reference would be null for the button
+		UWorld* w = GetWorld();
+		if (w)
+		{
+			ADungeonGameState* d = Cast<ADungeonGameState>(w->GetGameState());
+			if (d)
+			{
+				d->SetCanPlayAudio(true);
+				d->SetAudioLocation(GetActorLocation());
+			}
+		}
+	}
 }
 
 void ADoorObject::DeactivateTrigger()
@@ -29,9 +41,3 @@ void ADoorObject::DeactivateTrigger()
         SpriteComponent->SetVisibility(true);
     }
 }
-
-//void ADoorObject::DeactivateTrigger()
-//{
-//    //Do nothing here, the plan was to hold down the button with a barrel but puzzles seem like they will take a little long to mark
-//    //Can't have you stuck on a puzzle while marking
-//}

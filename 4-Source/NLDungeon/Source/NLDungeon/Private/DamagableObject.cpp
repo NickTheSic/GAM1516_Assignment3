@@ -1,8 +1,8 @@
 // Assignment 3 by Nick Lemmon
 
-
 #include "DamagableObject.h"
 #include "BPFunctionLib.h"
+#include "CoreMinimal.h"
 #include "Components/CapsuleComponent.h"
 #include "DungeonGameState.h"
 #include "PaperSpriteComponent.h"
@@ -41,11 +41,14 @@ void ADamagableObject::ObjectTakeDamage(int damage)
 void ADamagableObject::OnNoHealth()
 {
 	// should this be overridden by the derived class?
-	//for the most part other than the player they die and spawn a gem
+	//for the most part other than the player they die and spawn an item
+
 	if (DungeonGameState != nullptr)
 	{
 		DungeonGameState->SetItemSpawnLocation(GetActorLocation());
 		DungeonGameState->SetCanSpawnItem(true);
+		DungeonGameState->SetCanPlayAudio(true);
+ 		DungeonGameState->SetAudioLocation(GetActorLocation());
 	}
 
 	Destroy();

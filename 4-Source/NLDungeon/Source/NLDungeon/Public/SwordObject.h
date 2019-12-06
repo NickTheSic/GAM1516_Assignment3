@@ -15,7 +15,10 @@ public:
 	// Sets default values for this actor's properties
 	ASwordObject();
 
+	UFUNCTION()
     void ActivateAttack();
+
+	UFUNCTION()
     void StopAttack();
 
 private:

@@ -34,7 +34,7 @@ AArrowProjectile::AArrowProjectile()
 	Movement->bShouldBounce = false;
     Movement->ProjectileGravityScale = 0.f;
 
-	InitialLifeSpan = 2.f;
+	InitialLifeSpan = 3.f;
 
 }
 
@@ -43,6 +43,7 @@ void AArrowProjectile::BeginPlay()
 {
 	Super::BeginPlay();
 
+	UBPFunctionLib::SetupSpritePhysics(Sprite);
     //Turns it to face the direction it is facing
     FRotator rot = GetActorRotation();
     rot.Pitch -= 90;
@@ -54,16 +55,17 @@ void AArrowProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, U
 {
 	if (OtherActor != nullptr)
 	{
-		if (OtherActor->ActorHasTag("DamagableObject"))
+		if (OtherActor->ActorHasTag("DamagableObject") && !IsOwnedBy(OtherActor))
 		{
 			ADamagableObject* d = Cast<ADamagableObject>(OtherActor);
 			if (d != nullptr)
 			{
 				d->ObjectTakeDamage(1);
-				//Destroy();
 			}
+			//Destroy(); //Destroy object so the player doesn't run into it?
 		}
-		Destroy(); //Destroy object so the player doesn't run into it?
+		if (!IsOwnedBy(OtherActor)) 
+			Destroy(); //Destroy object so the player doesn't run into it?
 	}
 }
 
