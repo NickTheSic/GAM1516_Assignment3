@@ -18,6 +18,7 @@ Nick Lemmon A3 Traceability
 	The button has OnTrigger Enter and Exit to activate and deactivate the Trigger Objects
 
 5)	The AI patrols an area. When you break a barrel it hears you and looks towards the sound. If it sees you it runs at your position to attack you
+	The AI shoots when he sees you in his line of sight
 
 6)	The moving platform is trigger based.  You step on the button it moves to its new position. When you step off it moves to its start position
 
@@ -35,7 +36,7 @@ Nick Lemmon A3 Traceability
 
 10)	I Have some checkpoints that exist. You lose all your health and respawn at it.
 	My "End Game" Is just making it to the Heart Container.
-	Losing all your lives I guess would spawn you at the entrance.
+	Losing all your lives I guess would spawn you at the entrance, but for now it does nothing
 	getting the heart container would bring you to the overworld. But there is no level like that yet. Just the idea about the level
 
 
