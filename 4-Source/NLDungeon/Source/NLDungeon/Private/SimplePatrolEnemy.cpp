@@ -13,7 +13,6 @@ ASimplePatrolEnemy::ASimplePatrolEnemy()
     
 }
 
-
 void ASimplePatrolEnemy::Tick(float deltaSeconds)
 {
 	Super::Tick(deltaSeconds);
@@ -30,6 +29,11 @@ void ASimplePatrolEnemy::Tick(float deltaSeconds)
 		{
 			Pause = false;
 			PauseTimer = 2.5f;
+
+            if (Direction == EDirection::Down) AnimationController->SetWalkingDown();
+            if (Direction == EDirection::Left || Direction == EDirection::Right) AnimationController->SetWalkingRight();
+            if (Direction == EDirection::Up) AnimationController->SetWalkingUp();
+
 		}
         return;
 	}

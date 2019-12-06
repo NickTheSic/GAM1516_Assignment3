@@ -15,9 +15,7 @@ AShootingEnemy::AShootingEnemy()
 {
 	SpawnPoint = CreateDefaultSubobject<UArrowComponent>("SpawnArrow");
 	SpawnPoint->SetupAttachment(RootComponent);
-
-    UBPFunctionLib::SetupSpritePhysics(SpriteComponent);
-
+    
 	TimeDelay = 0.f;
 	TimeBetween = 3.0;
 	CapsuleComponent->SetLinearDamping(20.f);
