@@ -18,8 +18,6 @@ AArrowSpawner::AArrowSpawner()
 	BoxComponent = CreateDefaultSubobject<UBoxComponent>("Box Component");
 	UBPFunctionLib::LockPhysicsTo2DAxis(BoxComponent);
 	BoxComponent->SetCollisionProfileName("BlockAll");
-	//BoxComponent->SetSimulatePhysics(true);
-	//BoxComponent->SetEnableGravity(false);
 	BoxComponent->SetCollisionEnabled(ECollisionEnabled::PhysicsOnly);
     SetRootComponent(BoxComponent);
 
@@ -30,7 +28,6 @@ AArrowSpawner::AArrowSpawner()
 
 	SpawnPoint = CreateDefaultSubobject<UArrowComponent>("SpawnArrow");
 	SpawnPoint->SetupAttachment(RootComponent);
-    SpawnPoint->SetupAttachment(RootComponent);
 
     TimeDelay = 0.f;
     TimeBetween = 3.0;

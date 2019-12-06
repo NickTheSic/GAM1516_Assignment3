@@ -4,10 +4,13 @@
 #include "SimplePatrolEnemy.h"
 #include "Perception/PawnSensingComponent.h"
 #include "AnimationController.h"
+#include "Components/CapsuleComponent.h"
 
 ASimplePatrolEnemy::ASimplePatrolEnemy()
 {
+    AnimationController->SetupAttachment(RootComponent);
 
+    
 }
 
 
@@ -28,7 +31,7 @@ void ASimplePatrolEnemy::Tick(float deltaSeconds)
 			Pause = false;
 			PauseTimer = 2.5f;
 		}
-
+        return;
 	}
 
 		FVector targetLocation = FMath::VInterpConstantTo(GetActorLocation(), PositionsToPatrol[CurrentPosition], deltaSeconds, Speed);
@@ -47,27 +50,31 @@ void ASimplePatrolEnemy::Tick(float deltaSeconds)
 			if (CurrentPosition >= PositionsToPatrol.Num())
 				CurrentPosition = 0;
 
-			if (PositionsToPatrol[CurrentPosition].X > GetActorLocation().X)
+            CapsuleComponent->GetBodyInstance()->bLockZRotation = false;
+
+            if (PositionsToPatrol[CurrentPosition].X < GetActorLocation().X)
+            {
+                SetActorRotation(FRotator(0, 0, 180));
+                Direction = EDirection::Left;
+                AnimationController->SetWalkingRight();
+            }
+			else if (PositionsToPatrol[CurrentPosition].X > GetActorLocation().X)
 			{
-				SetActorRotation(FRotator::ZeroRotator);
+                SetActorRotation(FRotator::ZeroRotator);
 				Direction = EDirection::Right;
 				AnimationController->SetWalkingRight();
 			}
-			else if (PositionsToPatrol[CurrentPosition].X < GetActorLocation().X)
-			{
-				SetActorRotation(FRotator(0, 0, 180));
-				Direction = EDirection::Left;
-				AnimationController->SetWalkingRight();
-			}
-
+            
 			if (PositionsToPatrol[CurrentPosition].Z < GetActorLocation().Z)
 			{
-
+            
 			}
 			if (PositionsToPatrol[CurrentPosition].Z > GetActorLocation().Z)
 			{
-
+            
 			}
+
+            CapsuleComponent->GetBodyInstance()->bLockZRotation = true;
 		}
 
 }

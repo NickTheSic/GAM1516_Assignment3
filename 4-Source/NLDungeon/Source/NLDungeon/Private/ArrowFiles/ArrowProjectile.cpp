@@ -49,6 +49,11 @@ void AArrowProjectile::BeginPlay()
     rot.Pitch -= 90;
     SetActorRotation(rot);
 	
+    Movement->UpdatedComponent = CapsuleComponent;
+    Movement->InitialSpeed = 800.f;
+    Movement->MaxSpeed = 800.f;
+    Movement->bShouldBounce = false;
+    Movement->ProjectileGravityScale = 0.f;
 }
 
 void AArrowProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
@@ -64,6 +69,7 @@ void AArrowProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, U
 			}
 			//Destroy(); //Destroy object so the player doesn't run into it?
 		}
+
 		if (!IsOwnedBy(OtherActor)) 
 			Destroy(); //Destroy object so the player doesn't run into it?
 	}

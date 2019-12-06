@@ -42,6 +42,5 @@ Nick Lemmon A3 Traceability
 11 + 12)  Technical Features
 
 	Animations for the player and enemy
-	My Trigger objects
 	Picking up and Throwing the Barrel
-	Plays sound
+	Plays a sound when you destroy things or hit a switch

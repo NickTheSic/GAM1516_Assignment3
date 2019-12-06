@@ -7,7 +7,6 @@
 #include "ArrowProjectile.h"
 #include "BPFunctionLib.h"
 #include "Components/ArrowComponent.h"
-#include "Components/BoxComponent.h"
 #include "PaperSpriteComponent.h"
 #include "TimerManager.h"
 #include "Components/CapsuleComponent.h"
@@ -16,7 +15,8 @@ AShootingEnemy::AShootingEnemy()
 {
 	SpawnPoint = CreateDefaultSubobject<UArrowComponent>("SpawnArrow");
 	SpawnPoint->SetupAttachment(RootComponent);
-	SpawnPoint->SetupAttachment(RootComponent);
+
+    UBPFunctionLib::SetupSpritePhysics(SpriteComponent);
 
 	TimeDelay = 0.f;
 	TimeBetween = 3.0;
@@ -25,12 +25,12 @@ AShootingEnemy::AShootingEnemy()
 
 void AShootingEnemy::Tick(float deltaSeconds)
 {
-
+    Super::Tick(deltaSeconds);
 }
 
 void AShootingEnemy::BeginPlay()
 {
-
+    Super::BeginPlay();
 }
 
 void AShootingEnemy::OnPawnSeen(APawn* player)
@@ -50,26 +50,17 @@ void AShootingEnemy::OnPawnHeard(APawn* NoiseInstigator, const FVector& Location
 
 void AShootingEnemy::SpawnProjectileAttack()
 {
-	UWorld* World = GetWorld();
-	if (World)
-	{
-		if (FireballTemplate != nullptr)
-		{
-			FActorSpawnParameters params;
-			params.Owner = this;
-			params.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
-			FTransform spawn = SpawnPoint->GetComponentTransform();
+    UWorld* World = GetWorld();
+    if (World)
+    {
+        if (FireballTemplate != nullptr)
+        {
+            FActorSpawnParameters params;
+            params.Owner = this;
+            params.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+            FTransform spawn = SpawnPoint->GetComponentTransform();
 
-			AArrowProjectile* arrow = World->SpawnActor<AArrowProjectile>(FireballTemplate, spawn, params);
-
-			UCapsuleComponent* cap = Cast<UCapsuleComponent>(arrow->GetRootComponent());
-
-			if (cap)
-			{/*
-				cap->SetSimulatePhysics(true);
-				cap->SetEnableGravity(false);
-				cap->AddForce(50000 * arrow->GetActorForwardVector());*/
-			}
-		}
-	}
+            AArrowProjectile* arrow = World->SpawnActor<AArrowProjectile>(FireballTemplate, spawn, params);
+        }
+    }
 }
