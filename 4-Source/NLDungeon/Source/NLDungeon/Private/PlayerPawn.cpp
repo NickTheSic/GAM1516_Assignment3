@@ -27,7 +27,7 @@ APlayerPawn::APlayerPawn()
 		pscomp->DestroyComponent();
 		pscomp->SetActive(false);
 	}
-
+    //UBPFunctionLib::LockPhysicsTo2DAxis(CapsuleComponent);
 	UBPFunctionLib::FindSpriteAndSetupCapsule(nullptr, CapsuleComponent, "/Game/Sprites/LinkIdleDown");
 	CapsuleComponent->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 	CapsuleComponent->OnComponentHit.AddDynamic(this, &APlayerPawn::MainCapsuleOnHit);

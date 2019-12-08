@@ -10,7 +10,9 @@ ASimplePatrolEnemy::ASimplePatrolEnemy()
 {
     AnimationController->SetupAttachment(RootComponent);
 
+    CapsuleComponent->GetBodyInstance()->bLockZRotation = false;
     CapsuleComponent->GetBodyInstance()->bLockYRotation = false;
+    CapsuleComponent->GetBodyInstance()->bLockXRotation = false;
 }
 
 void ASimplePatrolEnemy::Tick(float deltaSeconds)
@@ -54,11 +56,12 @@ void ASimplePatrolEnemy::Tick(float deltaSeconds)
 			if (CurrentPosition >= PositionsToPatrol.Num())
 				CurrentPosition = 0;
 
-            //CapsuleComponent->GetBodyInstance()->bLockZRotation = false;
+            CapsuleComponent->GetBodyInstance()->bLockZRotation = false;
+            CapsuleComponent->GetBodyInstance()->bLockYRotation = false;
 
             if (PositionsToPatrol[CurrentPosition].X < GetActorLocation().X)
             {
-                SetActorRotation(FRotator(0, 0, 180));
+                SetActorRotation(FRotator(0, 180, 0));
                 Direction = EDirection::Left;
                 AnimationController->SetWalkingRight();
             }
@@ -79,6 +82,7 @@ void ASimplePatrolEnemy::Tick(float deltaSeconds)
 			}
 
             //CapsuleComponent->GetBodyInstance()->bLockZRotation = true;
+            //CapsuleComponent->GetBodyInstance()->bLockYRotation = true;
 		}
 
 }
@@ -89,6 +93,7 @@ void ASimplePatrolEnemy::OnPawnSeen(class APawn* player)
 	{
 		CurrentPosition = PositionsToPatrol.Num();
 		Speed = 450.f;
+        PauseTimer = 0;
 		bSeenPlayer = true;
 		PositionsToPatrol.Add(player->GetActorLocation());
 	}
@@ -111,8 +116,9 @@ void ASimplePatrolEnemy::OnPawnSeen(class APawn* player)
 	 Pause = false;
 	 PauseTimer = 2.5f;
 
-    CapsuleComponent->GetBodyInstance()->bLockZRotation = false;
-    CapsuleComponent->GetBodyInstance()->bLockYRotation = false;
+     CapsuleComponent->GetBodyInstance()->bLockZRotation = false;
+     CapsuleComponent->GetBodyInstance()->bLockYRotation = false;
+     CapsuleComponent->GetBodyInstance()->bLockXRotation = false;
 
     if (PositionsToPatrol[CurrentPosition].X < GetActorLocation().X)
     {
@@ -120,6 +126,7 @@ void ASimplePatrolEnemy::OnPawnSeen(class APawn* player)
         Direction = EDirection::Left;
         AnimationController->SetWalkingRight();
     }
+
     else if (PositionsToPatrol[CurrentPosition].X > GetActorLocation().X)
     {
         SetActorRotation(FRotator::ZeroRotator);
