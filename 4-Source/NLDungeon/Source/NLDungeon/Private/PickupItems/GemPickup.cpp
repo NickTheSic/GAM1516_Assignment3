@@ -16,9 +16,10 @@ AGemPickup::AGemPickup()
 
 void AGemPickup::PickupItem(APlayerPawn* player)
 {
+    AItemPickup::PickupItem(player);
     if (player != nullptr)
     {
         player->IncrementGemCount(GemValue);
     }
-    Destroy();
+    //Destroy();
 }

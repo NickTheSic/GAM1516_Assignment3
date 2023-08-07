@@ -7,7 +7,6 @@
 #include "ArrowProjectile.h"
 #include "BPFunctionLib.h"
 #include "Components/ArrowComponent.h"
-#include "Components/BoxComponent.h"
 #include "PaperSpriteComponent.h"
 #include "TimerManager.h"
 #include "Components/CapsuleComponent.h"
@@ -16,8 +15,7 @@ AShootingEnemy::AShootingEnemy()
 {
 	SpawnPoint = CreateDefaultSubobject<UArrowComponent>("SpawnArrow");
 	SpawnPoint->SetupAttachment(RootComponent);
-	SpawnPoint->SetupAttachment(RootComponent);
-
+    
 	TimeDelay = 0.f;
 	TimeBetween = 3.0;
 	CapsuleComponent->SetLinearDamping(20.f);
@@ -25,12 +23,20 @@ AShootingEnemy::AShootingEnemy()
 
 void AShootingEnemy::Tick(float deltaSeconds)
 {
+    Super::Tick(deltaSeconds);
+
+   //FVector Direction = Location - GetActorLocation();
+   //Direction.Normalize();
+   //FRotator NewLookAt = FRotationMatrix::MakeFromX(Direction).Rotator();
+   //NewLookAt.Pitch = 0.0f;
+   //NewLookAt.Roll = 0.0f;
+   //SpawnPoint->SetRelativeRotation(NewLookAt);
 
 }
 
 void AShootingEnemy::BeginPlay()
 {
-
+    Super::BeginPlay();
 }
 
 void AShootingEnemy::OnPawnSeen(APawn* player)
@@ -40,6 +46,7 @@ void AShootingEnemy::OnPawnSeen(APawn* player)
 	{
 		FTimerManager& TimerManager = GetWorldTimerManager();
 		TimerManager.SetTimer(SpawnTimer, this, &AShootingEnemy::SpawnProjectileAttack, TimeBetween, true, TimeDelay);
+        Location = player->GetActorLocation();
 	}
 }
 
@@ -50,26 +57,17 @@ void AShootingEnemy::OnPawnHeard(APawn* NoiseInstigator, const FVector& Location
 
 void AShootingEnemy::SpawnProjectileAttack()
 {
-	UWorld* World = GetWorld();
-	if (World)
-	{
-		if (FireballTemplate != nullptr)
-		{
-			FActorSpawnParameters params;
-			params.Owner = this;
-			params.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
-			FTransform spawn = SpawnPoint->GetComponentTransform();
+    UWorld* World = GetWorld();
+    if (World)
+    {
+        if (FireballTemplate != nullptr)
+        {
+            FActorSpawnParameters params;
+            params.Owner = this;
+            params.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+            FTransform spawn = SpawnPoint->GetComponentTransform();
 
-			AArrowProjectile* arrow = World->SpawnActor<AArrowProjectile>(FireballTemplate, spawn, params);
-
-			UCapsuleComponent* cap = Cast<UCapsuleComponent>(arrow->GetRootComponent());
-
-			if (cap)
-			{/*
-				cap->SetSimulatePhysics(true);
-				cap->SetEnableGravity(false);
-				cap->AddForce(50000 * arrow->GetActorForwardVector());*/
-			}
-		}
-	}
+            AArrowProjectile* arrow = World->SpawnActor<AArrowProjectile>(FireballTemplate, spawn, params);
+        }
+    }
 }

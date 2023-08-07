@@ -16,9 +16,10 @@ AHealthPickup::AHealthPickup()
 
 void AHealthPickup::PickupItem(APlayerPawn* player)
 {
+    AItemPickup::PickupItem(player);
     if (player != nullptr)
     {
         player->IncrementHealth(HealthValue);
     }
-    Destroy();
+    //Destroy();
 }

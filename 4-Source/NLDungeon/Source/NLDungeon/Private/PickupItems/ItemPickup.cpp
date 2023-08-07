@@ -5,7 +5,8 @@
 #include "Components/CapsuleComponent.h"
 #include "PaperSpriteComponent.h"
 #include "BPFunctionLib.h"
-
+#include "MainAudioComponent.h"
+#include "TimerManager.h"
 
 // Sets default values
 AItemPickup::AItemPickup()
@@ -21,13 +22,20 @@ AItemPickup::AItemPickup()
     UBPFunctionLib::SetupSpritePhysics(SpriteComponent);
     SpriteComponent->SetupAttachment(RootComponent);
 
+    AudioComponent = CreateDefaultSubobject<UMainAudioComponent>("Audio");
+
     Tags.Add("Pickup");
 
 }
 
 void AItemPickup::PickupItem(APlayerPawn* player)
 {
-	check(false); //I don't want to call this version of the function but the derived class function
+    AudioComponent->PlayDestroySound(this, this->GetActorLocation());
+    CapsuleComponent->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+    SpriteComponent->SetVisibility(false);
+
+    FTimerManager& TimerManager = GetWorldTimerManager();
+    TimerManager.SetTimer(ToDestroy, this, &AItemPickup::SetToDestroy, 2.5, false, 2.5);
 }
 
 // Called when the game starts or when spawned
@@ -35,6 +43,11 @@ void AItemPickup::BeginPlay()
 {
 	Super::BeginPlay();
 	
+}
+
+void AItemPickup::SetToDestroy()
+{
+    Destroy();
 }
 
 // Called every frame

@@ -27,7 +27,7 @@ APlayerPawn::APlayerPawn()
 		pscomp->DestroyComponent();
 		pscomp->SetActive(false);
 	}
-
+    //UBPFunctionLib::LockPhysicsTo2DAxis(CapsuleComponent);
 	UBPFunctionLib::FindSpriteAndSetupCapsule(nullptr, CapsuleComponent, "/Game/Sprites/LinkIdleDown");
 	CapsuleComponent->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 	CapsuleComponent->OnComponentHit.AddDynamic(this, &APlayerPawn::MainCapsuleOnHit);
@@ -248,7 +248,13 @@ void APlayerPawn::StopBlock()
 
 void APlayerPawn::MainCapsuleOnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
 {
-
+    if (OtherActor != nullptr)
+    {
+        if (OtherActor->ActorHasTag("Enemy"))
+        {
+            ObjectTakeDamage(1);
+        }
+    }
 }
 
 void APlayerPawn::MainCapsuleOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
@@ -262,6 +268,11 @@ void APlayerPawn::MainCapsuleOverlap(UPrimitiveComponent* OverlappedComponent, A
 			{
 				ip->PickupItem(this);
 			}
+
+            if (OtherActor->ActorHasTag("Enemy"))
+            {
+                ObjectTakeDamage(1);
+            }
 		}
 	}
 }

@@ -25,6 +25,8 @@ AEnemyClass::AEnemyClass()
     PawnSensingComponent->OnSeePawn.AddDynamic(this, &AEnemyClass::OnPawnSeen);
     PawnSensingComponent->OnHearNoise.AddDynamic(this, &AEnemyClass::OnPawnHeard);
 
+    Tags.Add("Enemy");
+
 }
 
 void AEnemyClass::Tick(float deltaSeconds)

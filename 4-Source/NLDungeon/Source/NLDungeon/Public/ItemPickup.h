@@ -27,6 +27,12 @@ protected:
     UPROPERTY(EditAnywhere, Category = "Config", meta = (AllowPrivateAccess = "true"))
         class UCapsuleComponent* CapsuleComponent;
 
+    UPROPERTY(EditAnywhere, Category = "Config", meta = (AllowPrivateAccess = "true"))
+        class UMainAudioComponent* AudioComponent;
+
+    void SetToDestroy(); 
+    FTimerHandle ToDestroy;
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;

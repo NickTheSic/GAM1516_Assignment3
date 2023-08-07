@@ -42,6 +42,10 @@ void ADamagableObject::OnNoHealth()
 {
 	// should this be overridden by the derived class?
 	//for the most part other than the player they die and spawn an item
+    if (DungeonGameState == nullptr)
+    {
+        DungeonGameState = Cast<ADungeonGameState>(GetWorld()->GetGameState());
+    }
 
 	if (DungeonGameState != nullptr)
 	{

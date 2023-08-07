@@ -9,6 +9,7 @@ USwordHitComponent::USwordHitComponent()
     SetCollisionProfileName("BlockAll");
     SetNotifyRigidBodyCollision(true);
     OnComponentHit.AddDynamic(this, &USwordHitComponent::OnHit);
+    OnComponentBeginOverlap.AddDynamic(this, &USwordHitComponent::OnTriggerEnter);
 }
 
 void USwordHitComponent::ActivateAttack()

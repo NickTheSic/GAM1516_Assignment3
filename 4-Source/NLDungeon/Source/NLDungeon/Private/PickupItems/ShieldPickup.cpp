@@ -15,9 +15,10 @@ AShieldPickup::AShieldPickup()
 
 void AShieldPickup::PickupItem(APlayerPawn* player)
 {
+    AItemPickup::PickupItem(player);
     if (player != nullptr)
     {
         player->SetHasShield(true);
     }
-    Destroy();
+    //Destroy();
 }
